@@ -1,0 +1,28 @@
+<div class="container-fluid">
+	<div class="select-ministry jumbotron">
+		<h1>Global Profile</h1>
+
+		<p>Select a ministry.</p>
+
+		<p>
+			<input type="text"
+				   class="form-control input-lg"
+				   ng-model="ministry"
+				   typeahead="ministry as ministry.name for ministry in ministries | filter:$viewValue | limitTo:4"
+				   typeahead-min-length="2"
+				   typeahead-editable="false">
+		</p>
+
+		<p>
+			<button type="button" class="btn btn-danger pull-left"
+					ng-if="isLeader(ministry.ministry_id)"
+					ng-click="$state.go('admin', {ministry_ID: ministry.ministry_id})">Administrator
+			</button>
+			<button type="button" class="btn btn-primary pull-right"
+					ng-disabled="!ministry"
+					ng-click="$state.go('edit', {ministry_ID: ministry.ministry_id})">Edit Profile
+			</button>
+		</p>
+		<div class="clearfix"></div>
+	</div>
+</div>

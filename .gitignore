@@ -1,0 +1,15 @@
+# Composer
+composer.phar
+vendor/
+
+# WebStorm, PHPStorm
+.idea/
+
+# Project
+config/config.php
+
+#Node (npm)
+node_modules/
+
+#Bower
+src/bower_components/
