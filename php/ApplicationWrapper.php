@@ -44,7 +44,7 @@
 			$url = \Net_URL2::getRequested();
 			$url->setQuery( false );
 			if ( $this->endswith( $url->getPath(), '.php' ) )
-				$url->setPath( dirname( $url->getPath() ) );
+				$url->setPath( dirname( $url->getPath() ) . Config::get( 'application.directory', 'dist' ) );
 			if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) )
 				$url->setScheme( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] );
 			$this->url = $url;
@@ -110,10 +110,10 @@
 
 		public function appConfig() {
 			return json_encode( array(
-				'version'      => Config::get( 'version', '' ),
-				'ticket'       => $this->getAPIServiceTicket(),
-				'appUrl'       => $this->url->resolve( 'app' )->getPath(),
-				'api'          => array(
+				'version'     => Config::get( 'version', '' ),
+				'ticket'      => $this->getAPIServiceTicket(),
+				'appUrl'      => $this->url->resolve( 'app' )->getPath(),
+				'api'         => array(
 					'measurements' => Config::get( 'measurements.endpoint' ),
 					'refresh'      => $this->url->resolve( 'refresh.php' )->getPath(),
 					'logout'       => Config::get( 'pgtservice.enabled' )
@@ -121,8 +121,8 @@
 						: $this->casClient->getServerLogoutURL(),
 					'login'        => $this->casClient->getServerLoginURL(),
 				),
-				'namespace'    => Config::get( 'measurements.namespace' ),
-				'tabs'         => Config::get( 'tabs', array() ),
+				'namespace'   => Config::get( 'measurements.namespace' ),
+				'tabs'        => Config::get( 'tabs', array() ),
 				'environment' => Config::get( 'application.environment', 'production' ),
 			) );
 		}
