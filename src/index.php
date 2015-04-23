@@ -25,7 +25,6 @@
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
 		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-		<!--<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css" />-->
 
 		<!-- Application CSS -->
 		<link rel="stylesheet" href="css/global-profile.css" />
@@ -42,13 +41,17 @@
 	<!-- Application JavaScript -->
 	<script type="application/javascript" src="js/_global-profile.js"></script>
 	<script type="application/javascript" src="js/controllers/_controllers.js"></script>
+	<script type="application/javascript" src="js/controllers/admin/_admin.js"></script>
 	<script type="application/javascript" src="js/controllers/profile/_profile.js"></script>
 	<script type="application/javascript" src="js/services/_services.js"></script>
 	<script type="application/javascript" src="js/services/measurements/_measurements.js"></script>
 
 	<script type="application/javascript" src="js/controllers/global-profile-ctrl.js"></script>
 	<script type="application/javascript" src="js/controllers/select-ministry-ctrl.js"></script>
-	<script type="application/javascript" src="js/controllers/profile/edit-profile-ctrl.js"></script>
+	<script type="application/javascript" src="js/controllers/admin/add-profile-ctrl.js"></script>
+	<script type="application/javascript" src="js/controllers/admin/edit-profile-ctrl.js"></script>
+	<script type="application/javascript" src="js/controllers/admin/sidebar-ctrl.js"></script>
+	<script type="application/javascript" src="js/controllers/profile/edit-personal-profile-ctrl.js"></script>
 	<script type="application/javascript" src="js/services/measurements/ministries-service.js"></script>
 	<script type="application/javascript" src="js/services/measurements/profile-service.js"></script>
 	<script type="application/javascript" src="js/services/measurements/session-service.js"></script>

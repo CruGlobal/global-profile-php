@@ -1,4 +1,4 @@
-.sidebar {
+.admin .sidebar {
 	position: fixed;
 	top: 51px;
 	bottom: 0;
@@ -10,4 +10,12 @@
 	overflow-y: auto;
 	background-color: #f5f5f5;
 	border-right: 1px solid #eee;
+}
+
+.admin .main {
+	padding-bottom: 30px;
+}
+
+.admin .sidebar .section {
+	margin-top: 20px;
 }

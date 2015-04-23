@@ -11,12 +11,6 @@
 			$logProvider.debugEnabled( SettingsProvider.isDebug() );
 		} )
 
-		/*
-		 .config( function ( $locationProvider ) {
-		 $locationProvider.html5Mode( true );
-		 } )
-		 */
-
 		// Configure HTTP interceptors
 		.config( function ( $httpProvider ) {
 			$httpProvider.interceptors.push( 'Session' );
@@ -34,7 +28,6 @@
 					templateUrl: 'partials/global-profile.html',
 					resolve:     {
 						'session': function ( $log, Session ) {
-							$log.debug( 'Resolve: session' );
 							return Session.getSession();
 						},
 						'systems': function ( $log, session, Ministries ) {
@@ -46,7 +39,7 @@
 					parent:      'default',
 					url:         '',
 					templateUrl: 'partials/select-ministry.html',
-					controller:  'SelectMinistryCtrl'
+					controller:  'SelectMinistryController'
 				} )
 				.state( 'profile', {
 					parent:   'default',
@@ -89,6 +82,14 @@
 								roles = _.pluck( assignments, 'team_role' );
 							return _.contains( roles, 'leader' ) || _.contains( roles, 'inherited_leader' );
 						}
+					},
+					views:    {
+						'title@default': {
+							controller: function ( $scope, ministry ) {
+								$scope.ministry = ministry;
+							},
+							template:   '{{ministry.name}}'
+						}
 					}
 				} )
 				.state( 'edit', {
@@ -125,7 +126,7 @@
 					views:   {
 						'@default': {
 							templateUrl: 'partials/profile/edit.html',
-							controller:  'EditProfileCtrl'
+							controller:  'EditPersonalProfileController'
 						}
 					}
 				} )
@@ -143,12 +144,51 @@
 						}
 					},
 					views:   {
-						'@default': {
-							controller:  function ( $log, $scope, people ) {
-								$log.info( 'HERE!!!' );
-								$scope.people = people;
-							},
+						'@default':      {
 							templateUrl: 'partials/admin/admin.html'
+						},
+						'sidebar@admin': {
+							templateUrl: 'partials/admin/sidebar.html',
+							controller:  'SidebarController'
+						}
+					}
+				} )
+				.state( 'admin.edit', {
+					url:     '/{person_ID:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}}',
+					resolve: {
+						// person_ID must be in the list of people
+						'profile': function ( $log, $q, $stateParams, people ) {
+							var deferred = $q.defer();
+							if ( angular.isUndefined( $stateParams.person_ID ) || $stateParams.person_ID === '' ) {
+								deferred.reject( 'Missing or Invalid person_id' );
+							}
+							else {
+								var profile = _.findWhere( people, {person_id: $stateParams.person_ID} );
+								if ( angular.isUndefined( profile ) ) {
+									$state.go( 'admin.new' );
+									deferred.reject();
+								}
+								else {
+									deferred.resolve( profile );
+								}
+							}
+							return deferred.promise;
+						}
+					},
+					views:   {
+						'content@admin': {
+							templateUrl: 'partials/admin/edit.html',
+							controller:  'EditProfileController'
+						}
+					}
+				} )
+				.state( 'admin.add', {
+					url: '/add',
+					resolve: {},
+					views: {
+						'content@admin': {
+							templateUrl: 'partials/admin/add.html',
+							controller: 'AddProfileController'
 						}
 					}
 				} );

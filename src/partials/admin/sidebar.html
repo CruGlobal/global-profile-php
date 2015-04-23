@@ -1,0 +1,24 @@
+<div>
+	<div class="section clearfix">
+		<button type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Person</button>
+	</div>
+	<div class="section">
+		<div ng-class="{'input-group':filterText}">
+			<input type="text" class="form-control" ng-model="filterText" placeholder="Search" />
+			<span class="input-group-btn" ng-if="filterText">
+				<button type="button" class="btn btn-default" ng-click="clearFilter()">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+			</span>
+		</div>
+	</div>
+	<div class="section">
+		<ul class="nav nav-pills nav-stacked">
+			<li role="presentation"
+				ng-repeat="person in people | filter:filterText | orderBy:['first_name']"
+				ui-sref-active="active">
+				<a ui-sref="admin.edit({person_ID: person.person_id})">{{person.last_name}}, {{person.first_name}}</a>
+			</li>
+		</ul>
+	</div>
+</div>

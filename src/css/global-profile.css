@@ -1,3 +1,10 @@
 body {
 	padding-top: 50px;
 }
+
+p.ministry-title {
+	color: #fff !important;
+	font-size: 24px;
+	margin-top: 6px;
+	margin-bottom: 0;
+}

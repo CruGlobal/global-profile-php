@@ -1,7 +1,7 @@
 (function () {
 	'use strict';
 	angular.module( 'globalProfile.controllers' )
-		.controller( 'SelectMinistryCtrl', function ( $log, $scope, $state, session, systems ) {
+		.controller( 'SelectMinistryController', function ( $log, $scope, $state, session, systems ) {
 			function flatten( a, prop ) {
 				var items = [];
 				angular.forEach( a, function ( item ) {
@@ -22,9 +22,5 @@
 				var roles = _.pluck( _.where( assignments, {ministry_id: ministry_id} ), 'team_role' );
 				return _.contains( roles, 'leader' ) || _.contains( roles, 'inherited_leader' );
 			};
-
-			$scope.$on( '$stateChangeError', function( event, toState, toParams, fromState, fromParams, error ) {
-				$log.error( 'State Change Error: ', error );
-			} );
 		} );
 })();
