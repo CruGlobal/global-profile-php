@@ -44,7 +44,7 @@
 			$url = \Net_URL2::getRequested();
 			$url->setQuery( false );
 			if ( $this->endswith( $url->getPath(), '.php' ) )
-				$url->setPath( dirname( $url->getPath() ) . Config::get( 'application.directory', 'dist' ) );
+				$url->setPath( dirname( $url->getPath() ) . '/' . Config::get( 'application.directory', 'dist' ) );
 			if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) )
 				$url->setScheme( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] );
 			$this->url = $url;
