@@ -105,14 +105,15 @@
 								}, function ( profile ) {
 									deferred.resolve( profile );
 								}, function ( response ) {
+									// Profile not found for current user
 									if ( response.status === 404 ) {
+										// Build new profile based on session.user attributes
 										var user = session.user,
-											props = ['cas_username', 'key_guid', 'first_name', 'last_name'],
-											profile = {
-												is_secure: false
-											};
+											props = ['cas_username', 'key_guid', 'first_name', 'last_name', 'person_id'],
+											profile = Profile.defaultProfile();
 										angular.forEach( props, function ( property ) {
-											this[property] = user.hasOwnProperty( property ) ? user[property] : '';
+											// Change cas_username to email
+											this[property === 'cas_username' ? 'email' : 'property'] = user.hasOwnProperty( property ) ? user[property] : '';
 										}, profile );
 										deferred.resolve( profile );
 									}
@@ -183,12 +184,16 @@
 					}
 				} )
 				.state( 'admin.add', {
-					url: '/add',
-					resolve: {},
-					views: {
+					url:     '/add',
+					resolve: {
+						'profile': function ( $log, Profile ) {
+							return Profile.defaultProfile();
+						}
+					},
+					views:   {
 						'content@admin': {
 							templateUrl: 'partials/admin/add.html',
-							controller: 'AddProfileController'
+							controller:  'AddProfileController'
 						}
 					}
 				} );

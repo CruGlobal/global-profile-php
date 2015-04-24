@@ -1,6 +1,6 @@
 <div>
 	<div class="section clearfix">
-		<button type="button" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Person</button>
+		<a class="btn btn-primary pull-right" ui-sref="admin.add" ui-sref-opts="{reload:true}"><span class="glyphicon glyphicon-plus"></span> Add a Person</a>
 	</div>
 	<div class="section">
 		<div ng-class="{'input-group':filterText}">
@@ -15,7 +15,7 @@
 	<div class="section">
 		<ul class="nav nav-pills nav-stacked">
 			<li role="presentation"
-				ng-repeat="person in people | filter:filterText | orderBy:['first_name']"
+				ng-repeat="person in people | filter:filterText | orderBy:['last_name','first_name']"
 				ui-sref-active="active">
 				<a ui-sref="admin.edit({person_ID: person.person_id})">{{person.last_name}}, {{person.first_name}}</a>
 			</li>
