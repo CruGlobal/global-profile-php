@@ -1,6 +1,6 @@
 <div>
 	<div class="page-header">
-		<div ng-include="'buttons.html'"></div>
+		<div class="pull-right" ng-include="'buttons.html'"></div>
 		<h1>Add a Person</h1>
 	</div>
 	<form name="profileForm">
@@ -254,11 +254,13 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-12" ng-include="'buttons.html'"></div>
+			<div class="col-sm-12">
+				<div class="pull-right" ng-include="'buttons.html'"></div>
+			</div>
 		</div>
 	</form>
 	<script type="text/ng-template" id="buttons.html">
-		<div class="pull-right btn-toolbar form-actions">
+		<div class="form-actions">
 			<button type="button"
 					class="btn btn-default"
 					ng-click="resetForm()">Reset

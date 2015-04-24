@@ -197,10 +197,5 @@
 						}
 					}
 				} );
-		} )
-		.run( function ( $log, $rootScope ) {
-			$rootScope.$on( '$stateChangeError', function ( event ) {
-				$log.info( event );
-			} );
 		} );
 })();

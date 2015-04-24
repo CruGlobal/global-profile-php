@@ -1,4 +1,8 @@
 <div id="profile" class="container">
+	<div class="page-header">
+		<div class="pull-right" ng-include="'buttons.html'"></div>
+		<h1>Edit your Profile</h1>
+	</div>
 	<form name="profileForm">
 		<div class="row">
 			<div class="col-md-6">
@@ -10,7 +14,10 @@
 
 							<div class="col-sm-9">
 								<input type="email" id="cas_username" class="form-control" ng-model="profile.email" required>
-								<p class="help-block">Your E-mail Address used by the ministry to contact you. Chaning this will not change the E-mail address you use to sign-in with. To change the E-mail address associated with your identity, visit <a href="https://thekey.me/cas/service/selfservice?target=displayAccountDetails">Key Self Service</a> </p>
+
+								<p class="help-block">Your E-mail Address used by the ministry to contact you. Changing this will not change the E-mail address you use to sign-in. To change the E-mail address associated with your identity, visit
+									<a href="https://thekey.me/cas/service/selfservice?target=displayAccountDetails">Key Self Service</a>
+								</p>
 							</div>
 						</div>
 						<div class="form-group">
@@ -272,10 +279,10 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-sm-3 control-label" for="ministry_scope">Scope</label>
+							<label class="col-sm-3 control-label" for="scope">Scope</label>
 
 							<div class="col-sm-9">
-								<select class="form-control" id="ministry_scope" ng-model="profile.ministry_scope" required>
+								<select class="form-control" id="scope" ng-model="profile.scope" required>
 									<option value="Local">Local</option>
 									<option value="National Region">National Region</option>
 									<option value="National">National</option>
@@ -284,7 +291,7 @@
 									<option value="Global">Global</option>
 								</select>
 
-								<p class="help-block well well-sm" ng-switch="profile.ministry_scope">
+								<p class="help-block well well-sm" ng-switch="profile.scope">
 									<span ng-switch-when="Local">You serve in a ministry on a campus, in a city, or in part of a city or area.</span>
 									<span ng-switch-when="National Region">You serve in a team that oversees two or more local teams.</span>
 									<span ng-switch-when="National">You serve in the national office or on a ministry team that oversees two or more regional field ministry teams.</span>
@@ -304,19 +311,22 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-12">
-				<div class="pull-right">
-					<button type="button"
-							class="btn btn-default"
-							ng-disabled="profileForm.$pristine"
-							ng-click="resetForm()">Cancel
-					</button>
-					<button type="button"
-							class="btn btn-primary"
-							ng-disabled="profileForm.$invalid"
-							ng-click="saveChanges()">Save Changes
-					</button>
-				</div>
+				<div class="pull-right" ng-include="'buttons.html'"></div>
 			</div>
 		</div>
 	</form>
+	<script type="text/ng-template" id="buttons.html">
+		<div class="form-actions">
+			<button type="button"
+					class="btn btn-default"
+					ng-disabled="profileForm.$pristine"
+					ng-click="resetForm()">Cancel
+			</button>
+			<button type="button"
+					class="btn btn-primary"
+					ng-disabled="profileForm.$invalid"
+					ng-click="saveChanges()">Save Changes
+			</button>
+		</div>
+	</script>
 </div>
