@@ -1,0 +1,42 @@
+<div class="container-fluid import">
+	<input type="file" id="fileBrowser" accept="text/csv" style="display: none;" file-reader="file">
+
+	<div class="page-header">
+		<div class="pull-right form-actions">
+			<label class="checkbox-inline"><input type="checkbox" ng-model="hasHeader">First Row is Header</label>
+			<button type="button" class="btn btn-warning" ng-click="browse()">
+				<span class="glyphicon glyphicon-search"></span> Browse for CSV
+			</button>
+		</div>
+		<h1>
+			<button type="button" class="btn btn-default" ui-sref="admin">
+				<span class="glyphicon glyphicon-arrow-left"></span>
+			</button>
+			Import a CSV
+			<small> {{file.name}}</small>
+		</h1>
+	</div>
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th ng-repeat="column in columns track by $index">
+				<select class="form-control" ng-model="column.type">
+					<option value="key_guid">GUID</option>
+					<option value="cas_username">Username</option>
+				</select>
+			</th>
+		</tr>
+		<tr ng-if="hasHeader">
+			<th ng-repeat="value in headerRow track by $index">{{value}}</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr ng-repeat="row in csv.data | offset:pager.begin | limitTo:10">
+			<td ng-repeat="value in row track by $index">{{value}}</td>
+		</tr>
+		</tbody>
+	</table>
+	<div class="pull-right" ng-if="csv.data">
+		<pagination total-items="csv.data.length" ng-model="pager.page" max-size="5" class="pagination-sm" boundary-links="true"></pagination>
+	</div>
+</div>

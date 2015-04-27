@@ -132,9 +132,9 @@
 					}
 				} )
 				.state( 'admin', {
-					parent:  'profile',
-					url:     '/admin',
-					resolve: {
+					parent:   'profile',
+					url:      '/admin',
+					resolve:  {
 						'requiresLeader': function ( $q, isLeader ) {
 							var deferred = $q.defer();
 							if ( isLeader ) deferred.resolve(); else deferred.reject( 'Not a Leader or Inherited Leader of the ministry.' );
@@ -144,7 +144,7 @@
 							return Profile.query( {ministry_id: ministry.ministry_id} ).$promise;
 						}
 					},
-					views:   {
+					views:    {
 						'@default':      {
 							templateUrl: 'partials/admin/admin.html'
 						},
@@ -194,6 +194,16 @@
 						'content@admin': {
 							templateUrl: 'partials/admin/add.html',
 							controller:  'AddProfileController'
+						}
+					}
+				} )
+				.state( 'admin.import', {
+					url:     '/import',
+					resolve: {},
+					views:   {
+						'@default': {
+							templateUrl: 'partials/admin/import.html',
+							controller:  'ImportCSVController'
 						}
 					}
 				} );

@@ -1,6 +1,9 @@
 <div>
 	<div class="section clearfix">
-		<a class="btn btn-primary pull-right" ui-sref="admin.add" ui-sref-opts="{reload:true}"><span class="glyphicon glyphicon-plus"></span> Add a Person</a>
+		<div class="btn-group btn-group-justified">
+			<a class="btn btn-warning" ui-sref="admin.import"><span class="glyphicon glyphicon-import"></span> Import a CSV</a>
+			<a class="btn btn-primary" ui-sref="admin.add" ui-sref-opts="{reload:true}"><span class="glyphicon glyphicon-plus"></span> Add a Person</a>
+		</div>
 	</div>
 	<div class="section">
 		<div ng-class="{'input-group':filterText}">

@@ -19,3 +19,7 @@
 .admin .sidebar .section {
 	margin-top: 20px;
 }
+
+.import .page-header .form-actions button {
+	margin-left: 20px;
+}

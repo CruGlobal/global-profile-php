@@ -24,6 +24,7 @@
 		<script type="application/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
 		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>
+		<script type="application/javascript" src="bower_components/papaparse/papaparse.js"></script>
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 
 		<!-- Application CSS -->
@@ -43,15 +44,19 @@
 	<script type="application/javascript" src="js/controllers/_controllers.js"></script>
 	<script type="application/javascript" src="js/controllers/admin/_admin.js"></script>
 	<script type="application/javascript" src="js/controllers/profile/_profile.js"></script>
+	<script type="application/javascript" src="js/directives/_directives.js"></script>
+	<script type="application/javascript" src="js/filters/_filters.js"></script>
 	<script type="application/javascript" src="js/services/_services.js"></script>
 	<script type="application/javascript" src="js/services/measurements/_measurements.js"></script>
 
-	<script type="application/javascript" src="js/controllers/global-profile-ctrl.js"></script>
 	<script type="application/javascript" src="js/controllers/select-ministry-ctrl.js"></script>
 	<script type="application/javascript" src="js/controllers/admin/add-profile-ctrl.js"></script>
 	<script type="application/javascript" src="js/controllers/admin/edit-profile-ctrl.js"></script>
+	<script type="application/javascript" src="js/controllers/admin/import-csv-ctrl.js"></script>
 	<script type="application/javascript" src="js/controllers/admin/sidebar-ctrl.js"></script>
 	<script type="application/javascript" src="js/controllers/profile/edit-personal-profile-ctrl.js"></script>
+	<script type="application/javascript" src="js/directives/file-reader-directive.js"></script>
+	<script type="application/javascript" src="js/filters/offset-filter.js"></script>
 	<script type="application/javascript" src="js/services/measurements/ministries-service.js"></script>
 	<script type="application/javascript" src="js/services/measurements/profile-service.js"></script>
 	<script type="application/javascript" src="js/services/measurements/session-service.js"></script>
