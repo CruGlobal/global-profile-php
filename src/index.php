@@ -57,6 +57,7 @@
 	<script type="application/javascript" src="js/controllers/profile/edit-personal-profile-ctrl.js"></script>
 	<script type="application/javascript" src="js/directives/file-reader-directive.js"></script>
 	<script type="application/javascript" src="js/filters/offset-filter.js"></script>
+	<script type="application/javascript" src="js/services/measurements/languages-service.js"></script>
 	<script type="application/javascript" src="js/services/measurements/ministries-service.js"></script>
 	<script type="application/javascript" src="js/services/measurements/profile-service.js"></script>
 	<script type="application/javascript" src="js/services/measurements/session-service.js"></script>

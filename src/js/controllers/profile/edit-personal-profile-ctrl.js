@@ -1,8 +1,9 @@
 (function () {
 	'use strict';
 	angular.module( 'globalProfile.controllers.profile' )
-		.controller( 'EditPersonalProfileController', function ( $log, $scope, session, ministry, profile, Profile ) {
+		.controller( 'EditPersonalProfileController', function ( $log, $scope, session, ministry, profile, languages, Profile ) {
 			$scope.profile = angular.copy( profile );
+			$scope.languages = languages;
 
 			$scope.resetForm = function () {
 				$scope.profile = angular.copy( profile );

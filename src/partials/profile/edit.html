@@ -82,9 +82,7 @@
 							<label class="col-sm-3 control-label" for="language">Language 1</label>
 
 							<div class="col-sm-9">
-								<select class="form-control" id="language" ng-model="profile.language" required>
-									<option value="en_US">English</option>
-								</select>
+								<select class="form-control" id="language" ng-model="profile.language" required ng-options="value for (key, value) in languages"></select>
 
 								<p class="help-block">This is the primary language you use.</p>
 							</div>
@@ -93,9 +91,7 @@
 							<label class="col-sm-3 control-label" for="language2">Language 2</label>
 
 							<div class="col-sm-9">
-								<select class="form-control" id="language2" ng-model="profile.language2">
-									<option value="en_US">English</option>
-								</select>
+								<select class="form-control" id="language2" ng-model="profile.language2" ng-options="value for (key, value) in languages"></select>
 
 								<p class="help-block">This is the language (after your primary language) with which you are most comfortable.</p>
 							</div>
@@ -104,9 +100,7 @@
 							<label class="col-sm-3 control-label" for="language3">Language 3</label>
 
 							<div class="col-sm-9">
-								<select class="form-control" id="language3" ng-model="profile.language3">
-									<option value="en_US">English</option>
-								</select>
+								<select class="form-control" id="language3" ng-model="profile.language3" ng-options="value for (key, value) in languages"></select>
 
 								<p class="help-block">You use this language also.</p>
 							</div>

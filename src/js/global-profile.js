@@ -46,7 +46,7 @@
 					abstract: true,
 					url:      '{ministry_ID:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}}',
 					resolve:  {
-						'ministry': function ( $log, $q, $state, $stateParams, session, systems ) {
+						'ministry':  function ( $log, $q, $state, $stateParams, session, systems ) {
 							var deferred = $q.defer();
 							// Unknown ministry_ID
 							if ( angular.isUndefined( $stateParams.ministry_ID ) || $stateParams.ministry_ID === '' ) {
@@ -67,7 +67,7 @@
 							}
 							return deferred.promise;
 						},
-						'isLeader': function ( $log, session, ministry ) {
+						'isLeader':  function ( $log, session, ministry ) {
 							var flatten = function ( a, prop ) {
 								var items = [];
 								angular.forEach( a, function ( item ) {
@@ -81,6 +81,9 @@
 							var assignments = _.where( flatten( session.assignments, 'sub_ministries' ), {ministry_id: ministry.ministry_id} ),
 								roles = _.pluck( assignments, 'team_role' );
 							return _.contains( roles, 'leader' ) || _.contains( roles, 'inherited_leader' );
+						},
+						'languages': function ( $log, Languages ) {
+							return Languages.languages( true );
 						}
 					},
 					views:    {
@@ -132,9 +135,9 @@
 					}
 				} )
 				.state( 'admin', {
-					parent:   'profile',
-					url:      '/admin',
-					resolve:  {
+					parent:  'profile',
+					url:     '/admin',
+					resolve: {
 						'requiresLeader': function ( $q, isLeader ) {
 							var deferred = $q.defer();
 							if ( isLeader ) deferred.resolve(); else deferred.reject( 'Not a Leader or Inherited Leader of the ministry.' );
@@ -144,7 +147,7 @@
 							return Profile.query( {ministry_id: ministry.ministry_id} ).$promise;
 						}
 					},
-					views:    {
+					views:   {
 						'@default':      {
 							templateUrl: 'partials/admin/admin.html'
 						},

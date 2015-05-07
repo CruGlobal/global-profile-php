@@ -1,8 +1,9 @@
 (function () {
 	'use strict';
 	angular.module( 'globalProfile.controllers.admin' )
-		.controller( 'AddProfileController', function ( $log, $scope, $state, profile, ministry, Profile ) {
+		.controller( 'AddProfileController', function ( $log, $scope, $state, profile, ministry, languages, Profile ) {
 			$scope.$state = $state;
+			$scope.languages = languages;
 			$scope.profile = angular.copy( profile );
 
 
