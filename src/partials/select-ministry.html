@@ -16,11 +16,11 @@
 		<p>
 			<button type="button" class="btn btn-danger pull-left"
 					ng-if="isLeader(ministry.ministry_id)"
-					ng-click="$state.go('admin', {ministry_ID: ministry.ministry_id})">Administrator
+					ng-click="$state.go('admin', {min_code: ministry.min_code})">Administrator
 			</button>
 			<button type="button" class="btn btn-primary pull-right"
 					ng-disabled="!ministry"
-					ng-click="$state.go('edit', {ministry_ID: ministry.ministry_id})">Edit Profile
+					ng-click="$state.go('edit', {min_code: ministry.min_code})">Edit Profile
 			</button>
 		</p>
 		<div class="clearfix"></div>

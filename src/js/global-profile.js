@@ -44,17 +44,17 @@
 				.state( 'profile', {
 					parent:   'default',
 					abstract: true,
-					url:      '{ministry_ID:[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}}',
+					url:      '{min_code}',
 					resolve:  {
 						'ministry':  function ( $log, $q, $state, $stateParams, session, systems ) {
 							var deferred = $q.defer();
-							// Unknown ministry_ID
-							if ( angular.isUndefined( $stateParams.ministry_ID ) || $stateParams.ministry_ID === '' ) {
+							// Unknown min_code
+							if ( angular.isUndefined( $stateParams.min_code ) || $stateParams.min_code === '' ) {
 								$state.transitionTo( 'select-ministry' );
 								deferred.reject();
 							}
 							else {
-								var ministry = _.findWhere( systems, {ministry_id: $stateParams.ministry_ID} );
+								var ministry = _.findWhere( systems, {min_code: $stateParams.min_code} );
 
 								// Ministry is not a valid Global Profile system
 								if ( angular.isUndefined( ministry ) ) {
