@@ -25,6 +25,9 @@
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
 		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>
 		<script type="application/javascript" src="bower_components/papaparse/papaparse.js"></script>
+		<script type="application/javascript" src="bower_components/better-dom/dist/better-dom.min.js"></script>
+		<script type="application/javascript" src="bower_components/better-i18n-plugin/dist/better-i18n-plugin.js"></script>
+		<script type="application/javascript" src="bower_components/better-dateinput-polyfill/dist/better-dateinput-polyfill.js"></script>
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 
 		<!-- Application CSS -->
@@ -40,29 +43,33 @@
 	</div>
 
 	<!-- Application JavaScript -->
-	<script type="application/javascript" src="js/_global-profile.js"></script>
-	<script type="application/javascript" src="js/controllers/_controllers.js"></script>
-	<script type="application/javascript" src="js/controllers/admin/_admin.js"></script>
-	<script type="application/javascript" src="js/controllers/profile/_profile.js"></script>
-	<script type="application/javascript" src="js/directives/_directives.js"></script>
-	<script type="application/javascript" src="js/filters/_filters.js"></script>
-	<script type="application/javascript" src="js/services/_services.js"></script>
-	<script type="application/javascript" src="js/services/measurements/_measurements.js"></script>
+	<script type="application/javascript" src="js/api/measurements/measurements.module.js"></script>
+	<script type="application/javascript" src="js/states/app/app.module.js"></script>
+	<script type="application/javascript" src="js/states/select-ministry/select-ministry.module.js"></script>
+	<script type="application/javascript" src="js/states/profile/profile.module.js"></script>
+	<script type="application/javascript" src="js/states/profile/edit/edit.module.js"></script>
+	<script type="application/javascript" src="js/states/admin/admin.module.js"></script>
+	<script type="application/javascript" src="js/states/admin/add/add.module.js"></script>
+	<script type="application/javascript" src="js/states/admin/edit/edit.module.js"></script>
+	<script type="application/javascript" src="js/states/admin/import/import.module.js"></script>
+	<script type="application/javascript" src="js/global-profile.module.js"></script>
 
-	<script type="application/javascript" src="js/controllers/select-ministry-ctrl.js"></script>
-	<script type="application/javascript" src="js/controllers/admin/add-profile-ctrl.js"></script>
-	<script type="application/javascript" src="js/controllers/admin/edit-profile-ctrl.js"></script>
-	<script type="application/javascript" src="js/controllers/admin/import-csv-ctrl.js"></script>
-	<script type="application/javascript" src="js/controllers/admin/sidebar-ctrl.js"></script>
-	<script type="application/javascript" src="js/controllers/profile/edit-personal-profile-ctrl.js"></script>
-	<script type="application/javascript" src="js/directives/file-reader-directive.js"></script>
-	<script type="application/javascript" src="js/filters/offset-filter.js"></script>
-	<script type="application/javascript" src="js/services/measurements/languages-service.js"></script>
-	<script type="application/javascript" src="js/services/measurements/ministries-service.js"></script>
-	<script type="application/javascript" src="js/services/measurements/profile-service.js"></script>
-	<script type="application/javascript" src="js/services/measurements/session-service.js"></script>
-	<script type="application/javascript" src="js/services/settings-service.js"></script>
-	<script type="application/javascript" src="js/global-profile.js"></script>
+	<script type="application/javascript" src="js/api/measurements/countries.service.js"></script>
+	<script type="application/javascript" src="js/api/measurements/languages.service.js"></script>
+	<script type="application/javascript" src="js/api/measurements/ministries.service.js"></script>
+	<script type="application/javascript" src="js/api/measurements/profile.service.js"></script>
+	<script type="application/javascript" src="js/api/measurements/session.service.js"></script>
+	<script type="application/javascript" src="js/common/file-reader.directive.js"></script>
+	<script type="application/javascript" src="js/common/offset.filter.js"></script>
+	<script type="application/javascript" src="js/common/settings.service.js"></script>
+	<script type="application/javascript" src="js/states/admin/add/add.controller.js"></script>
+	<script type="application/javascript" src="js/states/admin/edit/edit.controller.js"></script>
+	<script type="application/javascript" src="js/states/admin/import/import.controller.js"></script>
+	<script type="application/javascript" src="js/states/admin/sidebar.controller.js"></script>
+	<script type="application/javascript" src="js/states/profile/edit/edit.controller.js"></script>
+	<script type="application/javascript" src="js/states/select-ministry/select-ministry.controller.js"></script>
+	<script type="application/javascript" src="js/global-profile.config.js"></script>
+
 	</body>
 	</html>
 <?php }
