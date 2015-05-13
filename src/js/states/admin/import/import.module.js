@@ -14,7 +14,7 @@
 					url:     '/import',
 					resolve: {},
 					views:   {
-						'@default': {
+						'@app': {
 							templateUrl: 'js/states/admin/import/import.html',
 							controller:  'ImportCSVController'
 						}

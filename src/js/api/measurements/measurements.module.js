@@ -6,4 +6,5 @@
 		'globalProfile.common.settingsService',
 		'ngResource'
 	] );
+
 })();
