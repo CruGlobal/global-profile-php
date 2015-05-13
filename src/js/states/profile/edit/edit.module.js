@@ -6,6 +6,7 @@
 			'ui.router',
 			'globalProfile.states.profile',
 			'globalProfile.api.measurements',
+			'globalProfile.components.profileFormDirective',
 		] )
 		.config( function ( $stateProvider ) {
 			$stateProvider

@@ -5,7 +5,8 @@
 		.module( 'globalProfile.states.admin.add', [
 			'ui.router',
 			'globalProfile.states.admin',
-			'globalProfile.api.measurements'
+			'globalProfile.api.measurements',
+			'globalProfile.components.profileFormDirective'
 		] )
 		.config( function ( $stateProvider ) {
 			$stateProvider

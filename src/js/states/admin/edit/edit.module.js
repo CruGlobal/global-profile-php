@@ -4,7 +4,8 @@
 	angular
 		.module( 'globalProfile.states.admin.edit', [
 			'ui.router',
-			'globalProfile.states.admin'
+			'globalProfile.states.admin',
+			'globalProfile.components.profileFormDirective'
 		] )
 		.config( function ( $stateProvider ) {
 			$stateProvider
