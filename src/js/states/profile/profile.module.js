@@ -49,12 +49,6 @@
 							var assignments = _.where( flatten( session.assignments, 'sub_ministries' ), {ministry_id: ministry.ministry_id} ),
 								roles = _.pluck( assignments, 'team_role' );
 							return _.contains( roles, 'leader' ) || _.contains( roles, 'inherited_leader' );
-						},
-						'languages': function ( $log, Languages ) {
-							return Languages.languages();
-						},
-						'countries': function ( $log, session, Countries ) {
-							return Countries.countries();
 						}
 					},
 					views:    {

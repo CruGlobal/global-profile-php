@@ -1,4 +1,4 @@
-"use strict";
+'use strict';
 
 var gulp        = require( 'gulp' ),
 	bower       = require( 'gulp-bower' ),
@@ -34,22 +34,25 @@ gulp.task( 'clean', function ( callback ) {
 	del( ['dist'], callback );
 } );
 
-gulp.task( 'html', ['clean', 'bower', 'scripts', 'partials', 'styles', 'library'], function () {
-	return gulp.src( 'src/index.html' )
+gulp.task( 'html', ['clean', 'bower', 'scripts', 'partials', 'styles'], function () {
+	return gulp.src( 'src/*.php' )
 		.pipe( cdnizer( {
 			allowMin:     true,
-			relativeRoot: 'src/',
 			files:        [
 				// JavaScript
 				'google:jquery',
 				'google:angular-loader',
 				'google:angular-resource',
-				'google:angular-route',
 				'google:angular',
 				{
 					file:    'bower_components/angular-bootstrap/*.js',
 					package: 'angular-bootstrap',
 					cdn:     'cdnjs:angular-ui-bootstrap:${ filenameMin }'
+				},
+				{
+					file:    'bower_components/angular-ui-router/**/*.js',
+					package: 'angular-ui-router',
+					cdn:     'cdnjs:angular-ui-router:${ filenameMin }'
 				},
 				{
 					file:    'bower_components/moment/*.js',
@@ -60,6 +63,11 @@ gulp.task( 'html', ['clean', 'bower', 'scripts', 'partials', 'styles', 'library'
 					file:    'bower_components/underscore/underscore.js',
 					package: 'underscore',
 					cdn:     'cdnjs:underscore.js:underscore-min.js'
+				},
+				{
+					file:    'bower_components/papaparse/papaparse.js',
+					package: 'papaparse',
+					cdn:     '//cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.1/papaparse.min.js'
 				},
 
 				// CSS
@@ -72,20 +80,18 @@ gulp.task( 'html', ['clean', 'bower', 'scripts', 'partials', 'styles', 'library'
 		} ) )
 		.pipe( htmlreplace( {
 			application: [
-				'js/' + revisions['application.min.js'],
-				'js/' + revisions['partials.min.js']
+				'js/' + revisions['app.min.js'],
+				'js/' + revisions['templates.min.js']
 			],
-			styles:      'css/' + revisions['styles.min.css'],
-			other:       'js/' + revisions['common.min.js']
+			styles:      'css/' + revisions['styles.min.css']
 		} ) )
-		.pipe( minifyHTML() )
 		.pipe( gulp.dest( 'dist' ) );
 } );
 
 gulp.task( 'scripts', ['clean'], function () {
-	return gulp.src( ['src/js/**/_*.js', 'src/js/**/*.js', '!src/js/wrapper.js'] )
+	return gulp.src( ['src/js/**/*.module.js', 'src/js/**/*.js'] )
 		.pipe( sourcemaps.init() )
-		.pipe( concat( 'application.min.js' ) )
+		.pipe( concat( 'app.min.js' ) )
 		.pipe( ngAnnotate() )
 		.pipe( uglify() )
 		.pipe( revisionMap() )
@@ -94,15 +100,15 @@ gulp.task( 'scripts', ['clean'], function () {
 } );
 
 gulp.task( 'partials', ['clean'], function () {
-	return gulp.src( ['src/partials/**/*.html'] )
+	return gulp.src( ['src/js/**/*.html'] )
 		.pipe( sourcemaps.init() )
 		.pipe( minifyHTML() )
 		.pipe( ngHtml2Js( {
-			moduleName:    'gma',
-			prefix:        'partials/',
+			moduleName:    'globalProfile',
+			prefix:        'js/',
 			declareModule: false
 		} ) )
-		.pipe( concat( 'partials.min.js' ) )
+		.pipe( concat( 'templates.min.js' ) )
 		.pipe( uglify() )
 		.pipe( revisionMap() )
 		.pipe( sourcemaps.write( '.' ) )
@@ -110,30 +116,11 @@ gulp.task( 'partials', ['clean'], function () {
 } );
 
 gulp.task( 'styles', ['clean'], function () {
-	return gulp.src( ['src/css/application.css', 'src/css/**/*.css'] )
+	return gulp.src( ['src/css/**/*.css'] )
 		.pipe( concat( 'styles.min.css' ) )
 		.pipe( minifyCSS() )
 		.pipe( revisionMap() )
 		.pipe( gulp.dest( 'dist/css' ) );
-} );
-
-gulp.task( 'library', ['clean', 'bower'], function () {
-	return gulp.src( ['bower_components/easy-markerwithlabel/src/markerwithlabel.js', 'bower_components/iframe-resizer/src/iframeResizer.contentWindow.js'] )
-		.pipe( sourcemaps.init() )
-		.pipe( concat( 'common.min.js' ) )
-		.pipe( uglify() )
-		.pipe( revisionMap() )
-		.pipe( sourcemaps.write( '.' ) )
-		.pipe( gulp.dest( 'dist/js' ) );
-} );
-
-gulp.task( 'wrapper', ['clean', 'bower'], function () {
-	return gulp.src( ['bower_components/iframe-resizer/src/iframeResizer.js'] )
-		.pipe( sourcemaps.init() )
-		.pipe( concat( 'wrapper.min.js' ) )
-		.pipe( uglify() )
-		.pipe( sourcemaps.write( '.' ) )
-		.pipe( gulp.dest( 'dist/js' ) );
 } );
 
 gulp.task( 'images', ['clean'], function () {
@@ -141,16 +128,10 @@ gulp.task( 'images', ['clean'], function () {
 		.pipe( gulp.dest( 'dist/img' ) );
 } );
 
-gulp.task( 'angular-i18n', ['clean', 'bower'], function () {
-	return gulp.src( ['bower_components/angular-i18n/*.js'] )
-		.pipe( uglify() )
-		.pipe( gulp.dest( 'dist/angular-i18n' ) );
-} );
-
 gulp.task( 'bower', function () {
 	return bower();
 } );
 
-gulp.task( 'build', ['images', 'wrapper', 'html', 'angular-i18n'] );
+gulp.task( 'build', ['images', 'html'] );
 
 gulp.task( 'default', ['build'] );

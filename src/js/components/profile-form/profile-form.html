@@ -1,315 +1,432 @@
 <div class="row">
 	<div class="col-md-6">
 		<div ng-transclude=""></div>
-		<div class="form-horizontal well">
-			<fieldset>
-				<legend>Personal</legend>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="cas_username">E-mail Address</label>
+		<ng-form name="personal">
+			<div class="form-horizontal well">
+				<fieldset>
+					<legend>Personal</legend>
 
-					<div class="col-sm-8">
-						<input type="email" id="cas_username" class="form-control" ng-model="profile.email" required>
+					<!-- E-mail Address -->
+					<div class="form-group has-feedback"
+						 ng-class="{'has-error': !personal.cas_username.$valid}">
+						<label class="col-sm-4 control-label" for="cas_username">E-mail Address</label>
 
-						<p ng-if="showHelp" class="help-block">Your E-mail Address used by the ministry to contact you. Changing this will not change the E-mail address you use to sign-in. To change the E-mail address associated with your identity, visit
-							<a href="https://thekey.me/cas/service/selfservice?target=displayAccountDetails">Key Self Service</a>
-						</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="last_name">Family Name</label>
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': personal.cas_username.$valid}">
+								<input type="email"
+									   name="cas_username"
+									   id="cas_username"
+									   class="form-control"
+									   ng-model="profile.email"
+									   ng-required="isRequired( 'cas_username' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': personal.cas_username.$valid, 'glyphicon-remove': !personal.cas_username.$valid}"></span>
+								</span>
+							</div>
 
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="last_name" ng-model="profile.last_name" required>
-
-						<p ng-if="showHelp" class="help-block">Your official family name.</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="first_name">Given Name</label>
-
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="first_name" ng-model="profile.first_name" required>
-
-						<p ng-if="showHelp" class="help-block">Your official given name.</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="preferred_name">Preferred Name<br />Nickname</label>
-
-					<div class="col-sm-8">
-						<input type="text" class="form-control" id="preferred_name" ng-model="profile.preferred_name">
-
-						<p ng-if="showHelp" class="help-block">This is the name by which you are commonly known or how you prefer people address you.</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="gender">Gender</label>
-
-					<div class="col-sm-8">
-						<select class="form-control" id="gender" ng-model="profile.gender" required>
-							<option value="Male">Male</option>
-							<option value="Female">Female</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="birth_date">Birth Date</label>
-
-					<div class="col-sm-8">
-						<input type="date" class="form-control" id="birth_date" ng-model="profile.birth_date" required>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="marital_status">Marital Status</label>
-
-					<div class="col-sm-8">
-						<select class="form-control" id="marital_status" ng-model="profile.marital_status" required>
-							<option value="Single">Single</option>
-							<option value="Married">Married</option>
-							<option value="Engaged">Engaged</option>
-							<option value="Separated">Separated</option>
-							<option value="Divorced">Divorced</option>
-							<option value="Widowed">Widowed</option>
-						</select>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="language">Language 1</label>
-
-					<div class="col-sm-8">
-						<select class="form-control"
-								id="language"
-								ng-model="profile.language"
-								required
-								ng-options="lang.iso_code as lang.native_name for lang in languages | orderBy:'native_name'">
-						</select>
-
-						<p ng-if="showHelp" class="help-block">This is the primary language you use.</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="language2">Language 2</label>
-
-					<div class="col-sm-8">
-						<select class="form-control" id="language2" ng-model="profile.language2" ng-options="lang.iso_code as lang.native_name for lang in languages | orderBy:'native_name'"></select>
-
-						<p ng-if="showHelp" class="help-block">This is the language (after your primary language) with which you are most comfortable.</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="language3">Language 3</label>
-
-					<div class="col-sm-8">
-						<select class="form-control" id="language3" ng-model="profile.language3" ng-options="lang.iso_code as lang.native_name for lang in languages | orderBy:'native_name'"></select>
-
-						<p ng-if="showHelp" class="help-block">You use this language also.</p>
-					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label">Default Privacy Profile</label>
-
-					<div class="col-sm-8">
-						<div class="radio">
-							<label>
-								<input type="radio" name="is_secure" ng-value="false" ng-model="profile.is_secure" required>
-								<span ng-hide="showHelp">Public</span>
-								<span ng-show="showHelp">Anyone can see your profile information.</span>
-							</label>
-						</div>
-						<div class="radio">
-							<label>
-								<input type="radio" name="is_secure" ng-value="true" ng-model="profile.is_secure" required>
-								<span ng-hide="showHelp">Private</span>
-								<span ng-show="showHelp">Only you and an administrator can see your profile information. Select this profile setting if you work in a country where security is a concern.</span>
-							</label>
+							<p ng-if="showHelp" class="help-block">Your E-mail Address used by the ministry to contact you. Changing this will not change the E-mail address you use to sign-in. To change the E-mail address associated with your identity, visit
+								<a href="https://thekey.me/cas/service/selfservice?target=displayAccountDetails">Key Self Service</a>
+							</p>
 						</div>
 					</div>
-				</div>
-			</fieldset>
-		</div>
+
+					<!-- Family Name -->
+					<div class="form-group has-feedback"
+						 ng-class="{'has-error': !personal.last_name.$valid}">
+						<label class="col-sm-4 control-label" for="last_name">Family Name</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': personal.last_name.$valid}">
+								<input type="text"
+									   class="form-control"
+									   id="last_name"
+									   name="last_name"
+									   ng-model="profile.last_name"
+									   ng-required="isRequired( 'last_name' )"
+									   ng-minlength="2">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': personal.last_name.$valid, 'glyphicon-remove': !personal.last_name.$valid}"></span>
+								</span>
+							</div>
+
+							<p ng-if="showHelp" class="help-block">Your official family name.</p>
+						</div>
+					</div>
+
+					<!-- Given Name -->
+					<div class="form-group has-feedback" ng-class="{'has-error': !personal.first_name.$valid}">
+						<label class="col-sm-4 control-label" for="first_name">Given Name</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': personal.first_name.$valid}">
+								<input type="text"
+									   class="form-control"
+									   id="first_name"
+									   name="first_name"
+									   ng-model="profile.first_name"
+									   ng-required="isRequired( 'first_name' )"
+									   ng-minlength="2">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': personal.first_name.$valid, 'glyphicon-remove': !personal.first_name.$valid}"></span>
+								</span>
+							</div>
+
+							<p ng-if="showHelp" class="help-block">Your official given name.</p>
+						</div>
+					</div>
+
+					<!-- Preferred Name -->
+					<div class="form-group has-feedback" ng-class="{'has-error': !personal.preferred_name.$valid}">
+						<label class="col-sm-4 control-label" for="preferred_name">Preferred Name<br />Nickname</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': personal.preferred_name.$valid}">
+								<input type="text"
+									   class="form-control"
+									   id="preferred_name"
+									   name="preferred_name"
+									   ng-model="profile.preferred_name"
+									   ng-required="isRequired( 'preferred_name' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': personal.preferred_name.$valid, 'glyphicon-remove': !personal.preferred_name.$valid}"></span>
+								</span>
+							</div>
+
+							<p ng-if="showHelp" class="help-block">This is the name by which you are commonly known or how you prefer people address you.</p>
+						</div>
+					</div>
+
+					<!-- Gender -->
+					<div class="form-group has-feedback" ng-class="{'has-error': !personal.gender.$valid}">
+						<label class="col-sm-4 control-label" for="gender">Gender</label>
+
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': personal.gender.$valid}">
+								<select
+									class="form-control"
+									id="gender"
+									name="gender"
+									ng-model="profile.gender"
+									ng-required="isRequired( 'gender' )">
+									<option value="Male">Male</option>
+									<option value="Female">Female</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<!-- Birth Date -->
+					<div class="form-group has-feedback" ng-class="{'has-error': !personal.birth_date.$valid}">
+						<label class="col-sm-4 control-label" for="birth_date">Birth Date</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': personal.birth_date.$valid}">
+								<input type="date"
+									   class="form-control"
+									   id="birth_date"
+									   name="birth_date"
+									   ng-model="profile.birth_date"
+									   ng-required="isRequired( 'birth_date' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': personal.birth_date.$valid, 'glyphicon-remove': !personal.birth_date.$valid}"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Marital Status -->
+					<div class="form-group has-feedback" ng-class="{'has-error': !personal.marital_status.$valid}">
+						<label class="col-sm-4 control-label" for="marital_status">Marital Status</label>
+
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': personal.marital_status.$valid}">
+								<select class="form-control"
+										id="marital_status"
+										name="marital_status"
+										ng-model="profile.marital_status"
+										ng-required="isRequired( 'marital_status' )">
+									<option value="Single">Single</option>
+									<option value="Married">Married</option>
+									<option value="Engaged">Engaged</option>
+									<option value="Separated">Separated</option>
+									<option value="Divorced">Divorced</option>
+									<option value="Widowed">Widowed</option>
+								</select>
+							</div>
+						</div>
+					</div>
+
+					<!-- Languages -->
+					<div class="form-group has-feedback" ng-class="{'has-error': !personal.language.$valid}">
+						<label class="col-sm-4 control-label" for="language">Language 1</label>
+
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': personal.language.$valid}">
+								<select class="form-control"
+										id="language"
+										name="language"
+										ng-model="profile.language"
+										ng-required="isRequired( 'language' )"
+										ng-options="lang.iso_code as lang.native_name for lang in languages | orderBy:'native_name'">
+								</select>
+							</div>
+
+							<p ng-if="showHelp" class="help-block">This is the primary language you use.</p>
+						</div>
+					</div>
+
+					<!-- Default Profile Privacy -->
+					<div class="form-group has-feedback" ng-class="{'has-error': !personal.is_secure.$valid}">
+						<label class="col-sm-4 control-label">Default Privacy Profile</label>
+
+						<div class="col-sm-8">
+							<div class="radio">
+								<label>
+									<input type="radio" name="is_secure" ng-value="false" ng-model="profile.is_secure" ng-required="isRequired( 'is_secure' )">
+									<span ng-hide="showHelp">Public</span>
+									<span ng-show="showHelp">Anyone can see your profile information.</span>
+								</label>
+							</div>
+							<div class="radio">
+								<label>
+									<input type="radio" name="is_secure" ng-value="true" ng-model="profile.is_secure" ng-required="isRequired( 'is_secure' )">
+									<span ng-hide="showHelp">Private</span>
+									<span ng-show="showHelp">Only you and an administrator can see your profile information. Select this profile setting if you work in a country where security is a concern.</span>
+								</label>
+							</div>
+						</div>
+					</div>
+
+				</fieldset>
+			</div>
+		</ng-form>
 	</div>
+
 	<div class="col-md-6">
-		<div class="form-horizontal well">
-			<fieldset>
-				<legend>Ministry</legend>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="mcc">Mission Critical Components</label>
+		<ng-form name="ministry">
+			<div class="form-horizontal well">
+				<fieldset>
+					<legend>Ministry</legend>
+					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.mcc.$valid}">
+						<label class="col-sm-4 control-label" for="mcc">Mission Critical Components</label>
 
-					<div class="col-sm-8">
-						<select class="form-control" id="mcc" ng-model="profile.mcc" required>
-							<option value="Student-Led Movements">Student-Led Movements</option>
-							<option value="Leader-Led Movements">Leader-Led Movements</option>
-							<option value="Global Church Movements">Church-Led Movements</option>
-							<option value="Digital Strategies">Digital Strategies</option>
-							<option value="Area Team Leaders">Area Team Leaders</option>
-							<option value="Fund Development">Fund Development</option>
-							<option value="LDHR">Leadership Development/Human Resources</option>
-							<option value="Operations">Operations</option>
-							<option value="Unknown">Don’t Know</option>
-						</select>
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': ministry.mcc.$valid}">
+								<select class="form-control" id="mcc" name="mcc" ng-model="profile.mcc" ng-required="isRequired( 'mcc' )">
+									<option value="Student-Led Movements">Student-Led Movements</option>
+									<option value="Leader-Led Movements">Leader-Led Movements</option>
+									<option value="Global Church Movements">Church-Led Movements</option>
+									<option value="Digital Strategies">Digital Strategies</option>
+									<option value="Area Team Leaders">Area Team Leaders</option>
+									<option value="Fund Development">Fund Development</option>
+									<option value="LDHR">Leadership Development/Human Resources</option>
+									<option value="Operations">Operations</option>
+									<option value="Unknown">Don’t Know</option>
+								</select>
+							</div>
 
-						<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.mcc">
-							<span ng-switch-when="Student-Led Movements">You help student leaders develop movements of evangelism and discipleship.</span>
-							<span ng-switch-when="Leader-Led Movements">You help adult leaders develop movements of evangelism and discipleship.</span>
-							<span ng-switch-when="Global Church Movements">You help church leaders develop movements of evangelism and discipleship.</span>
-							<span ng-switch-when="Digital Strategies">You help develop movements of evangelism and discipleship through the internet.</span>
-							<span ng-switch-when="Area Team Leaders">You help make movements more effective by serving our line leadership (NTL, ATL, etc.)</span>
-							<span ng-switch-when="Fund Development">You help make movements more efective by developing financial resources for the ministry.</span>
-							<span ng-switch-when="LDHR">You help make movments more effective by developing growing people, effective leaders and healthy teams.</span>
-							<span ng-switch-when="Operations">You help movements more effective by leading effective processes.</span>
-							<span ng-switch-when="Unknown">You do not know what which Mission Critical Component is most relevant for your ministry.</span>
-							<span ng-switch-default>Choose an option to see a description.</span>
-						</p>
+							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.mcc">
+								<span ng-switch-when="Student-Led Movements">You help student leaders develop movements of evangelism and discipleship.</span>
+								<span ng-switch-when="Leader-Led Movements">You help adult leaders develop movements of evangelism and discipleship.</span>
+								<span ng-switch-when="Global Church Movements">You help church leaders develop movements of evangelism and discipleship.</span>
+								<span ng-switch-when="Digital Strategies">You help develop movements of evangelism and discipleship through the internet.</span>
+								<span ng-switch-when="Area Team Leaders">You help make movements more effective by serving our line leadership (NTL, ATL, etc.)</span>
+								<span ng-switch-when="Fund Development">You help make movements more efective by developing financial resources for the ministry.</span>
+								<span ng-switch-when="LDHR">You help make movments more effective by developing growing people, effective leaders and healthy teams.</span>
+								<span ng-switch-when="Operations">You help movements more effective by leading effective processes.</span>
+								<span ng-switch-when="Unknown">You do not know what which Mission Critical Component is most relevant for your ministry.</span>
+								<span ng-switch-default>Choose an option to see a description.</span>
+							</p>
 
-						<p ng-if="showHelp" class="help-block">These are the components that have been determined to be critical to building movements everywhere.</p>
+							<p ng-if="showHelp" class="help-block">These are the components that have been determined to be critical to building movements everywhere.</p>
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="staff_status">Staff Status</label>
 
-					<div class="col-sm-8">
-						<select class="form-control" id="staff_status" ng-model="profile.staff_status" required>
-							<option value="Full-time">Full-time</option>
-							<option value="Short-term">Short-term</option>
-							<option value="Part-time">Part-time</option>
-							<option value="Volunteer">Volunteer</option>
-							<option value="Other">Other</option>
-						</select>
+					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.staff_status.$valid}">
+						<label class="col-sm-4 control-label" for="staff_status">Staff Status</label>
 
-						<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.staff_status">
-							<span ng-switch-when="Full-time">You are employed full-time by Campus Crusade for an indefinite period.</span>
-							<span ng-switch-when="Short-term">You are employed full-time by Campus Crusade but applied to Campus Crusade to participate in a project of 2 years or less.</span>
-							<span ng-switch-when="Part-time">You have applied for staff and met all standards for full-time staff, but do not devote full-time to the ministry (Including Associate & Affiliate Staff). You may be self-funded.</span>
-							<span ng-switch-when="Volunteer">You volunteer with the ministry of Campus Crusade. This would include student leaders on a college campus or other volunteer leaders within the ministry (engaged disciples and multiplying disciples).</span>
-							<span ng-switch-when="Other">The above categories do not apply.</span>
-							<span ng-switch-default>Choose an option to see a description.</span>
-						</p>
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': ministry.staff_status.$valid}">
+								<select class="form-control" id="staff_status" name="staff_status" ng-model="profile.staff_status" ng-required="isRequired( 'staff_status' )">
+									<option value="Full-time">Full-time</option>
+									<option value="Short-term">Short-term</option>
+									<option value="Part-time">Part-time</option>
+									<option value="Volunteer">Volunteer</option>
+									<option value="Other">Other</option>
+								</select>
+							</div>
 
-						<p ng-if="showHelp" class="help-block">This identifies your working relationship with Campus Crusade, if any.</p>
+							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.staff_status">
+								<span ng-switch-when="Full-time">You are employed full-time by Campus Crusade for an indefinite period.</span>
+								<span ng-switch-when="Short-term">You are employed full-time by Campus Crusade but applied to Campus Crusade to participate in a project of 2 years or less.</span>
+								<span ng-switch-when="Part-time">You have applied for staff and met all standards for full-time staff, but do not devote full-time to the ministry (Including Associate & Affiliate Staff). You may be self-funded.</span>
+								<span ng-switch-when="Volunteer">You volunteer with the ministry of Campus Crusade. This would include student leaders on a college campus or other volunteer leaders within the ministry (engaged disciples and multiplying disciples).</span>
+								<span ng-switch-when="Other">The above categories do not apply.</span>
+								<span ng-switch-default>Choose an option to see a description.</span>
+							</p>
+
+							<p ng-if="showHelp" class="help-block">This identifies your working relationship with Campus Crusade, if any.</p>
+						</div>
 					</div>
-				</div>
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="funding_source">Funding Source</label>
 
-					<div class="col-sm-8">
-						<select class="form-control" id="funding_source" ng-model="profile.funding_source" required>
-							<option value="Supported Staff">Supported Staff</option>
-							<option value="Centrally Funded Staff">Centrally Funded Staff</option>
-							<option value="Self-funded">Self-funded</option>
-							<option value="Hybrid">Hybrid</option>
-							<option value="Other">Other</option>
-						</select>
+					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.funding_source.$valid}">
+						<label class="col-sm-4 control-label" for="funding_source">Funding Source</label>
 
-						<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.funding_source">
-							<span ng-switch-when="Supported Staff">You fund your ministry by donations you raise.</span>
-							<span ng-switch-when="Centrally Funded Staff">You are fully paid (funded) by Campus Crusade, you do not raise support.</span>
-							<span ng-switch-when="Self-funded">You fund your ministry with personal funds.</span>
-							<span ng-switch-when="Hybrid">Two or more of the above categories apply to you.</span>
-							<span ng-switch-when="Other">None of the other categories apply to you.</span>
-							<span ng-switch-default>Choose an option to see a description.</span>
-						</p>
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': ministry.funding_source.$valid}">
+								<select class="form-control" id="funding_source" name="funding_source" ng-model="profile.funding_source" ng-required="isRequired( 'funding_source' )">
+									<option value="Supported Staff">Supported Staff</option>
+									<option value="Centrally Funded Staff">Centrally Funded Staff</option>
+									<option value="Self-funded">Self-funded</option>
+									<option value="Hybrid">Hybrid</option>
+									<option value="Other">Other</option>
+								</select>
+							</div>
 
-						<p ng-if="showHelp" class="help-block">This is the primary source of your compensation, if any, from Campus Crusade.</p>
+							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.funding_source">
+								<span ng-switch-when="Supported Staff">You fund your ministry by donations you raise.</span>
+								<span ng-switch-when="Centrally Funded Staff">You are fully paid (funded) by Campus Crusade, you do not raise support.</span>
+								<span ng-switch-when="Self-funded">You fund your ministry with personal funds.</span>
+								<span ng-switch-when="Hybrid">Two or more of the above categories apply to you.</span>
+								<span ng-switch-when="Other">None of the other categories apply to you.</span>
+								<span ng-switch-default>Choose an option to see a description.</span>
+							</p>
+
+							<p ng-if="showHelp" class="help-block">This is the primary source of your compensation, if any, from Campus Crusade.</p>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="employment_country">Country of Ministry Employment</label>
+					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.employment_country.$valid}">
+						<label class="col-sm-4 control-label" for="employment_country">Country of Ministry Employment</label>
 
-					<div class="col-sm-8">
-						<select class="form-control" id="employment_country" ng-model="profile.employment_country" ng-options="key as value for (key, value) in countries" required>
-							<option value="">Choose</option>
-						</select>
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': ministry.employment_country.$valid}">
+								<select class="form-control" id="employment_country" name="employment_country" ng-model="profile.employment_country" ng-options="key as value for (key, value) in countries" ng-required="isRequired( 'employment_country' )"></select>
+							</div>
 
-						<p ng-if="showHelp" class="help-block">This is the country from which you receive your salary or other compensation.</p>
+							<p ng-if="showHelp" class="help-block">This is the country from which you receive your salary or other compensation.</p>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="ministry_location_country">Country of Ministry Location</label>
+					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.ministry_location_country.$valid}">
+						<label class="col-sm-4 control-label" for="ministry_location_country">Country of Ministry Location</label>
 
-					<div class="col-sm-8">
-						<select class="form-control" id="ministry_location_country" ng-model="profile.ministry_location_country" ng-options="key as value for (key, value) in countries" required>
-							<option value="">Choose</option>
-						</select>
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': ministry.ministry_location_country.$valid}">
+								<select class="form-control" id="ministry_location_country" name="ministry_location_country" ng-model="profile.ministry_location_country" ng-options="key as value for (key, value) in countries" ng-required="isRequired( 'ministry_location_country' )"></select>
+							</div>
 
-						<p ng-if="showHelp" class="help-block">This is the country where you are currently involved in ministry. Short-term projects of a few weeks do not warrant a change.</p>
+							<p ng-if="showHelp" class="help-block">This is the country where you are currently involved in ministry. Short-term projects of a few weeks do not warrant a change.</p>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="date_joined_staff">Date Joined Staff</label>
+					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.date_joined_staff.$valid}">
+						<label class="col-sm-4 control-label" for="date_joined_staff">Date Joined Staff</label>
 
-					<div class="col-sm-8">
-						<input type="date" class="form-control" id="date_joined_staff" ng-model="profile.date_joined_staff" required>
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': ministry.date_joined_staff.$valid}">
+								<input type="date" class="form-control" id="date_joined_staff" name="date_joined_staff" ng-model="profile.date_joined_staff" ng-required="isRequired( 'date_joined_staff' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': ministry.date_joined_staff.$valid, 'glyphicon-remove': !ministry.date_joined_staff.$valid}"></span>
+								</span>
+							</div>
+						</div>
 					</div>
-				</div>
 
-				<div ng-if="showLeftStaff" class="form-group">
-					<label class="col-sm-4 control-label" for="date_left_staff">Date Left Staff</label>
+					<div ng-if="showLeftStaff" class="form-group has-feedback" ng-class="{'has-error': !ministry.date_left_staff.$valid}">
+						<label class="col-sm-4 control-label" for="date_left_staff">Date Left Staff</label>
 
-					<div class="col-sm-8">
-						<input type="date" class="form-control" id="date_left_staff" ng-model="profile.date_left_staff">
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': ministry.date_left_staff.$valid}">
+								<input type="date"
+									   class="form-control"
+									   id="date_left_staff"
+									   name="date_left_staff"
+									   ng-model="profile.date_left_staff"
+									   ng-required="isRequired( 'date_left_staff' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': ministry.date_left_staff.$valid, 'glyphicon-remove': !ministry.date_left_staff.$valid}"></span>
+								</span>
+							</div>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="role">Position/Role</label>
+					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.role.$valid}">
+						<label class="col-sm-4 control-label" for="role">Position/Role</label>
 
-					<div class="col-sm-8">
-						<select class="form-control" id="role" ng-model="profile.role" required>
-							<option value="Staff">Staff</option>
-							<option value="Specialist">Specialist</option>
-							<option value="Coordinator">Coordinator</option>
-							<option value="Team Leader">Team Leader</option>
-							<option value="National Team Leader">National Team Leader</option>
-							<option value="Area Team Leader">Area Team Leader</option>
-							<option value="Executive Team Member">Executive Team Member</option>
-						</select>
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': ministry.role.$valid}">
+								<select class="form-control" id="role" name="role" ng-model="profile.role" ng-required="isRequired( 'role' )">
+									<option value="Staff">Staff</option>
+									<option value="Specialist">Specialist</option>
+									<option value="Coordinator">Coordinator</option>
+									<option value="Team Leader">Team Leader</option>
+									<option value="National Team Leader">National Team Leader</option>
+									<option value="Area Team Leader">Area Team Leader</option>
+									<option value="Executive Team Member">Executive Team Member</option>
+								</select>
+							</div>
 
-						<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.role">
-							<span ng-switch-when="Staff">You serve on a team under the supervision of a Coordinator or Team Leader.  You may be in a field ministry or on a team helping to build capacity (e.g. Operations, LDHR, Fund Development, etc)</span>
-							<span ng-switch-when="Specialist">You work as a knowledge or functional specialist rather than in a field ministry.</span>
-							<span ng-switch-when="Coordinator">You work under the leadership of your team leader to provide leadership for a portion of the ministry under your team leader’s authority. You do not have final decision authority over the portion of the ministry you coordinate.</span>
-							<span ng-switch-when="Team Leader">You are the Team Leader of the ministry team where you are serving.</span>
-							<span ng-switch-when="National Team Leader">You lead the National Leadership Team in your country.</span>
-							<span ng-switch-when="Area Team Leader">You lead an Area Leadership Team.</span>
-							<span ng-switch-when="Executive Team Member">Executive Team Leaders who report to the President.</span>
-							<span ng-switch-default>Choose an option to see a description.</span>
-						</p>
+							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.role">
+								<span ng-switch-when="Staff">You serve on a team under the supervision of a Coordinator or Team Leader.  You may be in a field ministry or on a team helping to build capacity (e.g. Operations, LDHR, Fund Development, etc)</span>
+								<span ng-switch-when="Specialist">You work as a knowledge or functional specialist rather than in a field ministry.</span>
+								<span ng-switch-when="Coordinator">You work under the leadership of your team leader to provide leadership for a portion of the ministry under your team leader’s authority. You do not have final decision authority over the portion of the ministry you coordinate.</span>
+								<span ng-switch-when="Team Leader">You are the Team Leader of the ministry team where you are serving.</span>
+								<span ng-switch-when="National Team Leader">You lead the National Leadership Team in your country.</span>
+								<span ng-switch-when="Area Team Leader">You lead an Area Leadership Team.</span>
+								<span ng-switch-when="Executive Team Member">Executive Team Leaders who report to the President.</span>
+								<span ng-switch-default>Choose an option to see a description.</span>
+							</p>
 
-						<p ng-if="showHelp" class="help-block">This is your role or position within Campus Crusade.</p>
+							<p ng-if="showHelp" class="help-block">This is your role or position within Campus Crusade.</p>
+						</div>
 					</div>
-				</div>
 
-				<div class="form-group">
-					<label class="col-sm-4 control-label" for="scope">Scope</label>
+					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.scope.$valid}">
+						<label class="col-sm-4 control-label" for="scope">Scope</label>
 
-					<div class="col-sm-8">
-						<select class="form-control" id="scope" ng-model="profile.scope" required>
-							<option value="Local">Local</option>
-							<option value="National Region">National Region</option>
-							<option value="National">National</option>
-							<option value="Area Region">Area Region</option>
-							<option value="Area">Area</option>
-							<option value="Global">Global</option>
-						</select>
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': ministry.scope.$valid}">
+								<select class="form-control" id="scope" name="scope" ng-model="profile.scope" ng-required="isRequired( 'scope' )">
+									<option value="Local">Local</option>
+									<option value="National Region">National Region</option>
+									<option value="National">National</option>
+									<option value="Area Region">Area Region</option>
+									<option value="Area">Area</option>
+									<option value="Global">Global</option>
+								</select>
+							</div>
 
-						<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.scope">
-							<span ng-switch-when="Local">You serve in a ministry on a campus, in a city, or in part of a city or area.</span>
-							<span ng-switch-when="National Region">You serve in a team that oversees two or more local teams.</span>
-							<span ng-switch-when="National">You serve in the national office or on a ministry team that oversees two or more regional field ministry teams.</span>
-							<span ng-switch-when="Area Region">You serve in a region that includes one or more countries but not the entire Area.</span>
-							<span ng-switch-when="Area">You serve in an Area office.</span>
-							<span ng-switch-when="Global">You serve in an Executive Team Leader’s office or other ministry that works with countries in multiple Areas.</span>
-							<span ng-switch-default>Choose an option to see a description.</span>
-						</p>
+							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.scope">
+								<span ng-switch-when="Local">You serve in a ministry on a campus, in a city, or in part of a city or area.</span>
+								<span ng-switch-when="National Region">You serve in a team that oversees two or more local teams.</span>
+								<span ng-switch-when="National">You serve in the national office or on a ministry team that oversees two or more regional field ministry teams.</span>
+								<span ng-switch-when="Area Region">You serve in a region that includes one or more countries but not the entire Area.</span>
+								<span ng-switch-when="Area">You serve in an Area office.</span>
+								<span ng-switch-when="Global">You serve in an Executive Team Leader’s office or other ministry that works with countries in multiple Areas.</span>
+								<span ng-switch-default>Choose an option to see a description.</span>
+							</p>
 
-						<p ng-if="showHelp" class="help-block">This defines how broad an area of responsibility you have or in which you serve.</p>
+							<p ng-if="showHelp" class="help-block">This defines how broad an area of responsibility you have or in which you serve.</p>
+						</div>
 					</div>
-				</div>
 
-			</fieldset>
-		</div>
+				</fieldset>
+			</div>
+		</ng-form>
 	</div>
 </div>

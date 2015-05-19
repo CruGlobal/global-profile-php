@@ -1,10 +1,8 @@
 (function ( module ) {
 	'use strict';
 
-	module.controller( 'EditPersonalProfileController', function ( $log, $scope, session, ministry, profile, languages, countries, Profile ) {
+	module.controller( 'EditPersonalProfileController', function ( $log, $scope, session, ministry, profile, Profile ) {
 		$scope.profile = angular.copy( profile );
-		$scope.languages = languages;
-		$scope.countries = countries;
 
 		$scope.resetForm = function () {
 			$scope.profile = angular.copy( profile );

@@ -4,6 +4,7 @@
 	angular
 		.module( 'globalProfile.states.admin.edit', [
 			'ui.router',
+			'ui.bootstrap.modal',
 			'globalProfile.states.admin',
 			'globalProfile.components.profileFormDirective'
 		] )

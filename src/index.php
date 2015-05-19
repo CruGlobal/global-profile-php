@@ -25,16 +25,18 @@
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
 		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>
 		<script type="application/javascript" src="bower_components/papaparse/papaparse.js"></script>
-		<script type="application/javascript" src="bower_components/better-dom/dist/better-dom.min.js"></script>
-		<script type="application/javascript" src="bower_components/better-i18n-plugin/dist/better-i18n-plugin.js"></script>
-		<script type="application/javascript" src="bower_components/better-dateinput-polyfill/dist/better-dateinput-polyfill.js"></script>
+		<!--<script type="application/javascript" src="bower_components/better-dom/dist/better-dom.min.js"></script>-->
+		<!--<script type="application/javascript" src="bower_components/better-i18n-plugin/dist/better-i18n-plugin.js"></script>-->
+		<!--<script type="application/javascript" src="bower_components/better-dateinput-polyfill/dist/better-dateinput-polyfill.js"></script>-->
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 
 		<!-- Application CSS -->
+		<!-- build:styles -->
 		<link rel="stylesheet" href="css/global-profile.css" />
 		<link rel="stylesheet" href="css/select.css" />
 		<link rel="stylesheet" href="css/profile.css" />
 		<link rel="stylesheet" href="css/admin.css" />
+		<!-- endbuild -->
 	</head>
 	<body>
 	<div ui-view>
@@ -43,6 +45,7 @@
 	</div>
 
 	<!-- Application JavaScript -->
+	<!-- build:application -->
 	<script type="application/javascript" src="js/api/measurements/measurements.module.js"></script>
 	<script type="application/javascript" src="js/states/app/app.module.js"></script>
 	<script type="application/javascript" src="js/states/select-ministry/select-ministry.module.js"></script>
@@ -70,6 +73,7 @@
 	<script type="application/javascript" src="js/states/profile/edit/edit.controller.js"></script>
 	<script type="application/javascript" src="js/states/select-ministry/select-ministry.controller.js"></script>
 	<script type="application/javascript" src="js/global-profile.config.js"></script>
+	<!-- endbuild -->
 
 	</body>
 	</html>

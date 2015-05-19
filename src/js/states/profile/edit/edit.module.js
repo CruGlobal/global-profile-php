@@ -46,6 +46,12 @@
 						'@app': {
 							templateUrl: 'js/states/profile/edit/edit.html',
 							controller:  'EditPersonalProfileController'
+						},
+						'navigation@app' : {
+							controller: function( $scope, isLeader ) {
+								$scope.isLeader = isLeader;
+							},
+							template: '<button type="button" class="btn btn-sm btn-danger" ng-if="isLeader" ui-sref="admin">Administrator</button>'
 						}
 					}
 				} )
