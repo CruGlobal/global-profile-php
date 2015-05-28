@@ -7,6 +7,7 @@
 	<html ng-app="globalProfile">
 	<head>
 		<meta charset="UTF-8">
+		<base href="<?php echo rtrim( $wrapper->url->getPath(), '/' ) . '/'; ?>" />
 		<title></title>
 
 		<!-- Application Configuration -->
@@ -40,8 +41,8 @@
 	</div>
 
 	<!-- Application JavaScript -->
-	<script src="js/app.min.js?rev=6c573d80"></script>
-	<script src="js/templates.min.js?rev=e5de87c7"></script>
+	<script src="js/app.min.js?rev=1aa6ef1d"></script>
+	<script src="js/templates.min.js?rev=4f079229"></script>
 
 	</body>
 	</html>
