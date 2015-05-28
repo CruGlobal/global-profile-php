@@ -34,11 +34,11 @@ gulp.task( 'clean', function ( callback ) {
 	del( ['dist'], callback );
 } );
 
-gulp.task( 'html', ['clean', 'bower', 'scripts', 'partials', 'styles'], function () {
+gulp.task( 'html', ['clean', 'bower', 'scripts', 'partials', 'styles', 'htaccess'], function () {
 	return gulp.src( 'src/*.php' )
 		.pipe( cdnizer( {
-			allowMin:     true,
-			files:        [
+			allowMin: true,
+			files:    [
 				// JavaScript
 				'google:jquery',
 				'google:angular-loader',
@@ -126,6 +126,11 @@ gulp.task( 'styles', ['clean'], function () {
 gulp.task( 'images', ['clean'], function () {
 	return gulp.src( ['src/img/**/*.png'] )
 		.pipe( gulp.dest( 'dist/img' ) );
+} );
+
+gulp.task( 'htaccess', ['clean'], function () {
+	return gulp.src( 'src/.htaccess' )
+		.pipe( gulp.dest( 'dist' ) );
 } );
 
 gulp.task( 'bower', function () {
