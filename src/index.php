@@ -7,6 +7,7 @@
 	<html ng-app="globalProfile">
 	<head>
 		<meta charset="UTF-8">
+		<base href="<?php echo rtrim( $wrapper->url->getPath(), '/' ) . '/'; ?>" />
 		<title></title>
 
 		<!-- Application Configuration -->

@@ -1,6 +1,10 @@
 (function ( module ) {
 	'use strict';
 
+	module.config( function ( $locationProvider ) {
+		$locationProvider.html5Mode( true );
+	} );
+
 	// Initialize Application Settings
 	module.config( function ( SettingsProvider ) {
 		SettingsProvider.setConfig( window.globalProfile.config );

@@ -43,8 +43,7 @@
 			//Generate Current URL taking into account forwarded proto
 			$url = \Net_URL2::getRequested();
 			$url->setQuery( false );
-			if ( $this->endswith( $url->getPath(), '.php' ) )
-				$url->setPath( dirname( $url->getPath() ) );
+			$url->setPath( dirname( $_SERVER[ 'PHP_SELF' ] ) );
 			if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) )
 				$url->setScheme( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] );
 			$this->url = $url;
