@@ -366,39 +366,43 @@
 						</div>
 					</div>
 
-					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.date_joined_staff.$valid}">
-						<label class="col-sm-4 control-label" for="date_joined_staff">Date Joined Staff</label>
+					<div ng-if="showStaffDates">
 
-						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': ministry.date_joined_staff.$valid}">
-								<input type="date" class="form-control" id="date_joined_staff" name="date_joined_staff" ng-model="profile.date_joined_staff" ng-required="isRequired( 'date_joined_staff' )">
+						<div class="form-group has-feedback" ng-class="{'has-error': !ministry.date_joined_staff.$valid}">
+							<label class="col-sm-4 control-label" for="date_joined_staff">Date Joined Staff</label>
+
+							<div class="col-sm-8">
+								<div class="input-group" ng-class="{'has-success': ministry.date_joined_staff.$valid}">
+									<input type="date" class="form-control" id="date_joined_staff" name="date_joined_staff" ng-model="profile.date_joined_staff" ng-required="isRequired( 'date_joined_staff' )">
 								<span class="input-group-addon">
 									<span class="glyphicon"
 										  aria-hidden="true"
 										  ng-class="{'glyphicon-ok': ministry.date_joined_staff.$valid, 'glyphicon-remove': !ministry.date_joined_staff.$valid}"></span>
 								</span>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div ng-if="showLeftStaff" class="form-group has-feedback" ng-class="{'has-error': !ministry.date_left_staff.$valid}">
-						<label class="col-sm-4 control-label" for="date_left_staff">Date Left Staff</label>
+						<div ng-if="showLeftStaff" class="form-group has-feedback" ng-class="{'has-error': !ministry.date_left_staff.$valid}">
+							<label class="col-sm-4 control-label" for="date_left_staff">Date Left Staff</label>
 
-						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': ministry.date_left_staff.$valid}">
-								<input type="date"
-									   class="form-control"
-									   id="date_left_staff"
-									   name="date_left_staff"
-									   ng-model="profile.date_left_staff"
-									   ng-required="isRequired( 'date_left_staff' )">
+							<div class="col-sm-8">
+								<div class="input-group" ng-class="{'has-success': ministry.date_left_staff.$valid}">
+									<input type="date"
+										   class="form-control"
+										   id="date_left_staff"
+										   name="date_left_staff"
+										   ng-model="profile.date_left_staff"
+										   ng-required="isRequired( 'date_left_staff' )">
 								<span class="input-group-addon">
 									<span class="glyphicon"
 										  aria-hidden="true"
 										  ng-class="{'glyphicon-ok': ministry.date_left_staff.$valid, 'glyphicon-remove': !ministry.date_left_staff.$valid}"></span>
 								</span>
+								</div>
 							</div>
 						</div>
+
 					</div>
 
 					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.role.$valid}">

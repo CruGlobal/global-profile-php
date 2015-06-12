@@ -50,6 +50,20 @@
 					$scope.isRequired = function ( name ) {
 						return $scope.requiredFields.indexOf( name ) > -1;
 					};
+
+					$scope.$watch( 'profile.staff_status', function ( val, oldVal ) {
+						if( val === oldVal ) return;
+						if ( angular.isUndefined( val ) || val == 'Volunteer' || val == 'Other' ) {
+							$scope.showStaffDates = false;
+							$scope.requiredFields = _.without( $scope.requiredFields, 'date_joined_staff' );
+						}
+						else {
+							$scope.showStaffDates = true;
+							if ( _.indexOf( $scope.requiredFields, 'date_joined_staff' ) === -1 ) {
+								$scope.requiredFields.push( 'date_joined_staff' );
+							}
+						}
+					} );
 				}
 			}
 		}] );
