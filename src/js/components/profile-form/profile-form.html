@@ -342,30 +342,6 @@
 						</div>
 					</div>
 
-					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.employment_country.$valid}">
-						<label class="col-sm-4 control-label" for="employment_country">Country of Ministry Employment</label>
-
-						<div class="col-sm-8">
-							<div ng-class="{'has-success': ministry.employment_country.$valid}">
-								<select class="form-control" id="employment_country" name="employment_country" ng-model="profile.employment_country" ng-options="key as value for (key, value) in countries" ng-required="isRequired( 'employment_country' )"></select>
-							</div>
-
-							<p ng-if="showHelp" class="help-block">This is the country from which you receive your salary or other compensation.</p>
-						</div>
-					</div>
-
-					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.ministry_location_country.$valid}">
-						<label class="col-sm-4 control-label" for="ministry_location_country">Country of Ministry Location</label>
-
-						<div class="col-sm-8">
-							<div ng-class="{'has-success': ministry.ministry_location_country.$valid}">
-								<select class="form-control" id="ministry_location_country" name="ministry_location_country" ng-model="profile.ministry_location_country" ng-options="key as value for (key, value) in countries" ng-required="isRequired( 'ministry_location_country' )"></select>
-							</div>
-
-							<p ng-if="showHelp" class="help-block">This is the country where you primarily serve in ministry on a year long basis. Short term projects of a few weeks do not apply.</p>
-						</div>
-					</div>
-
 					<div ng-if="showStaffDates">
 
 						<div class="form-group has-feedback" ng-class="{'has-error': !ministry.date_joined_staff.$valid}">
@@ -403,6 +379,34 @@
 							</div>
 						</div>
 
+					</div>
+
+					<div ng-if="showEmploymentCountry">
+
+						<div class="form-group has-feedback" ng-class="{'has-error': !ministry.employment_country.$valid}">
+							<label class="col-sm-4 control-label" for="employment_country">Country of Ministry Employment</label>
+
+							<div class="col-sm-8">
+								<div ng-class="{'has-success': ministry.employment_country.$valid}">
+									<select class="form-control" id="employment_country" name="employment_country" ng-model="profile.employment_country" ng-options="key as value for (key, value) in countries" ng-required="isRequired( 'employment_country' )"></select>
+								</div>
+
+								<p ng-if="showHelp" class="help-block">This is the country from which you receive your salary or other compensation.</p>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.ministry_location_country.$valid}">
+						<label class="col-sm-4 control-label" for="ministry_location_country">Country of Ministry Location</label>
+
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': ministry.ministry_location_country.$valid}">
+								<select class="form-control" id="ministry_location_country" name="ministry_location_country" ng-model="profile.ministry_location_country" ng-options="key as value for (key, value) in countries" ng-required="isRequired( 'ministry_location_country' )"></select>
+							</div>
+
+							<p ng-if="showHelp" class="help-block">This is the country where you primarily serve in ministry on a year long basis. Short term projects of a few weeks do not apply.</p>
+						</div>
 					</div>
 
 					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.role.$valid}">
