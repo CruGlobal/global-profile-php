@@ -11,7 +11,6 @@
 				'birth_date',
 				'marital_status',
 				'language',
-				'is_secure',
 				'mcc',
 				'staff_status',
 				'funding_source',
@@ -40,7 +39,8 @@
 						$scope.countries = countries;
 					} );
 
-					$scope.showHelp = $scope.$eval( $attrs.profileShowHelp ) !== false;
+					$scope.showHelp = angular.isUndefined( $attrs.profileShowHelp ) ? true : $scope.$eval( $attrs.profileShowHelp ) === true;
+					$scope.showPrivacy = $scope.$eval( $attrs.profileShowPrivacy ) === true;
 					$scope.showLeftStaff = $scope.$eval( $attrs.profileShowLeftStaff ) === true;
 
 					if ( angular.isUndefined( $attrs.profileRequiredFields ) ) {

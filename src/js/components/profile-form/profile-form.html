@@ -35,7 +35,7 @@
 					<!-- Family Name -->
 					<div class="form-group has-feedback"
 						 ng-class="{'has-error': !personal.last_name.$valid}">
-						<label class="col-sm-4 control-label" for="last_name">Family Name</label>
+						<label class="col-sm-4 control-label" for="last_name">Family/Surname</label>
 
 						<div class="col-sm-8">
 							<div class="input-group" ng-class="{'has-success': personal.last_name.$valid}">
@@ -186,7 +186,7 @@
 					</div>
 
 					<!-- Default Profile Privacy -->
-					<div class="form-group has-feedback" ng-class="{'has-error': !personal.is_secure.$valid}">
+					<div ng-if="showPrivacy" class="form-group has-feedback" ng-class="{'has-error': !personal.is_secure.$valid}">
 						<label class="col-sm-4 control-label">Default Privacy Profile</label>
 
 						<div class="col-sm-8">
@@ -253,29 +253,29 @@
 					</div>
 
 					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.staff_status.$valid}">
-						<label class="col-sm-4 control-label" for="staff_status">Staff Status</label>
+						<label class="col-sm-4 control-label" for="staff_status">Organizational Status</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': ministry.staff_status.$valid}">
 								<select class="form-control" id="staff_status" name="staff_status" ng-model="profile.staff_status" ng-required="isRequired( 'staff_status' )">
-									<option value="Full-time">Full-time</option>
-									<option value="Short-term">Short-term</option>
-									<option value="Part-time">Part-time</option>
+									<option value="Full-time">Full time staff</option>
+									<option value="Short-term">Short term staff</option>
+									<option value="Part-time">Part time staff</option>
 									<option value="Volunteer">Volunteer</option>
 									<option value="Other">Other</option>
 								</select>
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.staff_status">
-								<span ng-switch-when="Full-time">You are employed full-time by Campus Crusade for an indefinite period.</span>
-								<span ng-switch-when="Short-term">You are employed full-time by Campus Crusade but applied to Campus Crusade to participate in a project of 2 years or less.</span>
+								<span ng-switch-when="Full-time">You are employed full-time by Campus Crusade for Christ for an indefinite period.</span>
+								<span ng-switch-when="Short-term">You are employed full-time by Campus Crusade for Christ but applied to Campus Crusade for Christ to participate in a project of 2 years or less.</span>
 								<span ng-switch-when="Part-time">You have applied for staff and met all standards for full-time staff, but do not devote full-time to the ministry (Including Associate & Affiliate Staff). You may be self-funded.</span>
-								<span ng-switch-when="Volunteer">You volunteer with the ministry of Campus Crusade. This would include student leaders on a college campus or other volunteer leaders within the ministry (engaged disciples and multiplying disciples).</span>
+								<span ng-switch-when="Volunteer">You volunteer with the ministry of Campus Crusade for Christ. This would include student leaders on a college campus or other volunteer leaders within the ministry (engaged disciples and multiplying disciples).</span>
 								<span ng-switch-when="Other">The above categories do not apply.</span>
 								<span ng-switch-default>Choose an option to see a description.</span>
 							</p>
 
-							<p ng-if="showHelp" class="help-block">This identifies your working relationship with Campus Crusade, if any.</p>
+							<p ng-if="showHelp" class="help-block">This identifies your working relationship with Campus Crusade for Christ, if any.</p>
 						</div>
 					</div>
 
@@ -289,20 +289,20 @@
 									<option value="Centrally Funded Staff">Centrally Funded Staff</option>
 									<option value="Self-funded">Self-funded</option>
 									<option value="Hybrid">Hybrid</option>
-									<option value="Other">Other</option>
+									<option value="Other">Not Applicable</option>
 								</select>
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.funding_source">
 								<span ng-switch-when="Supported Staff">You fund your ministry by donations you raise.</span>
-								<span ng-switch-when="Centrally Funded Staff">You are fully paid (funded) by Campus Crusade, you do not raise support.</span>
-								<span ng-switch-when="Self-funded">You fund your ministry with personal funds.</span>
+								<span ng-switch-when="Centrally Funded Staff">You are fully paid (funded) by Campus Crusade for Christ, you do not raise funds.</span>
+								<span ng-switch-when="Self-funded">You receive your salary from funds you raise for the ministry.</span>
 								<span ng-switch-when="Hybrid">Two or more of the above categories apply to you.</span>
 								<span ng-switch-when="Other">None of the other categories apply to you.</span>
 								<span ng-switch-default>Choose an option to see a description.</span>
 							</p>
 
-							<p ng-if="showHelp" class="help-block">This is the primary source of your compensation, if any, from Campus Crusade.</p>
+							<p ng-if="showHelp" class="help-block">This is the primary source of your compensation, if any, from Campus Crusade for Christ.</p>
 						</div>
 					</div>
 
@@ -326,7 +326,7 @@
 								<select class="form-control" id="ministry_location_country" name="ministry_location_country" ng-model="profile.ministry_location_country" ng-options="key as value for (key, value) in countries" ng-required="isRequired( 'ministry_location_country' )"></select>
 							</div>
 
-							<p ng-if="showHelp" class="help-block">This is the country where you are currently involved in ministry. Short-term projects of a few weeks do not warrant a change.</p>
+							<p ng-if="showHelp" class="help-block">This is the country where you primarily serve in ministry on a year long basis. Short term projects of a few weeks do not apply.</p>
 						</div>
 					</div>
 
@@ -392,7 +392,7 @@
 								<span ng-switch-default>Choose an option to see a description.</span>
 							</p>
 
-							<p ng-if="showHelp" class="help-block">This is your role or position within Campus Crusade.</p>
+							<p ng-if="showHelp" class="help-block">This is your primary role or position within Campus Crusade for Christ.</p>
 						</div>
 					</div>
 
@@ -412,11 +412,11 @@
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.scope">
-								<span ng-switch-when="Local">You serve in a ministry on a campus, in a city, or in part of a city or area.</span>
+								<span ng-switch-when="Local">You serve on a campus, in a village or a city.</span>
 								<span ng-switch-when="National Region">You serve in a team that oversees two or more local teams.</span>
 								<span ng-switch-when="National">You serve in the national office or on a ministry team that oversees two or more regional field ministry teams.</span>
 								<span ng-switch-when="Area Region">You serve in a region that includes one or more countries but not the entire Area.</span>
-								<span ng-switch-when="Area">You serve in an Area office.</span>
+								<span ng-switch-when="Area">You serve in the Area office or on a ministry team that oversees two or more national ministry teams.</span>
 								<span ng-switch-when="Global">You serve in an Executive Team Leader’s office or other ministry that works with countries in multiple Areas.</span>
 								<span ng-switch-default>Choose an option to see a description.</span>
 							</p>
