@@ -167,16 +167,16 @@
 					</div>
 
 					<!-- Languages -->
-					<div class="form-group has-feedback" ng-class="{'has-error': !personal.language.$valid}">
-						<label class="col-sm-4 control-label" for="language">Language 1</label>
+					<div class="form-group has-feedback" ng-class="{'has-error': !personal.language1.$valid}">
+						<label class="col-sm-4 control-label" for="language1">Language 1</label>
 
 						<div class="col-sm-8">
-							<div ng-class="{'has-success': personal.language.$valid}">
+							<div ng-class="{'has-success': personal.language1.$valid}">
 								<select class="form-control"
-										id="language"
-										name="language"
-										ng-model="profile.language"
-										ng-required="isRequired( 'language' )"
+										id="language1"
+										name="language1"
+										ng-model="profile.language[0]"
+										ng-required="isRequired( 'language1' )"
 										ng-options="lang.iso_code as lang.native_name for lang in languages | orderBy:'native_name'">
 								</select>
 							</div>
@@ -193,7 +193,7 @@
 								<select class="form-control"
 										id="language2"
 										name="language2"
-										ng-model="profile.language2"
+										ng-model="profile.language[1]"
 										ng-required="isRequired( 'language2' )"
 										ng-options="lang.iso_code as lang.native_name for lang in languages | orderBy:'native_name'">
 								</select>
@@ -211,7 +211,7 @@
 								<select class="form-control"
 										id="language3"
 										name="language3"
-										ng-model="profile.language3"
+										ng-model="profile.language[2]"
 										ng-required="isRequired( 'language3' )"
 										ng-options="lang.iso_code as lang.native_name for lang in languages | orderBy:'native_name'">
 								</select>

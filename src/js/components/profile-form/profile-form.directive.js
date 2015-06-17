@@ -10,7 +10,7 @@
 				'gender',
 				'birth_date',
 				'marital_status',
-				'language',
+				'language1',
 				'mcc',
 				'staff_status',
 				'funding_source',
@@ -30,7 +30,6 @@
 				templateUrl: 'js/components/profile-form/profile-form.html',
 				transclude:  true,
 				link:        function ( $scope, $element, $attrs ) {
-
 					Languages.languages().then( function ( languages ) {
 						$scope.languages = languages;
 					} );

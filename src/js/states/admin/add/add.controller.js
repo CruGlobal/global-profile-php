@@ -11,7 +11,7 @@
 				'gender',
 				'birth_date',
 				'marital_status',
-				'language',
+				'language1',
 				'is_secure',
 				'mcc',
 				'staff_status',
