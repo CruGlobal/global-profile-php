@@ -513,9 +513,9 @@
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.assignments[0].position_role">
-								<span ng-switch-when="Team Member"></span>
-								<span ng-switch-when="Team Leader"></span>
-								<span ng-switch-when="Not Applicable"></span>
+								<span ng-switch-when="Team Member">You primarily serve as a team member under the supervision of a team leader. You may be in a field ministry or on a team helping to build capacity (e.g. Operations, LDHR, Fund Development, etc).</span>
+								<span ng-switch-when="Team Leader">You primarily serve as the team leader of either a field or capacity building ministry team (e.g. Operations, LDHR, Fund Development, etc.) A team leader is defined as an individual who has primary responsibility for supervising or developing staff or volunteers.</span>
+								<span ng-switch-when="Not Applicable">You neither serve as a team member on a team nor lead a team.</span>
 								<span ng-switch-default>Choose an option to see a description.</span>
 							</p>
 
