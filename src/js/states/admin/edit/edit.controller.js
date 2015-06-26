@@ -11,15 +11,15 @@
 				'gender',
 				'birth_date',
 				'marital_status',
+				'country_of_residence',
 				'language1',
-				'is_secure',
-				'mcc',
-				'staff_status',
+				'organizational_status',
 				'funding_source',
-				'employment_country',
-				'ministry_location_country',
 				'date_joined_staff',
-				'role',
+				'ministry_of_employment',
+				'assignment_ministry',
+				'mcc',
+				'position_role',
 				'scope'
 			];
 			$scope.profile = angular.copy( profile );

@@ -7,4 +7,5 @@
 			'query':   {method: 'GET', isArray: true}
 		} );
 	} );
+
 })( angular.module( 'globalProfile.api.measurements' ) );

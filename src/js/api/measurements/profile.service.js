@@ -10,6 +10,11 @@
 					profile.language = [profile.language];
 				}
 
+				//Assignments
+				if ( angular.isUndefined( profile.assignments ) ) {
+					profile.assignments = [{}];
+				}
+
 				return profile;
 			},
 			api = $resource( Settings.api.measurements( '/people/:person_id' ), {
@@ -34,10 +39,9 @@
 				update: {method: 'PUT'}
 			} );
 		api.defaultProfile = function () {
-			return {
-				is_secure: false,
-				language:  []
-			}
+			return normalizeProfile( {
+				is_secure: false
+			} );
 		};
 		return api;
 	} );

@@ -2,7 +2,7 @@
 	'use strict';
 
 	module
-		.directive( 'profileForm', ['$log', 'Languages', 'Countries', function ( $log, Languages, Countries ) {
+		.directive( 'profileForm', ['$log', 'Languages', 'Countries', 'Ministries', function ( $log, Languages, Countries, Ministries ) {
 			var defaultRequiredFields = [
 				'cas_username',
 				'last_name',
@@ -10,14 +10,15 @@
 				'gender',
 				'birth_date',
 				'marital_status',
+				'country_of_residence',
 				'language1',
-				'mcc',
-				'staff_status',
+				'organizational_status',
 				'funding_source',
-				'employment_country',
-				'ministry_location_country',
 				'date_joined_staff',
-				'role',
+				'ministry_of_employment',
+				'assignment_ministry',
+				'mcc',
+				'position_role',
 				'scope'
 			];
 			return {
@@ -38,6 +39,10 @@
 						$scope.countries = countries;
 					} );
 
+					Ministries.query( {whq_only: 'true'}, function ( ministries ) {
+						$scope.ministries = ministries;
+					} );
+
 					$scope.showHelp = angular.isUndefined( $attrs.profileShowHelp ) ? true : $scope.$eval( $attrs.profileShowHelp ) === true;
 					$scope.showPrivacy = $scope.$eval( $attrs.profileShowPrivacy ) === true;
 					$scope.showLeftStaff = $scope.$eval( $attrs.profileShowLeftStaff ) === true;
@@ -50,9 +55,8 @@
 						return $scope.requiredFields.indexOf( name ) > -1;
 					};
 
-					$scope.$watch( 'profile.staff_status', function ( staff_status, oldVal ) {
-						if( staff_status === oldVal ) return;
-						if ( angular.isUndefined( staff_status ) || staff_status == 'Volunteer' || staff_status == 'Other' ) {
+					$scope.$watch( 'profile.organizational_status', function ( organizational_status, oldVal ) {
+						if ( angular.isUndefined( organizational_status ) || organizational_status == 'Volunteer' || organizational_status == 'Other' ) {
 							$scope.showStaffDates = false;
 							$scope.requiredFields = _.without( $scope.requiredFields, 'date_joined_staff' );
 						}
@@ -64,16 +68,15 @@
 						}
 					} );
 
-					$scope.$watch( 'profile.funding_source', function( funding_source, oldVal ) {
-						if( funding_source === oldVal ) return;
-						if( angular.isUndefined( funding_source ) || funding_source == 'Other' ) {
-							$scope.showEmploymentCountry = false;
-							$scope.requiredFields = _.without( $scope.requiredFields, 'employment_country' );
+					$scope.$watch( 'profile.funding_source', function ( funding_source, oldVal ) {
+						if ( angular.isUndefined( funding_source ) || funding_source == 'Other' ) {
+							$scope.showEmploymentMinistry = false;
+							$scope.requiredFields = _.without( $scope.requiredFields, 'ministry_of_employment' );
 						}
 						else {
-							$scope.showEmploymentCountry = true;
-							if ( _.indexOf( $scope.requiredFields, 'employment_country' ) === -1 ) {
-								$scope.requiredFields.push( 'employment_country' );
+							$scope.showEmploymentMinistry = true;
+							if ( _.indexOf( $scope.requiredFields, 'ministry_of_employment' ) === -1 ) {
+								$scope.requiredFields.push( 'ministry_of_employment' );
 							}
 						}
 					} );

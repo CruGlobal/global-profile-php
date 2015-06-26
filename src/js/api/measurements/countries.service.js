@@ -7,7 +7,17 @@
 				return $http.get( Settings.api.measurements( '/iso_countries' ), {
 					cache: true
 				} ).then( function ( response ) {
-					return response.data;
+					if ( angular.isArray( response.data ) ) {
+						return response.data;
+					}
+					var countries = [];
+					angular.forEach( response.data, function ( value, key ) {
+						this.push( {
+							iso3: key,
+							name: value
+						} );
+					}, countries );
+					return countries;
 				} );
 			}
 		};
