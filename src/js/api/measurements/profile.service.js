@@ -17,6 +17,14 @@
 
 				return profile;
 			},
+			normalizeProfileRequest = function ( profile, headersGetter ) {
+				angular.forEach( profile, function ( value, key ) {
+					if ( angular.isUndefined( value ) || value === null ) {
+						delete profile[key];
+					}
+				} );
+				return angular.isObject( profile ) ? angular.toJson( profile ) : profile;
+			},
 			api = $resource( Settings.api.measurements( '/people/:person_id' ), {
 				person_id:   '@person_id',
 				ministry_id: '@ministry_id'
@@ -35,8 +43,8 @@
 						}
 					}
 				},
-				create: {method: 'POST'},
-				update: {method: 'PUT'}
+				create: {method: 'POST', transformRequest: normalizeProfileRequest},
+				update: {method: 'PUT', transformRequest: normalizeProfileRequest}
 			} );
 		api.defaultProfile = function () {
 			return normalizeProfile( {
