@@ -59,7 +59,22 @@
 						}
 					} );
 
+					$scope.$watch( 'profile.organizational_status', function ( organizational_status, oldVal ) {
+						if( $scope.profile.funding_source === 'Other' ) return;
+						if ( angular.isUndefined( organizational_status ) || organizational_status == 'Volunteer' ) {
+							$scope.showEmploymentMinistry = false;
+							$scope.requiredFields = _.without( $scope.requiredFields, 'ministry_of_employment' );
+						}
+						else {
+							$scope.showEmploymentMinistry = true;
+							if ( _.indexOf( $scope.requiredFields, 'ministry_of_employment' ) === -1 ) {
+								$scope.requiredFields.push( 'ministry_of_employment' );
+							}
+						}
+					} );
+
 					$scope.$watch( 'profile.funding_source', function ( funding_source, oldVal ) {
+						if( $scope.profile.organizational_status === 'Volunteer' ) return;
 						if ( angular.isUndefined( funding_source ) || funding_source == 'Other' ) {
 							$scope.showEmploymentMinistry = false;
 							$scope.requiredFields = _.without( $scope.requiredFields, 'ministry_of_employment' );
