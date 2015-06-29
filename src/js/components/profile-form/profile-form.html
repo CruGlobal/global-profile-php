@@ -1,4 +1,11 @@
 <div class="row">
+	<script type="text/ng-template" id="ministryTemplate.html">
+		<a>
+			<span bind-html-unsafe="match.model.area_code | typeaheadHighlight:query"></span>
+			&mdash;
+			<span bind-html-unsafe="match.model.name | typeaheadHighlight:query"></span>
+		</a>
+	</script>
 	<div class="col-md-6">
 		<div ng-transclude=""></div>
 		<ng-form name="personal">
@@ -169,7 +176,6 @@
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': personal.country_of_residence.$valid}">
-								<!--
 								<input type="text"
 									   class="form-control"
 									   id="country_of_residence"
@@ -177,8 +183,9 @@
 									   ng-model="profile.country_of_residence"
 									   typeahead="country.iso3 as country.name for country in countries | filter:$viewValue | orderBy:'name' | limitTo:6"
 									   typeahead-editable="false"
+									   typeahead-input-formatter="formatCountryLabel($model)"
 									   ng-required="isRequired( 'country_of_residence' )">
-								-->
+								<!--
 								<select class="form-control"
 										id="country_of_residence"
 										name="country_of_residence"
@@ -186,6 +193,7 @@
 										ng-options="country.iso3 as country.name for country in countries | orderBy:'name'"
 										ng-required="isRequired( 'country_of_residence' )">
 								</select>
+								-->
 							</div>
 
 							<p ng-if="showHelp" class="help-block">The country where you currently physically reside</p>
@@ -387,31 +395,22 @@
 					<!-- Ministry of Employment -->
 					<div ng-if="showEmploymentMinistry">
 
-						<script type="text/ng-template" id="ministryOfEmploymentTemplate.html">
-							<a>
-								<span bind-html-unsafe="match.model.area_code | typeaheadHighlight:query"></span>
-								&mdash;
-								<span bind-html-unsafe="match.model.name | typeaheadHighlight:query"></span>
-							</a>
-						</script>
-
 						<div class="form-group has-feedback" ng-class="{'has-error': !ministry.ministry_of_employment.$valid}">
 							<label class="col-sm-4 control-label" for="ministry_of_employment">Ministry of Employment</label>
 
 							<div class="col-sm-8">
 								<div ng-class="{'has-success': ministry.ministry_of_employment.$valid}">
-									<!--
 									<input type="text"
 										   class="form-control"
 										   id="ministry_of_employment"
 										   name="ministry_of_employment"
 										   ng-model="profile.ministry_of_employment"
 										   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name' | limitTo:8"
-										   typeahead-template-url="ministryOfEmploymentTemplate.html"
+										   typeahead-template-url="ministryTemplate.html"
 										   typeahead-editable="false"
-										   typeahead-input-formatter="formatMinistryOfEmploymentLabel($model)"
+										   typeahead-input-formatter="formatMinistryLabel($model)"
 										   ng-required="isRequired( 'ministry_of_employment' )">
-									-->
+									<!--
 									<select class="form-control"
 											id="ministry_of_employment"
 											name="ministry_of_employment"
@@ -419,6 +418,7 @@
 											ng-options="ministry.ministry_id as ministry.area_code + ' &mdash; ' + ministry.name for ministry in ministries | orderBy:'name'"
 											ng-required="isRequired( 'ministry_of_employment' )">
 									</select>
+									-->
 								</div>
 
 								<p ng-if="showHelp" class="help-block">This is the ministry from which you receive your salary or other compensation.</p>
@@ -442,6 +442,17 @@
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': assignment.assignment_ministry.$valid}">
+								<input type="text"
+									   class="form-control"
+									   id="assignment_ministry"
+									   name="assignment_ministry"
+									   ng-model="profile.assignments[0].ministry_id"
+									   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name' | limitTo:8"
+									   typeahead-template-url="ministryTemplate.html"
+									   typeahead-editable="false"
+									   typeahead-input-formatter="formatMinistryLabel($model)"
+									   ng-required="isRequired( 'assignment_ministry' )">
+								<!--
 								<select class="form-control"
 										id="assignment_ministry"
 										name="assignment_ministry"
@@ -449,6 +460,7 @@
 										ng-options="ministry.ministry_id as ministry.area_code + ' &mdash; ' + ministry.name for ministry in ministries | orderBy:'name'"
 										ng-required="isRequired( 'assignment_ministry' )">
 								</select>
+								-->
 							</div>
 
 							<p ng-if="showHelp" class="help-block">This is the Area/National ministry where you primarily serve. Short-term projects of a few weeks do not require a change.</p>

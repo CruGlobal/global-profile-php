@@ -2,7 +2,7 @@
 	'use strict';
 
 	module
-		.controller( 'EditProfileController', function ( $log, $scope, $state, profile, ministry, Profile, $modal ) {
+		.controller( 'EditProfileController', function ( $log, $scope, $state, profile, ministry, Profile, $modal, ministries, countries, languages ) {
 			$scope.$state = $state;
 			$scope.requiredFields = [
 				'email',
@@ -23,6 +23,9 @@
 				'scope'
 			];
 			$scope.profile = angular.copy( profile );
+			$scope.ministries = ministries;
+			$scope.countries = countries;
+			$scope.languages = languages;
 
 			$scope.resetForm = function () {
 				$scope.profile = angular.copy( profile );

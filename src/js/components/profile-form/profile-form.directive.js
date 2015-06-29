@@ -26,23 +26,14 @@
 				require:     ['^ngModel'],
 				scope:       {
 					profile:        '=ngModel',
-					requiredFields: '=?profileRequiredFields'
+					requiredFields: '=?profileRequiredFields',
+					ministries:     '=profileMinistries',
+					languages:      '=profileLanguages',
+					countries:      '=profileCountries'
 				},
 				templateUrl: 'js/components/profile-form/profile-form.html',
 				transclude:  true,
 				link:        function ( $scope, $element, $attrs ) {
-					Languages.languages().then( function ( languages ) {
-						$scope.languages = languages;
-					} );
-
-					Countries.countries().then( function ( countries ) {
-						$scope.countries = countries;
-					} );
-
-					Ministries.query( {whq_only: 'true'}, function ( ministries ) {
-						$scope.ministries = ministries;
-					} );
-
 					$scope.showHelp = angular.isUndefined( $attrs.profileShowHelp ) ? true : $scope.$eval( $attrs.profileShowHelp ) === true;
 					$scope.showPrivacy = $scope.$eval( $attrs.profileShowPrivacy ) === true;
 					$scope.showLeftStaff = $scope.$eval( $attrs.profileShowLeftStaff ) === true;
@@ -80,6 +71,22 @@
 							}
 						}
 					} );
+
+					$scope.formatMinistryLabel = function ( ministry_id ) {
+						for ( var i = 0; i < $scope.ministries.length; i++ ) {
+							if ( ministry_id === $scope.ministries[i].ministry_id ) {
+								return $scope.ministries[i].area_code + ' — ' + $scope.ministries[i].name;
+							}
+						}
+					};
+
+					$scope.formatCountryLabel = function ( iso3 ) {
+						for ( var i = 0; i < $scope.countries.length; i++ ) {
+							if ( iso3 === $scope.countries[i].iso3 ) {
+								return $scope.countries[i].name;
+							}
+						}
+					};
 				}
 			}
 		}] );
