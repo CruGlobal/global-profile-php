@@ -27,11 +27,11 @@
 									if ( response.status === 404 ) {
 										// Build new profile based on session.user attributes
 										var user = session.user,
-											props = ['cas_username', 'key_guid', 'first_name', 'last_name', 'person_id'],
+											props = ['key_username', 'key_guid', 'first_name', 'last_name', 'person_id'],
 											profile = Profile.defaultProfile();
 										angular.forEach( props, function ( property ) {
-											// Change cas_username to email
-											this[property === 'cas_username' ? 'email' : 'property'] = user.hasOwnProperty( property ) ? user[property] : '';
+											// Change key_username to email
+											this[property === 'key_username' ? 'email' : property] = user.hasOwnProperty( property ) ? user[property] : '';
 										}, profile );
 										deferred.resolve( profile );
 									}

@@ -8,21 +8,21 @@
 
 					<!-- E-mail Address -->
 					<div class="form-group has-feedback"
-						 ng-class="{'has-error': !personal.cas_username.$valid}">
-						<label class="col-sm-4 control-label" for="cas_username">E-mail Address</label>
+						 ng-class="{'has-error': !personal.email.$valid}">
+						<label class="col-sm-4 control-label" for="email">E-mail Address</label>
 
 						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': personal.cas_username.$valid}">
+							<div class="input-group" ng-class="{'has-success': personal.email.$valid}">
 								<input type="email"
-									   name="cas_username"
-									   id="cas_username"
+									   name="email"
+									   id="email"
 									   class="form-control"
 									   ng-model="profile.email"
-									   ng-required="isRequired( 'cas_username' )">
+									   ng-required="isRequired( 'email' )">
 								<span class="input-group-addon">
 									<span class="glyphicon"
 										  aria-hidden="true"
-										  ng-class="{'glyphicon-ok': personal.cas_username.$valid, 'glyphicon-remove': !personal.cas_username.$valid}"></span>
+										  ng-class="{'glyphicon-ok': personal.email.$valid, 'glyphicon-remove': !personal.email.$valid}"></span>
 								</span>
 							</div>
 

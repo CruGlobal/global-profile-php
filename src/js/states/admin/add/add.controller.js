@@ -5,7 +5,7 @@
 		.controller( 'AddProfileController', function ( $log, $scope, $state, profile, ministry, Profile ) {
 			$scope.$state = $state;
 			$scope.requiredFields = [
-				'key_username',
+				'email',
 				'last_name',
 				'first_name',
 				'gender',

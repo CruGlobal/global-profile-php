@@ -4,7 +4,7 @@
 	module
 		.directive( 'profileForm', ['$log', 'Languages', 'Countries', 'Ministries', function ( $log, Languages, Countries, Ministries ) {
 			var defaultRequiredFields = [
-				'cas_username',
+				'email',
 				'last_name',
 				'first_name',
 				'gender',

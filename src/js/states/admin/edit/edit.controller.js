@@ -5,7 +5,7 @@
 		.controller( 'EditProfileController', function ( $log, $scope, $state, profile, ministry, Profile, $modal ) {
 			$scope.$state = $state;
 			$scope.requiredFields = [
-				'cas_username',
+				'email',
 				'last_name',
 				'first_name',
 				'gender',
