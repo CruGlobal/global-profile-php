@@ -41,8 +41,8 @@
 	</div>
 
 	<!-- Application JavaScript -->
-	<script src="js/app.min.js?rev=8982ca20"></script>
-	<script src="js/templates.min.js?rev=77f3f529"></script>
+	<script src="js/app.min.js?rev=7119a169"></script>
+	<script src="js/templates.min.js?rev=7e6d1d5c"></script>
 
 	</body>
 	</html>
