@@ -1,8 +1,8 @@
 <?php return array(
 	/**
-	 * Wrapper version
+	 * Application version
 	 */
-	'version'      => '1.0.4',
+	'version'      => '1.0.0',
 
 	/**
 	 * Application Settings
