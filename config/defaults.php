@@ -59,34 +59,6 @@
 	 */
 	'measurements' => array(
 		/** @var string API endpoint, no training slash */
-		'endpoint'  => 'https://measurements.global-registry.org/v4',
-		/** @var string Namespace of application specific measurements */
-		'namespace' => 'gma-app',
+		'endpoint' => 'https://measurements.global-registry.org/v4',
 	),
-
-	/**
-	 * Mobile Applications
-	 * label => link
-	 */
-	'mobileapps'   => array(
-		// -- Production --
-		'iOS'     => 'itms-services://?action=download-manifest&url=https://downloads.global-registry.org/prod/ios/gma.plist',
-		'Android' => 'https://play.google.com/store/apps/details?id=com.expidevapps.android.measurements',
-		// -- Stage --
-		//'iOS'     => 'itms-services://?action=download-manifest&url=https://downloads.global-registry.org/stage/ios/gma.plist',
-		//'Android' => 'https://play.google.com/store/apps/details?id=com.expidevapps.android.measurements.demo',
-	),
-
-	/**
-	 * Google Maps Configuration
-	 */
-	'googlemaps'   => array(
-		'endpoint' => 'https://maps.googleapis.com/maps/api/js?libraries=places',
-		'apiKey'   => false,
-	),
-
-	/**
-	 * Enabled tabs
-	 */
-	'tabs'         => array( 'map', 'measurements', 'reports', 'admin' ),
 );
