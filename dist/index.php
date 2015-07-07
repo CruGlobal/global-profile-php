@@ -17,7 +17,7 @@
 		</script>
 
 		<!-- 3rd Party JavaScript and CSS -->
-		<script type="application/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script><script>if(!(window.jQuery)) cdnizerLoad("bower_components/jquery/dist/jquery.js");</script>
+		<script type="application/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script><script>if(!(window.jQuery)) cdnizerLoad("bower_components/jquery/dist/jquery.js");</script>
 		<script type="application/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-loader.min.js"></script>
 		<script type="application/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular.min.js"></script><script>if(!(window.angular)) cdnizerLoad("bower_components/angular/angular.js");</script>
 		<script type="application/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.28/angular-resource.min.js"></script>
@@ -41,8 +41,8 @@
 	</div>
 
 	<!-- Application JavaScript -->
-	<script src="js/app.min.js?rev=7119a169"></script>
-	<script src="js/templates.min.js?rev=7e6d1d5c"></script>
+	<script src="js/app.min.js?rev=240c12f8"></script>
+	<script src="js/templates.min.js?rev=71d8c38f"></script>
 
 	</body>
 	</html>
