@@ -2,7 +2,7 @@
 	'use strict';
 
 	module
-		.controller( 'AddProfileController', function ( $log, $scope, $state, profile, ministry, Profile, ministries, countries, languages ) {
+		.controller( 'AddProfileController', function ( $log, $scope, $modal, $state, profile, ministry, Profile, ministries, countries, languages ) {
 			$scope.$state = $state;
 			$scope.requiredFields = [
 				'email',
@@ -33,9 +33,18 @@
 
 			$scope.saveProfile = function () {
 				Profile.create( {ministry_id: ministry.ministry_id}, $scope.profile, function ( result ) {
+					$scope.profileForm.$setPristine();
 					$state.go( 'admin.edit', {person_ID: result.person_id}, {reload: true} );
 				}, function () {
-					$log.error( 'Error Saving Profile' );
+					$modal.open( {
+						templateUrl: 'js/states/admin/error.modal.html',
+						size:        'sm',
+						controller:  function ( $scope, $modalInstance ) {
+							$scope.ok = function () {
+								$modalInstance.close();
+							};
+						}
+					} );
 				} );
 			};
 

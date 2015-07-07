@@ -4,6 +4,7 @@
 	angular
 		.module( 'globalProfile.states.admin.add', [
 			'ui.router',
+			'ui.bootstrap.modal',
 			'globalProfile.states.admin',
 			'globalProfile.api.measurements',
 			'globalProfile.components.profileFormDirective'

@@ -34,11 +34,21 @@
 
 			$scope.saveChanges = function () {
 				Profile.update( {ministry_id: ministry.ministry_id}, $scope.profile, function ( result ) {
+					// Success
 					profile = result;
 					$scope.profile = angular.copy( profile );
 					$scope.profileForm.$setPristine();
 				}, function () {
-					$log.error( 'Error Saving Profile' );
+					// Error
+					$modal.open( {
+						templateUrl: 'js/states/admin/error.modal.html',
+						size:        'sm',
+						controller:  function ( $scope, $modalInstance ) {
+							$scope.ok = function () {
+								$modalInstance.close();
+							};
+						}
+					} );
 				} );
 			};
 
