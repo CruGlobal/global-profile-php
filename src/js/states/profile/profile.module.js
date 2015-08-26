@@ -14,7 +14,7 @@
 					abstract: true,
 					url:      '{min_code}',
 					resolve:  {
-						'ministry':  function ( $log, $q, $state, $stateParams, session, systems ) {
+						'ministry': function ( $log, $q, $state, $stateParams, session, systems ) {
 							var deferred = $q.defer();
 							// Unknown min_code
 							if ( angular.isUndefined( $stateParams.min_code ) || $stateParams.min_code === '' ) {
@@ -35,7 +35,7 @@
 							}
 							return deferred.promise;
 						},
-						'isLeader':  function ( $log, session, ministry ) {
+						'isLeader': function ( $log, session, ministry ) {
 							var flatten = function ( a, prop ) {
 								var items = [];
 								angular.forEach( a, function ( item ) {
@@ -47,8 +47,11 @@
 								return items;
 							};
 							var assignments = _.where( flatten( session.assignments, 'sub_ministries' ), {ministry_id: ministry.ministry_id} ),
-								roles = _.pluck( assignments, 'team_role' );
-							return _.contains( roles, 'leader' ) || _.contains( roles, 'inherited_leader' );
+								roles       = _.pluck( assignments, 'team_role' );
+							return _.contains( roles, 'leader' )
+								|| _.contains( roles, 'inherited_leader' )
+								|| _.contains( roles, 'admin' )
+								|| _.contains( roles, 'inherited_admin' );
 						}
 					},
 					views:    {
