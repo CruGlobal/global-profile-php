@@ -6,6 +6,7 @@
 		'ui.router',
 		'globalProfile.common.settingsService',
 		'globalProfile.api.measurements',
+		'angular-growl',
 
 		// States
 		'globalProfile.states.selectMinistry',

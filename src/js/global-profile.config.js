@@ -19,4 +19,11 @@
 		$httpProvider.interceptors.push( 'Session' );
 	} );
 
+	// Configure Growl
+	module.config( function ( growlProvider ) {
+		growlProvider.globalPosition( 'top-right' );
+		growlProvider.globalDisableCountDown( true );
+		growlProvider.globalTimeToLive( {success: 10000, error: -1, warning: -1, info: 10000} );
+	} );
+
 })( angular.module( 'globalProfile' ) );
