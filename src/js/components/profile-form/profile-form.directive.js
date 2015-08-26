@@ -60,7 +60,7 @@
 					} );
 
 					$scope.$watch( 'profile.organizational_status', function ( organizational_status, oldVal ) {
-						if( $scope.profile.funding_source === 'Other' ) return;
+						if ( $scope.profile.funding_source === 'Other' ) return;
 						if ( angular.isUndefined( organizational_status ) || organizational_status == 'Volunteer' ) {
 							$scope.showEmploymentMinistry = false;
 							$scope.requiredFields = _.without( $scope.requiredFields, 'ministry_of_employment' );
@@ -74,7 +74,7 @@
 					} );
 
 					$scope.$watch( 'profile.funding_source', function ( funding_source, oldVal ) {
-						if( $scope.profile.organizational_status === 'Volunteer' ) return;
+						if ( $scope.profile.organizational_status === 'Volunteer' ) return;
 						if ( angular.isUndefined( funding_source ) || funding_source == 'Other' ) {
 							$scope.showEmploymentMinistry = false;
 							$scope.requiredFields = _.without( $scope.requiredFields, 'ministry_of_employment' );
@@ -90,7 +90,7 @@
 					$scope.formatMinistryLabel = function ( ministry_id ) {
 						for ( var i = 0; i < $scope.ministries.length; i++ ) {
 							if ( ministry_id === $scope.ministries[i].ministry_id ) {
-								return $scope.ministries[i].area_code + ' — ' + $scope.ministries[i].name;
+								return (angular.isUndefined( $scope.ministries[i].area_code ) ? 'GLBL' : $scope.ministries[i].area_code) + ' — ' + $scope.ministries[i].name;
 							}
 						}
 					};
