@@ -31,18 +31,22 @@
 		<!--<script type="application/javascript" src="bower_components/better-dateinput-polyfill/dist/better-dateinput-polyfill.js"></script>-->
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css" />
 
+		<!-- Additional Javascript / JS not available on CDN -->
+		<script src="js/scripts.min.js?rev=292f8eeb"></script>
+
 		<!-- Application CSS -->
-		<link rel="stylesheet" href="css/styles.min.css?rev=625979b6">
+		<link rel="stylesheet" href="css/styles.min.css?rev=4935c31f">
 	</head>
 	<body>
+	<div growl></div>
 	<div ui-view>
 		<!-- Placeholder while Angular app loads -->
 		<nav class="navbar navbar-inverse navbar-fixed-top"></nav>
 	</div>
 
 	<!-- Application JavaScript -->
-	<script src="js/app.min.js?rev=240c12f8"></script>
-	<script src="js/templates.min.js?rev=71d8c38f"></script>
+	<script src="js/app.min.js?rev=9ac71a35"></script>
+	<script src="js/templates.min.js?rev=f74f0115"></script>
 
 	</body>
 	</html>
