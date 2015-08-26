@@ -34,7 +34,7 @@ gulp.task( 'clean', function ( callback ) {
 	del( ['dist'], callback );
 } );
 
-gulp.task( 'html', ['clean', 'bower', 'scripts', 'partials', 'styles', 'htaccess'], function () {
+gulp.task( 'html', ['clean', 'bower', 'application', 'scripts', 'partials', 'styles', 'htaccess'], function () {
 	return gulp.src( 'src/*.php' )
 		.pipe( cdnizer( {
 			allowMin: true,
@@ -83,17 +83,31 @@ gulp.task( 'html', ['clean', 'bower', 'scripts', 'partials', 'styles', 'htaccess
 				'js/' + revisions['app.min.js'],
 				'js/' + revisions['templates.min.js']
 			],
-			styles:      'css/' + revisions['styles.min.css']
+			styles:      'css/' + revisions['styles.min.css'],
+			scripts:     'js/' + revisions['scripts.min.js']
 		} ) )
 		.pipe( gulp.dest( 'dist' ) );
 } );
 
-gulp.task( 'scripts', ['clean'], function () {
+gulp.task( 'application', ['clean'], function () {
 	return gulp.src( ['src/js/**/*.module.js', 'src/js/**/*.js'] )
 		.pipe( sourcemaps.init() )
 		.pipe( concat( 'app.min.js' ) )
 		.pipe( ngAnnotate() )
-		.pipe( uglify() )
+//		.pipe( uglify() )
+		.pipe( revisionMap() )
+		.pipe( sourcemaps.write( '.' ) )
+		.pipe( gulp.dest( 'dist/js' ) );
+} );
+
+gulp.task( 'scripts', ['clean'], function () {
+	return gulp.src( [
+		'src/bower_components/angular-growl-v2/build/angular-growl.js'
+	] )
+		.pipe( sourcemaps.init() )
+		.pipe( concat( 'scripts.min.js' ) )
+		.pipe( ngAnnotate() )
+//		.pipe( uglify() )
 		.pipe( revisionMap() )
 		.pipe( sourcemaps.write( '.' ) )
 		.pipe( gulp.dest( 'dist/js' ) );
@@ -116,9 +130,12 @@ gulp.task( 'partials', ['clean'], function () {
 } );
 
 gulp.task( 'styles', ['clean'], function () {
-	return gulp.src( ['src/css/**/*.css'] )
+	return gulp.src( [
+		'src/bower_components/angular-growl-v2/build/angular-growl.css',
+		'src/css/**/*.css'
+	] )
 		.pipe( concat( 'styles.min.css' ) )
-		.pipe( minifyCSS() )
+//		.pipe( minifyCSS() )
 		.pipe( revisionMap() )
 		.pipe( gulp.dest( 'dist/css' ) );
 } );

@@ -1,7 +1,7 @@
 (function ( module ) {
 	'use strict';
 
-	module.controller( 'EditPersonalProfileController', function ( $log, $scope, $modal, session, ministry, profile, Profile, ministries, countries, languages ) {
+	module.controller( 'EditPersonalProfileController', function ( $log, $scope, $modal, session, ministry, profile, Profile, ministries, countries, languages, growl ) {
 		$scope.profile = angular.copy( profile );
 		$scope.ministries = ministries;
 		$scope.countries = countries;
@@ -16,6 +16,7 @@
 			var method = angular.isUndefined( profile.id ) ? 'create' : 'update';
 			Profile[method]( {ministry_id: ministry.ministry_id}, $scope.profile, function ( response ) {
 				// Success
+				growl.success( 'Profile successfully saved.' );
 				profile = response;
 				$scope.profile = angular.copy( profile );
 				$scope.profileForm.$setPristine();

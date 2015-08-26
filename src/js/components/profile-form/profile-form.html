@@ -181,7 +181,7 @@
 									   id="country_of_residence"
 									   name="country_of_residence"
 									   ng-model="profile.country_of_residence"
-									   typeahead="country.iso3 as country.name for country in countries | filter:$viewValue | orderBy:'name' | limitTo:6"
+									   typeahead="country.iso3 as country.name for country in countries | filter:$viewValue | orderBy:'name' | limitTo:12"
 									   typeahead-editable="false"
 									   typeahead-input-formatter="formatCountryLabel($model)"
 									   ng-required="isRequired( 'country_of_residence' )">
@@ -405,7 +405,7 @@
 										   id="ministry_of_employment"
 										   name="ministry_of_employment"
 										   ng-model="profile.ministry_of_employment"
-										   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name' | limitTo:8"
+										   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name' | limitTo:12"
 										   typeahead-template-url="ministryTemplate.html"
 										   typeahead-editable="false"
 										   typeahead-input-formatter="formatMinistryLabel($model)"
@@ -447,7 +447,7 @@
 									   id="assignment_ministry"
 									   name="assignment_ministry"
 									   ng-model="profile.assignments[0].ministry_id"
-									   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name' | limitTo:8"
+									   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name' | limitTo:12"
 									   typeahead-template-url="ministryTemplate.html"
 									   typeahead-editable="false"
 									   typeahead-input-formatter="formatMinistryLabel($model)"
@@ -482,11 +482,11 @@
 									<option value="Leader-Led Movements">Leader-Led Movements</option>
 									<option value="Global Church Movements">Church-Led Movements</option>
 									<option value="Digital Strategies">Digital Strategies</option>
-									<option value="Area Team Leaders">Area Team Leaders</option>
+									<option value="Area Team Leaders">Multi-MCC Leader</option>
 									<option value="Fund Development">Fund Development</option>
 									<option value="LDHR">Leadership Development/Human Resources</option>
 									<option value="Operations">Operations</option>
-									<option value="Unknown">Don’t Know</option>
+									<option value="Jesus Film">Jesus Film</option>
 								</select>
 							</div>
 
@@ -498,8 +498,8 @@
 								<span ng-switch-when="Area Team Leaders">You help make movements more effective by serving our line leadership (NTL, ATL, etc.)</span>
 								<span ng-switch-when="Fund Development">You help make movements more efective by developing financial resources for the ministry.</span>
 								<span ng-switch-when="LDHR">You help make movments more effective by developing growing people, effective leaders and healthy teams.</span>
-								<span ng-switch-when="Operations">You help movements more effective by leading effective processes.</span>
-								<span ng-switch-when="Unknown">You do not know what which Mission Critical Component is most relevant for your ministry.</span>
+								<span ng-switch-when="Operations">You help make movements more effective by leading effective processes.</span>
+								<span ng-switch-when="Jesus Film">You help make movements more effective by serving in the Jesus Film ministry.</span>
 								<span ng-switch-default>Choose an option to see a description.</span>
 							</p>
 

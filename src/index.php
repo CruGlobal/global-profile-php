@@ -31,8 +31,14 @@
 		<!--<script type="application/javascript" src="bower_components/better-dateinput-polyfill/dist/better-dateinput-polyfill.js"></script>-->
 		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
 
+		<!-- Additional Javascript / JS not available on CDN -->
+		<!-- build:scripts -->
+		<script type="application/javascript" src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
+		<!-- endbuild -->
+
 		<!-- Application CSS -->
 		<!-- build:styles -->
+		<link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.css" />
 		<link rel="stylesheet" href="css/global-profile.css" />
 		<link rel="stylesheet" href="css/select.css" />
 		<link rel="stylesheet" href="css/profile.css" />
@@ -40,6 +46,7 @@
 		<!-- endbuild -->
 	</head>
 	<body>
+	<div growl></div>
 	<div ui-view>
 		<!-- Placeholder while Angular app loads -->
 		<nav class="navbar navbar-inverse navbar-fixed-top"></nav>

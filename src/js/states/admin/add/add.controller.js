@@ -2,7 +2,7 @@
 	'use strict';
 
 	module
-		.controller( 'AddProfileController', function ( $log, $scope, $modal, $state, profile, ministry, Profile, ministries, countries, languages ) {
+		.controller( 'AddProfileController', function ( $log, $scope, $modal, $state, profile, ministry, Profile, ministries, countries, languages, growl ) {
 			$scope.$state = $state;
 			$scope.requiredFields = [
 				'email',
@@ -34,6 +34,9 @@
 			$scope.saveProfile = function () {
 				Profile.create( {ministry_id: ministry.ministry_id}, $scope.profile, function ( result ) {
 					$scope.profileForm.$setPristine();
+
+					growl.success( 'Profile successfully saved.' );
+
 					$state.go( 'admin.edit', {person_ID: result.person_id}, {reload: true} );
 				}, function () {
 					$modal.open( {
