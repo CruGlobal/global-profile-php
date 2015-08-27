@@ -181,7 +181,8 @@
 									   id="country_of_residence"
 									   name="country_of_residence"
 									   ng-model="profile.country_of_residence"
-									   typeahead="country.iso3 as country.name for country in countries | filter:$viewValue | orderBy:'name' | limitTo:12"
+									   typeahead="country.iso3 as country.name for country in countries | filter:$viewValue | orderBy:'name'"
+									   typeahead-min-length="2"
 									   typeahead-editable="false"
 									   typeahead-input-formatter="formatCountryLabel($model)"
 									   ng-required="isRequired( 'country_of_residence' )">
@@ -405,8 +406,9 @@
 										   id="ministry_of_employment"
 										   name="ministry_of_employment"
 										   ng-model="profile.ministry_of_employment"
-										   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name' | limitTo:12"
+										   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name'"
 										   typeahead-template-url="ministryTemplate.html"
+										   typeahead-min-length="2"
 										   typeahead-editable="false"
 										   typeahead-input-formatter="formatMinistryLabel($model)"
 										   ng-required="isRequired( 'ministry_of_employment' )">
@@ -447,8 +449,9 @@
 									   id="assignment_ministry"
 									   name="assignment_ministry"
 									   ng-model="profile.assignments[0].ministry_id"
-									   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name' | limitTo:12"
+									   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name'"
 									   typeahead-template-url="ministryTemplate.html"
+									   typeahead-min-length="2"
 									   typeahead-editable="false"
 									   typeahead-input-formatter="formatMinistryLabel($model)"
 									   ng-required="isRequired( 'assignment_ministry' )">
