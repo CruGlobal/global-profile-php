@@ -1,7 +1,7 @@
 <div class="row">
 	<script type="text/ng-template" id="ministryTemplate.html">
 		<a>
-			<span bind-html-unsafe="match.model.area_code | typeaheadHighlight:query"></span>
+			<span bind-html-unsafe="(match.model.area_code || 'GLBL') | typeaheadHighlight:query"></span>
 			&mdash;
 			<span bind-html-unsafe="match.model.name | typeaheadHighlight:query"></span>
 		</a>
