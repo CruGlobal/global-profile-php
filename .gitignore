@@ -8,8 +8,9 @@ vendor/
 # Project
 config/config.php
 
-#Node (npm)
+#Node (npm) / gulp
 node_modules/
+onesky.json
 
 #Bower
 src/bower_components/

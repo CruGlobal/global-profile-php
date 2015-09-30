@@ -1,7 +1,7 @@
 <div id="profile" class="container">
 	<div class="page-header">
 		<div class="pull-right" ng-include="'buttons.html'"></div>
-		<h1>Edit your Profile</h1>
+		<h1 translate>Edit your Profile</h1>
 	</div>
 	<form name="profileForm">
 		<profile-form
@@ -21,12 +21,12 @@
 			<button type="button"
 					class="btn btn-default"
 					ng-disabled="profileForm.$pristine"
-					ng-click="resetForm()">Cancel
+					ng-click="resetForm()" translate>Cancel
 			</button>
 			<button type="button"
 					class="btn btn-primary"
 					ng-disabled="profileForm.$invalid"
-					ng-click="saveChanges()">Save Changes
+					ng-click="saveChanges()" translate>Save Changes
 			</button>
 		</div>
 	</script>

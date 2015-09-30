@@ -14,6 +14,9 @@ var gulp        = require( 'gulp' ),
 	sourcemaps  = require( 'gulp-sourcemaps' ),
 	path        = require( 'path' ),
 	crypto      = require( 'crypto' ),
+	gettext     = require( 'gulp-angular-gettext' ),
+	url         = require( 'url' ),
+	request     = require( 'request' ),
 	revisions   = {};
 
 function revisionMap() {
@@ -28,6 +31,43 @@ function revisionMap() {
 	}
 
 	return require( 'event-stream' ).map( saveRevision );
+}
+
+function uploadToOneSky() {
+	var onesky = require( './onesky.json' ),
+		ts     = Math.floor( new Date() / 1000 );
+
+	function uploadPOTFile( file, callback ) {
+		//https://github.com/onesky/api-documentation-platform/blob/master/resources/file.md#upload---upload-a-file
+		request.post( {
+			url:      url.format( {
+				protocol: 'https',
+				host:     'platform.api.onesky.io',
+				pathname: '/1/projects/' + onesky.project_id + '/files',
+				query:    {
+					api_key:   onesky.api_key,
+					timestamp: ts,
+					dev_hash:  crypto.createHash( 'md5' ).update( ts + onesky.api_secret ).digest( 'hex' )
+				}
+			} ),
+			formData: {
+				file:        {
+					value:   file.contents,
+					options: {
+						filename: file.relative
+					}
+				},
+				file_format: 'GNU_POT'
+			}
+		}, function ( err, httpResponse, body ) {
+			if ( err ) {
+				callback( err );
+			}
+			callback( null, file );
+		} );
+	}
+
+	return require( 'event-stream' ).map( uploadPOTFile );
 }
 
 gulp.task( 'clean', function ( callback ) {
@@ -94,7 +134,7 @@ gulp.task( 'application', ['clean'], function () {
 		.pipe( sourcemaps.init() )
 		.pipe( concat( 'app.min.js' ) )
 		.pipe( ngAnnotate() )
-//		.pipe( uglify() )
+		.pipe( uglify() )
 		.pipe( revisionMap() )
 		.pipe( sourcemaps.write( '.' ) )
 		.pipe( gulp.dest( 'dist/js' ) );
@@ -102,12 +142,13 @@ gulp.task( 'application', ['clean'], function () {
 
 gulp.task( 'scripts', ['clean'], function () {
 	return gulp.src( [
+		'src/bower_components/angular-gettext/dist/angular-gettext.js',
 		'src/bower_components/angular-growl-v2/build/angular-growl.js'
 	] )
 		.pipe( sourcemaps.init() )
 		.pipe( concat( 'scripts.min.js' ) )
 		.pipe( ngAnnotate() )
-//		.pipe( uglify() )
+		.pipe( uglify() )
 		.pipe( revisionMap() )
 		.pipe( sourcemaps.write( '.' ) )
 		.pipe( gulp.dest( 'dist/js' ) );
@@ -135,7 +176,7 @@ gulp.task( 'styles', ['clean'], function () {
 		'src/css/**/*.css'
 	] )
 		.pipe( concat( 'styles.min.css' ) )
-//		.pipe( minifyCSS() )
+		.pipe( minifyCSS() )
 		.pipe( revisionMap() )
 		.pipe( gulp.dest( 'dist/css' ) );
 } );
@@ -157,3 +198,14 @@ gulp.task( 'bower', function () {
 gulp.task( 'build', ['images', 'html'] );
 
 gulp.task( 'default', ['build'] );
+
+gulp.task( 'pot', function () {
+	return gulp.src( ['src/js/**/*.html', 'src/js/**/*.js'] )
+		.pipe( gettext.extract( 'global-profile-app.pot', {} ) )
+		.pipe( gulp.dest( 'src/languages/' ) );
+} );
+
+gulp.task( 'onesky', ['pot'], function () {
+	return gulp.src( 'src/languages/global-profile-app.pot' )
+		.pipe( uploadToOneSky() );
+} );

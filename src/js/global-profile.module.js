@@ -7,6 +7,7 @@
 		'globalProfile.common.settingsService',
 		'globalProfile.api.measurements',
 		'angular-growl',
+		'gettext',
 
 		// States
 		'globalProfile.states.selectMinistry',

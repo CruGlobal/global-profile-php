@@ -33,6 +33,7 @@
 
 		<!-- Additional Javascript / JS not available on CDN -->
 		<!-- build:scripts -->
+		<script type="application/javascript" src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
 		<script type="application/javascript" src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
 		<!-- endbuild -->
 

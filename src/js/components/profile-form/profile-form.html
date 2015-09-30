@@ -1,7 +1,7 @@
 <div class="row">
 	<script type="text/ng-template" id="ministryTemplate.html">
 		<a>
-			<span bind-html-unsafe="match.model.area_code | typeaheadHighlight:query"></span>
+			<span bind-html-unsafe="(match.model.area_code || 'GLBL') | typeaheadHighlight:query"></span>
 			&mdash;
 			<span bind-html-unsafe="match.model.name | typeaheadHighlight:query"></span>
 		</a>
@@ -11,12 +11,12 @@
 		<ng-form name="personal">
 			<div class="form-horizontal well">
 				<fieldset>
-					<legend>Personal</legend>
+					<legend translate>Personal</legend>
 
 					<!-- E-mail Address -->
 					<div class="form-group has-feedback"
 						 ng-class="{'has-error': !personal.email.$valid}">
-						<label class="col-sm-4 control-label" for="email">E-mail Address</label>
+						<label class="col-sm-4 control-label" for="email" translate>E-mail Address</label>
 
 						<div class="col-sm-8">
 							<div class="input-group" ng-class="{'has-success': personal.email.$valid}">
@@ -33,13 +33,13 @@
 								</span>
 							</div>
 
-							<p ng-if="showHelp" class="help-block">Your E-mail Address used by the ministry to contact you.</p>
+							<p ng-if="showHelp" class="help-block" translate>Your E-mail Address used by the ministry to contact you.</p>
 						</div>
 					</div>
 
 					<!-- Family/Surname -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !personal.last_name.$valid}">
-						<label class="col-sm-4 control-label" for="last_name">Family/Surname</label>
+						<label class="col-sm-4 control-label" for="last_name" translate>Family/Surname</label>
 
 						<div class="col-sm-8">
 							<div class="input-group" ng-class="{'has-success': personal.last_name.$valid}">
@@ -57,13 +57,13 @@
 								</span>
 							</div>
 
-							<p ng-if="showHelp" class="help-block">Your official family name.</p>
+							<p ng-if="showHelp" class="help-block" translate>Your official family name.</p>
 						</div>
 					</div>
 
 					<!-- Given Name -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !personal.first_name.$valid}">
-						<label class="col-sm-4 control-label" for="first_name">Given Name</label>
+						<label class="col-sm-4 control-label" for="first_name" translate>Given Name</label>
 
 						<div class="col-sm-8">
 							<div class="input-group" ng-class="{'has-success': personal.first_name.$valid}">
@@ -81,13 +81,13 @@
 								</span>
 							</div>
 
-							<p ng-if="showHelp" class="help-block">Your official given name.</p>
+							<p ng-if="showHelp" class="help-block" translate>Your official given name.</p>
 						</div>
 					</div>
 
 					<!-- Preferred Name -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !personal.preferred_name.$valid}">
-						<label class="col-sm-4 control-label" for="preferred_name">Preferred Name<br />Nickname</label>
+						<label class="col-sm-4 control-label" for="preferred_name" translate>Preferred Name<br />Nickname</label>
 
 						<div class="col-sm-8">
 							<div class="input-group" ng-class="{'has-success': personal.preferred_name.$valid}">
@@ -104,13 +104,13 @@
 								</span>
 							</div>
 
-							<p ng-if="showHelp" class="help-block">This is the name by which you are commonly known or how you prefer people address you.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is the name by which you are commonly known or how you prefer people address you.</p>
 						</div>
 					</div>
 
 					<!-- Gender -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !personal.gender.$valid}">
-						<label class="col-sm-4 control-label" for="gender">Gender</label>
+						<label class="col-sm-4 control-label" for="gender" translate>Gender</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': personal.gender.$valid}">
@@ -120,8 +120,8 @@
 									name="gender"
 									ng-model="profile.gender"
 									ng-required="isRequired( 'gender' )">
-									<option value="Male">Male</option>
-									<option value="Female">Female</option>
+									<option value="Male" translate>Male</option>
+									<option value="Female" translate>Female</option>
 								</select>
 							</div>
 						</div>
@@ -129,7 +129,7 @@
 
 					<!-- Birth Date -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !personal.birth_date.$valid}">
-						<label class="col-sm-4 control-label" for="birth_date">Birth Date</label>
+						<label class="col-sm-4 control-label" for="birth_date" translate>Birth Date</label>
 
 						<div class="col-sm-8">
 							<div class="input-group" ng-class="{'has-success': personal.birth_date.$valid}">
@@ -150,7 +150,7 @@
 
 					<!-- Marital Status -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !personal.marital_status.$valid}">
-						<label class="col-sm-4 control-label" for="marital_status">Marital Status</label>
+						<label class="col-sm-4 control-label" for="marital_status" translate>Marital Status</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': personal.marital_status.$valid}">
@@ -159,12 +159,12 @@
 										name="marital_status"
 										ng-model="profile.marital_status"
 										ng-required="isRequired( 'marital_status' )">
-									<option value="Single">Single</option>
-									<option value="Married">Married</option>
-									<option value="Engaged">Engaged</option>
-									<option value="Separated">Separated</option>
-									<option value="Divorced">Divorced</option>
-									<option value="Widowed">Widowed</option>
+									<option value="Single" translate>Single</option>
+									<option value="Married" translate>Married</option>
+									<option value="Engaged" translate>Engaged</option>
+									<option value="Separated" translate>Separated</option>
+									<option value="Divorced" translate>Divorced</option>
+									<option value="Widowed" translate>Widowed</option>
 								</select>
 							</div>
 						</div>
@@ -172,7 +172,7 @@
 
 					<!-- Country of Residence -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !personal.country_of_residence.$valid}">
-						<label class="col-sm-4 control-label" for="country_of_residence">Country of Residence</label>
+						<label class="col-sm-4 control-label" for="country_of_residence" translate>Country of Residence</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': personal.country_of_residence.$valid}">
@@ -181,7 +181,8 @@
 									   id="country_of_residence"
 									   name="country_of_residence"
 									   ng-model="profile.country_of_residence"
-									   typeahead="country.iso3 as country.name for country in countries | filter:$viewValue | orderBy:'name' | limitTo:12"
+									   typeahead="country.iso3 as country.name for country in countries | filter:$viewValue | orderBy:'name'"
+									   typeahead-min-length="2"
 									   typeahead-editable="false"
 									   typeahead-input-formatter="formatCountryLabel($model)"
 									   ng-required="isRequired( 'country_of_residence' )">
@@ -196,14 +197,14 @@
 								-->
 							</div>
 
-							<p ng-if="showHelp" class="help-block">The country where you currently physically reside</p>
+							<p ng-if="showHelp" class="help-block" translate>The country where you currently physically reside</p>
 						</div>
 					</div>
 
 					<!-- Languages -->
 					<!-- Language 1 -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !personal.language1.$valid}">
-						<label class="col-sm-4 control-label" for="language1">Language 1</label>
+						<label class="col-sm-4 control-label" for="language1" translate>Language 1</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': personal.language1.$valid}">
@@ -216,13 +217,13 @@
 								</select>
 							</div>
 
-							<p ng-if="showHelp" class="help-block">This is the primary language you use.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is the primary language you use.</p>
 						</div>
 					</div>
 
 					<!-- Language 2 -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !personal.language2.$valid}">
-						<label class="col-sm-4 control-label" for="language2">Language 2</label>
+						<label class="col-sm-4 control-label" for="language2" translate>Language 2</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': personal.language2.$valid}">
@@ -235,13 +236,13 @@
 								</select>
 							</div>
 
-							<p ng-if="showHelp" class="help-block">This is the language (after your primary language) with which you are most comfortable.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is the language (after your primary language) with which you are most comfortable.</p>
 						</div>
 					</div>
 
 					<!-- Language 3 -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !personal.language3.$valid}">
-						<label class="col-sm-4 control-label" for="language3">Language 3</label>
+						<label class="col-sm-4 control-label" for="language3" translate>Language 3</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': personal.language3.$valid}">
@@ -254,27 +255,27 @@
 								</select>
 							</div>
 
-							<p ng-if="showHelp" class="help-block">You use this language also.</p>
+							<p ng-if="showHelp" class="help-block" translate>You use this language also.</p>
 						</div>
 					</div>
 
 					<!-- Default Profile Privacy -->
 					<div ng-if="showPrivacy" class="form-group has-feedback" ng-class="{'has-error': !personal.is_secure.$valid}">
-						<label class="col-sm-4 control-label">Default Privacy Profile</label>
+						<label class="col-sm-4 control-label" translate>Default Privacy Profile</label>
 
 						<div class="col-sm-8">
 							<div class="radio">
 								<label>
 									<input type="radio" name="is_secure" ng-value="false" ng-model="profile.is_secure" ng-required="isRequired( 'is_secure' )">
-									<span ng-hide="showHelp">Public</span>
-									<span ng-show="showHelp">Anyone can see your profile information.</span>
+									<span ng-hide="showHelp" translate>Public</span>
+									<span ng-show="showHelp" translate>Anyone can see your profile information.</span>
 								</label>
 							</div>
 							<div class="radio">
 								<label>
 									<input type="radio" name="is_secure" ng-value="true" ng-model="profile.is_secure" ng-required="isRequired( 'is_secure' )">
-									<span ng-hide="showHelp">Private</span>
-									<span ng-show="showHelp">Only you and an administrator can see your profile information. Select this profile setting if you work in a country where security is a concern.</span>
+									<span ng-hide="showHelp" translate>Private</span>
+									<span ng-show="showHelp" translate>Only you and an administrator can see your profile information. Select this profile setting if you work in a country where security is a concern.</span>
 								</label>
 							</div>
 						</div>
@@ -289,11 +290,11 @@
 		<ng-form name="ministry">
 			<div class="form-horizontal well">
 				<fieldset>
-					<legend>Ministry</legend>
+					<legend translate>Ministry</legend>
 
 					<!-- Organizationl Status -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.organizational_status.$valid}">
-						<label class="col-sm-4 control-label" for="organizational_status">Organizational Status</label>
+						<label class="col-sm-4 control-label" for="organizational_status" translate>Organizational Status</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': ministry.organizational_status.$valid}">
@@ -302,52 +303,52 @@
 										name="organizational_status"
 										ng-model="profile.organizational_status"
 										ng-required="isRequired( 'organizational_status' )">
-									<option value="Full-time">Full Time Staff</option>
-									<option value="Short-term">Short Term Staff</option>
-									<option value="Part-time">Part Time Staff</option>
-									<option value="Volunteer">Volunteer</option>
-									<option value="Other">Other</option>
+									<option value="Full-time" translate>Full Time Staff</option>
+									<option value="Short-term" translate>Short Term Staff</option>
+									<option value="Part-time" translate>Part Time Staff</option>
+									<option value="Volunteer" translate>Volunteer</option>
+									<option value="Other" translate>Other</option>
 								</select>
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.organizational_status">
-								<span ng-switch-when="Full-time">You are employed full-time by Campus Crusade for Christ for an indefinite period.</span>
-								<span ng-switch-when="Short-term">You are employed full-time by Campus Crusade for Christ but applied to Campus Crusade for Christ to participate in a project of 2 years or less.</span>
-								<span ng-switch-when="Part-time">You have applied for staff and met all standards for full-time staff, but do not devote full-time to the ministry (Including Associate & Affiliate Staff). You may be self-funded.</span>
-								<span ng-switch-when="Volunteer">You volunteer with the ministry of Campus Crusade for Christ. This would include student leaders on a college campus or other volunteer leaders within the ministry (engaged disciples and multiplying disciples).</span>
-								<span ng-switch-when="Other">The above categories do not apply.</span>
-								<span ng-switch-default>Choose an option to see a description.</span>
+								<span ng-switch-when="Full-time" translate>You are employed full-time by Campus Crusade for Christ for an indefinite period.</span>
+								<span ng-switch-when="Short-term" translate>You are employed full-time by Campus Crusade for Christ but applied to Campus Crusade to participate in a project of 2 years or less (including STINTERs or Interns).</span>
+								<span ng-switch-when="Part-time" translate>You have applied for staff and met all standards for full-time staff, but do not devote full-time to the ministry (Including Associate Staff, Affiliate Staff, Professional Staff or Associated Partners).</span>
+								<span ng-switch-when="Volunteer" translate>You volunteer with the ministry of Campus Crusade. This would include student leaders on a college campus or other volunteer leaders within the ministry (engaged disciples and multiplying disciples).</span>
+								<span ng-switch-when="Other" translate>The above categories do not apply.</span>
+								<span ng-switch-default translate>Choose an option to see a description.</span>
 							</p>
 
-							<p ng-if="showHelp" class="help-block">This identifies your working relationship with Campus Crusade for Christ, if any.</p>
+							<p ng-if="showHelp" class="help-block" translate>This identifies your working relationship with Campus Crusade for Christ, if any.</p>
 						</div>
 					</div>
 
 					<!-- Funding Source -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !ministry.funding_source.$valid}">
-						<label class="col-sm-4 control-label" for="funding_source">Funding Source</label>
+						<label class="col-sm-4 control-label" for="funding_source" translate>Funding Source</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': ministry.funding_source.$valid}">
 								<select class="form-control" id="funding_source" name="funding_source" ng-model="profile.funding_source" ng-required="isRequired( 'funding_source' )">
-									<option value="Supported Staff">Supported Staff</option>
-									<option value="Centrally Funded Staff">Centrally Funded Staff</option>
-									<option value="Self-funded">Self-funded</option>
-									<option value="Hybrid">Hybrid</option>
-									<option value="Other">Not Applicable</option>
+									<option value="Supported Staff" translate>Supported Staff</option>
+									<option value="Centrally Funded Staff" translate>Centrally Funded Staff</option>
+									<option value="Self-funded" translate>Self-funded</option>
+									<option value="Hybrid" translate>Hybrid</option>
+									<option value="Other" translate>Not Applicable</option>
 								</select>
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.funding_source">
-								<span ng-switch-when="Supported Staff">You fund your ministry by donations you raise.</span>
-								<span ng-switch-when="Centrally Funded Staff">You are fully paid (funded) by Campus Crusade for Christ, you do not raise funds.</span>
-								<span ng-switch-when="Self-funded">You receive your salary from funds you raise for the ministry.</span>
-								<span ng-switch-when="Hybrid">Two or more of the above categories apply to you.</span>
-								<span ng-switch-when="Other">None of the other categories apply to you.</span>
-								<span ng-switch-default>Choose an option to see a description.</span>
+								<span ng-switch-when="Supported Staff" translate>You receive a salary from funds you raise for the ministry.</span>
+								<span ng-switch-when="Centrally Funded Staff" translate>You are fully paid (funded) by Campus Crusade for Christ; you do not raise funds for your salary.</span>
+								<span ng-switch-when="Self-funded" translate>You are self funded. You do not receive a salary from Campus Crusade for Christ.</span>
+								<span ng-switch-when="Hybrid" translate>Two or more of the above categories apply to you.</span>
+								<span ng-switch-when="Other" translate>None of the other categories apply to you.</span>
+								<span ng-switch-default translate>Choose an option to see a description.</span>
 							</p>
 
-							<p ng-if="showHelp" class="help-block">This is the primary source of your compensation, if any, from Campus Crusade for Christ.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is the primary source of your compensation, if any, from Campus Crusade for Christ.</p>
 						</div>
 					</div>
 
@@ -355,7 +356,7 @@
 
 						<!-- Date Joined Staff -->
 						<div class="form-group has-feedback" ng-class="{'has-error': !ministry.date_joined_staff.$valid}">
-							<label class="col-sm-4 control-label" for="date_joined_staff">Date Joined Staff</label>
+							<label class="col-sm-4 control-label" for="date_joined_staff" translate>Date Joined Staff</label>
 
 							<div class="col-sm-8">
 								<div class="input-group" ng-class="{'has-success': ministry.date_joined_staff.$valid}">
@@ -371,7 +372,7 @@
 
 						<!-- Date Left Staff -->
 						<div ng-if="showLeftStaff" class="form-group has-feedback" ng-class="{'has-error': !ministry.date_left_staff.$valid}">
-							<label class="col-sm-4 control-label" for="date_left_staff">Date Left Staff</label>
+							<label class="col-sm-4 control-label" for="date_left_staff" translate>Date Left Staff</label>
 
 							<div class="col-sm-8">
 								<div class="input-group" ng-class="{'has-success': ministry.date_left_staff.$valid}">
@@ -396,7 +397,7 @@
 					<div ng-if="showEmploymentMinistry">
 
 						<div class="form-group has-feedback" ng-class="{'has-error': !ministry.ministry_of_employment.$valid}">
-							<label class="col-sm-4 control-label" for="ministry_of_employment">Ministry of Employment</label>
+							<label class="col-sm-4 control-label" for="ministry_of_employment" translate>Ministry of Employment</label>
 
 							<div class="col-sm-8">
 								<div ng-class="{'has-success': ministry.ministry_of_employment.$valid}">
@@ -405,8 +406,9 @@
 										   id="ministry_of_employment"
 										   name="ministry_of_employment"
 										   ng-model="profile.ministry_of_employment"
-										   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name' | limitTo:12"
+										   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name'"
 										   typeahead-template-url="ministryTemplate.html"
+										   typeahead-min-length="2"
 										   typeahead-editable="false"
 										   typeahead-input-formatter="formatMinistryLabel($model)"
 										   ng-required="isRequired( 'ministry_of_employment' )">
@@ -421,7 +423,7 @@
 									-->
 								</div>
 
-								<p ng-if="showHelp" class="help-block">This is the ministry from which you receive your salary or other compensation.</p>
+								<p ng-if="showHelp" class="help-block" translate>This is the ministry from which you receive your salary or other compensation.</p>
 							</div>
 						</div>
 
@@ -434,11 +436,11 @@
 		<ng-form name="assignment">
 			<div class="form-horizontal well">
 				<fieldset>
-					<legend>Assignment</legend>
+					<legend translate>Assignment</legend>
 
 					<!-- Ministry of Service -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !assignment.assignment_ministry.$valid}">
-						<label class="col-sm-4 control-label" for="assignment_ministry">Ministry of Service</label>
+						<label class="col-sm-4 control-label" for="assignment_ministry" translate>Ministry of Service</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': assignment.assignment_ministry.$valid}">
@@ -447,8 +449,9 @@
 									   id="assignment_ministry"
 									   name="assignment_ministry"
 									   ng-model="profile.assignments[0].ministry_id"
-									   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name' | limitTo:12"
+									   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name'"
 									   typeahead-template-url="ministryTemplate.html"
+									   typeahead-min-length="2"
 									   typeahead-editable="false"
 									   typeahead-input-formatter="formatMinistryLabel($model)"
 									   ng-required="isRequired( 'assignment_ministry' )">
@@ -463,13 +466,13 @@
 								-->
 							</div>
 
-							<p ng-if="showHelp" class="help-block">This is the Area/National ministry where you primarily serve. Short-term projects of a few weeks do not require a change.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is the Area/National ministry where you primarily serve. Short-term projects of a few weeks do not require a change.</p>
 						</div>
 					</div>
 
 					<!-- Mission Critical Components -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !assignment.mcc.$valid}">
-						<label class="col-sm-4 control-label" for="mcc">Mission Critical Components</label>
+						<label class="col-sm-4 control-label" for="mcc" translate>Mission Critical Components</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': assignment.mcc.$valid}">
@@ -478,38 +481,42 @@
 										name="mcc"
 										ng-model="profile.assignments[0].mcc"
 										ng-required="isRequired( 'mcc' )">
-									<option value="Student-Led Movements">Student-Led Movements</option>
-									<option value="Leader-Led Movements">Leader-Led Movements</option>
-									<option value="Global Church Movements">Church-Led Movements</option>
-									<option value="Digital Strategies">Digital Strategies</option>
-									<option value="Area Team Leaders">Multi-MCC Leader</option>
-									<option value="Fund Development">Fund Development</option>
-									<option value="LDHR">Leadership Development/Human Resources</option>
-									<option value="Operations">Operations</option>
-									<option value="Jesus Film">Jesus Film</option>
+									<option value="Student-Led Movements" translate>Student-Led Movements</option>
+									<option value="Leader-Led Movements" translate>Leader-Led Movements</option>
+									<option value="Global Church Movements" translate>Church-Led Movements</option>
+									<option value="Digital Strategies" translate>Digital Strategies</option>
+									<option value="Area Team Leaders" translate>Multi-MCC Leader</option>
+									<option value="Fund Development" translate>Fund Development</option>
+									<option value="LDHR" translate>Leadership Development/Human Resources</option>
+									<option value="Operations" translate>Operations</option>
+									<option value="Jesus Film" translate>Jesus Film</option>
+									<option value="Prayer" translate>Prayer</option>
+									<option value="Other" translate>Other</option>
 								</select>
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.assignments[0].mcc">
-								<span ng-switch-when="Student-Led Movements">You help student leaders develop movements of evangelism and discipleship.</span>
-								<span ng-switch-when="Leader-Led Movements">You help adult leaders develop movements of evangelism and discipleship.</span>
-								<span ng-switch-when="Global Church Movements">You help church leaders develop movements of evangelism and discipleship.</span>
-								<span ng-switch-when="Digital Strategies">You help develop movements of evangelism and discipleship through the internet.</span>
-								<span ng-switch-when="Area Team Leaders">You help make movements more effective by serving our line leadership (NTL, ATL, etc.)</span>
-								<span ng-switch-when="Fund Development">You help make movements more efective by developing financial resources for the ministry.</span>
-								<span ng-switch-when="LDHR">You help make movments more effective by developing growing people, effective leaders and healthy teams.</span>
-								<span ng-switch-when="Operations">You help make movements more effective by leading effective processes.</span>
-								<span ng-switch-when="Jesus Film">You help make movements more effective by serving in the Jesus Film ministry.</span>
-								<span ng-switch-default>Choose an option to see a description.</span>
+								<span ng-switch-when="Student-Led Movements" translate>You help student leaders develop movements of evangelism and discipleship.</span>
+								<span ng-switch-when="Leader-Led Movements" translate>You help adult leaders develop movements of evangelism and discipleship.</span>
+								<span ng-switch-when="Global Church Movements" translate>You help church leaders develop movements of evangelism and discipleship.</span>
+								<span ng-switch-when="Digital Strategies" translate>You help develop movements of evangelism and discipleship through the internet.</span>
+								<span ng-switch-when="Area Team Leaders" translate>You help make movements more effective by serving our line leadership (NTL, ATL, etc.)</span>
+								<span ng-switch-when="Fund Development" translate>You help make movements more efective by developing financial resources for the ministry.</span>
+								<span ng-switch-when="LDHR" translate>You help make movments more effective by developing growing people, effective leaders and healthy teams.</span>
+								<span ng-switch-when="Operations" translate>You help make movements more effective by leading effective processes.</span>
+								<span ng-switch-when="Jesus Film" translate>You help make movements more effective by serving in the Jesus Film ministry.</span>
+								<span ng-switch-when="Prayer" translate>You help cultivate a culture of prayer that ignites spiritual movements everywhere.</span>
+								<span ng-switch-when="Other" translate>You help contribute to movements of evangelism and discipleship in ways that support our primary MCC's.</span>
+								<span ng-switch-default translate>Choose an option to see a description.</span>
 							</p>
 
-							<p ng-if="showHelp" class="help-block">These are the components that have been determined to be critical to building movements everywhere.</p>
+							<p ng-if="showHelp" class="help-block" translate>These are the components that have been determined to be critical to building movements everywhere.</p>
 						</div>
 					</div>
 
 					<!-- Position/Role -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !assignment.position_role.$valid}">
-						<label class="col-sm-4 control-label" for="position_role">Position/Role</label>
+						<label class="col-sm-4 control-label" for="position_role" translate>Position/Role</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': assignment.position_role.$valid}">
@@ -518,52 +525,52 @@
 										name="position_role"
 										ng-model="profile.assignments[0].position_role"
 										ng-required="isRequired( 'position_role' )">
-									<option value="Team Member">Team Member</option>
-									<option value="Team Leader">Team Leader</option>
-									<option value="Not Applicable">Not Applicable</option>
+									<option value="Team Member" translate>Team Member</option>
+									<option value="Team Leader" translate>Team Leader</option>
+									<option value="Not Applicable" translate>Not Applicable</option>
 								</select>
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.assignments[0].position_role">
-								<span ng-switch-when="Team Member">You primarily serve as a team member under the supervision of a team leader. You may be in a field ministry or on a team helping to build capacity (e.g. Operations, LDHR, Fund Development, etc).</span>
-								<span ng-switch-when="Team Leader">You primarily serve as the team leader of either a field or capacity building ministry team (e.g. Operations, LDHR, Fund Development, etc.) A team leader is defined as an individual who has primary responsibility for supervising or developing staff or volunteers.</span>
-								<span ng-switch-when="Not Applicable">You neither serve as a team member on a team nor lead a team.</span>
-								<span ng-switch-default>Choose an option to see a description.</span>
+								<span ng-switch-when="Team Member" translate>You primarily serve as a team member under the supervision of a team leader. You may be in a field ministry or on a team helping to build capacity (e.g. Operations, LDHR, Fund Development, etc).</span>
+								<span ng-switch-when="Team Leader" translate>You primarily serve as the team leader of either a field or capacity building ministry team (e.g. Operations, LDHR, Fund Development, etc.) A team leader is defined as an individual who has primary responsibility for supervising or developing staff or volunteers.</span>
+								<span ng-switch-when="Not Applicable" translate>You neither serve as a team member on a team nor lead a team.</span>
+								<span ng-switch-default translate>Choose an option to see a description.</span>
 							</p>
 
-							<p ng-if="showHelp" class="help-block">This is your role or position within Campus Crusade for Christ.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is your role or position within Campus Crusade for Christ.</p>
 						</div>
 					</div>
 
 					<!-- Scope -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !assignment.scope.$valid}">
-						<label class="col-sm-4 control-label" for="scope">Scope</label>
+						<label class="col-sm-4 control-label" for="scope" translate>Scope</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': assignment.scope.$valid}">
 								<select class="form-control" id="scope" name="scope" ng-model="profile.assignments[0].scope" ng-required="isRequired( 'scope' )">
-									<option value="Local">Local</option>
-									<option value="National Region">National Region</option>
-									<option value="National">National</option>
-									<option value="Area Region">Area Region</option>
-									<option value="Area">Area</option>
-									<option value="Global">Global</option>
-									<option value="Executive">Executive</option>
+									<option value="Local" translate>Local</option>
+									<option value="National Region" translate>National Region</option>
+									<option value="National" translate>National</option>
+									<option value="Area Region" translate>Area Region</option>
+									<option value="Area" translate>Area</option>
+									<option value="Global" translate>Global</option>
+									<option value="Executive" translate>Executive</option>
 								</select>
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.assignments[0].scope">
-								<span ng-switch-when="Local">You serve on a campus, in a village or a city.</span>
-								<span ng-switch-when="National Region">You serve in a team that oversees two or more local teams.</span>
-								<span ng-switch-when="National">You serve in the national office or on a ministry team that oversees two or more regional field ministry teams.</span>
-								<span ng-switch-when="Area Region">You serve in a region that includes one or more countries but not the entire Area.</span>
-								<span ng-switch-when="Area">You serve in the Area office or on a ministry team that oversees two or more national ministry teams.</span>
-								<span ng-switch-when="Global">You serve in an Executive Team Leader’s office or other ministry that works with countries in multiple Areas.</span>
-								<span ng-switch-when="Executive">You serve as a Vice President on the Exective Team.</span>
-								<span ng-switch-default>Choose an option to see a description.</span>
+								<span ng-switch-when="Local" translate>You serve on a campus, in a village or a city.</span>
+								<span ng-switch-when="National Region" translate>You serve in a team that oversees two or more local teams.</span>
+								<span ng-switch-when="National" translate>You serve in the national office or on a ministry team that oversees two or more regional field ministry teams.</span>
+								<span ng-switch-when="Area Region" translate>You serve in a region that includes one or more countries but not the entire Area.</span>
+								<span ng-switch-when="Area" translate>You serve in the Area office or on a ministry team that oversees two or more national ministry teams.</span>
+								<span ng-switch-when="Global" translate>You serve in an Executive Team Leader’s office or other ministry that works with countries in multiple Areas.</span>
+								<span ng-switch-when="Executive" translate>You serve as a Vice President on the Exective Team.</span>
+								<span ng-switch-default translate>Choose an option to see a description.</span>
 							</p>
 
-							<p ng-if="showHelp" class="help-block">This defines how broad an area of responsibility you have or in which you serve.</p>
+							<p ng-if="showHelp" class="help-block" translate>This defines how broad an area of responsibility you have or in which you serve.</p>
 						</div>
 					</div>
 
