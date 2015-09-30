@@ -32,10 +32,12 @@
 		<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/css/bootstrap.min.css" />
 
 		<!-- Additional Javascript / JS not available on CDN -->
-		<script src="js/scripts.min.js?rev=292f8eeb"></script>
+		<script src="js/scripts.min.js?rev=6176f588"></script>
+
 
 		<!-- Application CSS -->
-		<link rel="stylesheet" href="css/styles.min.css?rev=4935c31f">
+		<link rel="stylesheet" href="css/styles.min.css?rev=774bd153">
+
 	</head>
 	<body>
 	<div growl></div>
@@ -45,8 +47,9 @@
 	</div>
 
 	<!-- Application JavaScript -->
-	<script src="js/app.min.js?rev=9ac71a35"></script>
-	<script src="js/templates.min.js?rev=f74f0115"></script>
+	<script src="js/app.min.js?rev=8be97382"></script>
+	<script src="js/templates.min.js?rev=f44e8f95"></script>
+
 
 	</body>
 	</html>
