@@ -13,9 +13,9 @@
 					parent:  'profile',
 					url:     '/admin',
 					resolve: {
-						'requiresLeader': function ( $q, isLeader ) {
+						'requiresLeader': function ( $q, isLeader, gettext ) {
 							var deferred = $q.defer();
-							if ( isLeader ) deferred.resolve(); else deferred.reject( 'Not a Leader or Inherited Leader of the ministry.' );
+							if ( isLeader ) deferred.resolve(); else deferred.reject( gettext( 'Not a Leader or Inherited Leader of the ministry.' ) );
 							return deferred.promise;
 						},
 						'people':         function ( $log, ministry, Profile ) {

@@ -5,7 +5,7 @@
 			<button type="button" class="btn btn-default" ui-sref="admin">
 				<span class="glyphicon glyphicon-arrow-left"></span>
 			</button>
-			Edit a Person
+			<span translate>Edit a Person</span>
 		</h1>
 	</div>
 	<form name="profileForm">
@@ -30,12 +30,12 @@
 			<button type="button"
 					class="btn btn-default"
 					ng-if="profileForm.$dirty"
-					ng-click="resetForm()">Cancel
+					ng-click="resetForm()" translate>Cancel
 			</button>
 			<button type="button"
 					class="btn btn-primary"
 					ng-disabled="profileForm.$invalid"
-					ng-click="saveChanges()">Save Changes
+					ng-click="saveChanges()" translate>Save Changes
 			</button>
 		</div>
 	</script>

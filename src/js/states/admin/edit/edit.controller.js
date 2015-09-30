@@ -2,7 +2,7 @@
 	'use strict';
 
 	module
-		.controller( 'EditProfileController', function ( $log, $scope, $state, profile, ministry, Profile, $modal, ministries, countries, languages, growl ) {
+		.controller( 'EditProfileController', function ( $log, $scope, $state, profile, ministry, Profile, $modal, ministries, countries, languages, growl, gettext ) {
 			$scope.$state = $state;
 			$scope.requiredFields = [
 				'email',
@@ -35,7 +35,7 @@
 			$scope.saveChanges = function () {
 				Profile.update( {ministry_id: ministry.ministry_id}, $scope.profile, function ( result ) {
 					// Success
-					growl.success( 'Profile successfully saved.' );
+					growl.success( gettext( 'Profile successfully saved.' ) );
 					profile = result;
 					$scope.profile = angular.copy( profile );
 					$scope.profileForm.$setPristine();

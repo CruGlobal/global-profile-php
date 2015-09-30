@@ -3,16 +3,16 @@
 
 	<div class="page-header">
 		<div class="pull-right form-actions">
-			<label class="checkbox-inline"><input type="checkbox" ng-model="hasHeader">First Row is Header</label>
+			<label class="checkbox-inline"><input type="checkbox" ng-model="hasHeader" translate>First Row is Header</label>
 			<button type="button" class="btn btn-warning" ng-click="browse()">
-				<span class="glyphicon glyphicon-search"></span> Browse for CSV
+				<span class="glyphicon glyphicon-search"></span> <span translate>Browse for CSV</span>
 			</button>
 		</div>
 		<h1>
 			<button type="button" class="btn btn-default" ui-sref="admin">
 				<span class="glyphicon glyphicon-arrow-left"></span>
 			</button>
-			Import a CSV
+			<span translate>Import a CSV</span>
 			<small> {{file.name}}</small>
 		</h1>
 	</div>
@@ -21,8 +21,8 @@
 		<tr>
 			<th ng-repeat="column in columns track by $index">
 				<select class="form-control" ng-model="column.type">
-					<option value="key_guid">GUID</option>
-					<option value="cas_username">Username</option>
+					<option value="key_guid" translate>GUID</option>
+					<option value="cas_username" translate>Username</option>
 				</select>
 			</th>
 		</tr>

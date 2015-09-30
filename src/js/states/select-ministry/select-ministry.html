@@ -1,9 +1,9 @@
 <div class="container-fluid">
 	<div class="select-ministry jumbotron">
-		<h1>Global Profile</h1>
+		<h1 translate>Global Profile</h1>
 
 		<!--
-		<p>Select a ministry.</p>
+		<p translate>Select a ministry.</p>
 
 		<p>
 			<input type="text"
@@ -17,12 +17,10 @@
 		<p>
 			<button type="button" class="btn btn-danger pull-left"
 					ng-if="isLeader(ministry.ministry_id)"
-					ng-click="$state.go('admin', {min_code: ministry.min_code})">Administrator
-			</button>
+					ng-click="$state.go('admin', {min_code: ministry.min_code})" translate>Administrator</button>
 			<button type="button" class="btn btn-primary pull-right"
 					ng-disabled="!ministry"
-					ng-click="$state.go('edit', {min_code: ministry.min_code})">Edit Profile
-			</button>
+					ng-click="$state.go('edit', {min_code: ministry.min_code})" translate>Edit Profile</button>
 		</p>
 		-->
 		<div class="clearfix"></div>
