@@ -7,6 +7,7 @@ vendor/
 
 # Project
 config/config.php
+dist/
 
 #Node (npm) / gulp
 node_modules/
