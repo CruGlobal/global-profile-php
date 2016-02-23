@@ -1,5 +1,5 @@
 # global-profile-php
-Global Profile Application
+Global Profile SPA
 
 ## Installation on localhost
 Clone the repo and submodule
