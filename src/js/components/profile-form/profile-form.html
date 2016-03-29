@@ -33,7 +33,7 @@
 								</span>
 							</div>
 
-							<p ng-if="showHelp" class="help-block" translate>Your E-mail Address used by the ministry to contact you.</p>
+							<p ng-if="showHelp" class="help-block" translate>Your E-mail Address used by the organization to contact you.</p>
 						</div>
 					</div>
 
@@ -63,7 +63,7 @@
 
 					<!-- Given Name -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !personal.first_name.$valid}">
-						<label class="col-sm-4 control-label" for="first_name" translate>Given Name</label>
+						<label class="col-sm-4 control-label" for="first_name" translate>Given Name(s)</label>
 
 						<div class="col-sm-8">
 							<div class="input-group" ng-class="{'has-success': personal.first_name.$valid}">
@@ -81,7 +81,7 @@
 								</span>
 							</div>
 
-							<p ng-if="showHelp" class="help-block" translate>Your official given name.</p>
+							<p ng-if="showHelp" class="help-block" translate>Your official given name(s).</p>
 						</div>
 					</div>
 
@@ -217,7 +217,7 @@
 								</select>
 							</div>
 
-							<p ng-if="showHelp" class="help-block" translate>This is the primary language you use.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is my first language.</p>
 						</div>
 					</div>
 
@@ -236,7 +236,7 @@
 								</select>
 							</div>
 
-							<p ng-if="showHelp" class="help-block" translate>This is the language (after your primary language) with which you are most comfortable.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is my second language.</p>
 						</div>
 					</div>
 
@@ -255,7 +255,7 @@
 								</select>
 							</div>
 
-							<p ng-if="showHelp" class="help-block" translate>You use this language also.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is my third language.</p>
 						</div>
 					</div>
 
@@ -312,15 +312,15 @@
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.organizational_status">
-								<span ng-switch-when="Full-time" translate>You are employed full-time by Campus Crusade for Christ for an indefinite period.</span>
-								<span ng-switch-when="Short-term" translate>You are employed full-time by Campus Crusade for Christ but applied to Campus Crusade to participate in a project of 2 years or less (including STINTERs or Interns).</span>
-								<span ng-switch-when="Part-time" translate>You have applied for staff and met all standards for full-time staff, but do not devote full-time to the ministry (Including Associate Staff, Affiliate Staff, Professional Staff or Associated Partners).</span>
-								<span ng-switch-when="Volunteer" translate>You volunteer with the ministry of Campus Crusade. This would include student leaders on a college campus or other volunteer leaders within the ministry (engaged disciples and multiplying disciples).</span>
+								<span ng-switch-when="Full-time" translate>You are employed full-time by the organization for an indefinite period.</span>
+								<span ng-switch-when="Short-term" translate>You are employed full-time by the organization but applied to the organization to participate in a project of 2 years or less (including STINTERs or Interns).</span>
+								<span ng-switch-when="Part-time" translate>You have applied for staff and met all standards for full-time staff, but do not devote full-time to the organization (Including Associate Staff, Affiliate Staff, Professional Staff or Associated Partners).</span>
+								<span ng-switch-when="Volunteer" translate>You volunteer with the organization. This would include student leaders on a college campus or other volunteer leaders.</span>
 								<span ng-switch-when="Other" translate>The above categories do not apply.</span>
 								<span ng-switch-default translate>Choose an option to see a description.</span>
 							</p>
 
-							<p ng-if="showHelp" class="help-block" translate>This identifies your working relationship with Campus Crusade for Christ, if any.</p>
+							<p ng-if="showHelp" class="help-block" translate>This identifies your working relationship with the organization, if any.</p>
 						</div>
 					</div>
 
@@ -340,15 +340,15 @@
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.funding_source">
-								<span ng-switch-when="Supported Staff" translate>You receive a salary from funds you raise for the ministry.</span>
-								<span ng-switch-when="Centrally Funded Staff" translate>You are fully paid (funded) by Campus Crusade for Christ; you do not raise funds for your salary.</span>
-								<span ng-switch-when="Self-funded" translate>You are self funded. You do not receive a salary from Campus Crusade for Christ.</span>
+								<span ng-switch-when="Supported Staff" translate>You receive a salary from funds you raise for the organization.</span>
+								<span ng-switch-when="Centrally Funded Staff" translate>You are fully paid (funded) by the organization; you do not raise funds for your salary.</span>
+								<span ng-switch-when="Self-funded" translate>You are self funded. You do not receive a salary from the organization.</span>
 								<span ng-switch-when="Hybrid" translate>Two or more of the above categories apply to you.</span>
 								<span ng-switch-when="Other" translate>None of the other categories apply to you.</span>
 								<span ng-switch-default translate>Choose an option to see a description.</span>
 							</p>
 
-							<p ng-if="showHelp" class="help-block" translate>This is the primary source of your compensation, if any, from Campus Crusade for Christ.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is the primary source of your compensation, if any, from the organization.</p>
 						</div>
 					</div>
 
@@ -397,7 +397,7 @@
 					<div ng-if="showEmploymentMinistry">
 
 						<div class="form-group has-feedback" ng-class="{'has-error': !ministry.ministry_of_employment.$valid}">
-							<label class="col-sm-4 control-label" for="ministry_of_employment" translate>Ministry of Employment</label>
+							<label class="col-sm-4 control-label" for="ministry_of_employment" translate>Country of Employment</label>
 
 							<div class="col-sm-8">
 								<div ng-class="{'has-success': ministry.ministry_of_employment.$valid}">
@@ -423,7 +423,7 @@
 									-->
 								</div>
 
-								<p ng-if="showHelp" class="help-block" translate>This is the ministry from which you receive your salary or other compensation.</p>
+								<p ng-if="showHelp" class="help-block" translate>This is the country from which you receive your salary or other compensation.</p>
 							</div>
 						</div>
 
@@ -440,7 +440,7 @@
 
 					<!-- Ministry of Service -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !assignment.assignment_ministry.$valid}">
-						<label class="col-sm-4 control-label" for="assignment_ministry" translate>Ministry of Service</label>
+						<label class="col-sm-4 control-label" for="assignment_ministry" translate>Geographic Area of Service</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': assignment.assignment_ministry.$valid}">
@@ -466,7 +466,7 @@
 								-->
 							</div>
 
-							<p ng-if="showHelp" class="help-block" translate>This is the Area/National ministry where you primarily serve. Short-term projects of a few weeks do not require a change.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is the Area/National geographic area where you primarily serve. Short-term projects of a few weeks do not require a change.</p>
 						</div>
 					</div>
 
@@ -482,31 +482,31 @@
 										ng-model="profile.assignments[0].mcc"
 										ng-required="isRequired( 'mcc' )">
 									<option value="Student-Led Movements" translate>Student-Led Movements</option>
-									<option value="Leader-Led Movements" translate>Leader-Led Movements</option>
-									<option value="Global Church Movements" translate>Church-Led Movements</option>
+									<option value="Leader-Led Movements" translate>LeaderImpact</option>
+                                                                        <option value="Global Church Movements" translate>GCM</option>
 									<option value="Digital Strategies" translate>Digital Strategies</option>
 									<option value="Area Team Leaders" translate>Multi-MCC Leader</option>
 									<option value="Fund Development" translate>Fund Development</option>
 									<option value="LDHR" translate>Leadership Development/Human Resources</option>
 									<option value="Operations" translate>Operations</option>
-									<option value="Jesus Film" translate>Jesus Film</option>
+                                                                        <option value="Jesus Film" translate>J-Film</option>
 									<option value="Prayer" translate>Prayer</option>
 									<option value="Other" translate>Other</option>
 								</select>
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.assignments[0].mcc">
-								<span ng-switch-when="Student-Led Movements" translate>You help student leaders develop movements of evangelism and discipleship.</span>
-								<span ng-switch-when="Leader-Led Movements" translate>You help adult leaders develop movements of evangelism and discipleship.</span>
-								<span ng-switch-when="Global Church Movements" translate>You help church leaders develop movements of evangelism and discipleship.</span>
-								<span ng-switch-when="Digital Strategies" translate>You help develop movements of evangelism and discipleship through the internet.</span>
+								<span ng-switch-when="Student-Led Movements" translate>You help student leaders develop movements.</span>
+								<span ng-switch-when="Leader-Led Movements" translate>You help adult leaders develop movements.</span>
+								<span ng-switch-when="Global Church Movements" translate>You help leaders develop movements of multiplying faith communities.</span>
+								<span ng-switch-when="Digital Strategies" translate>You help develop movements through the internet.</span>
 								<span ng-switch-when="Area Team Leaders" translate>You help make movements more effective by serving our line leadership (NTL, ATL, etc.)</span>
-								<span ng-switch-when="Fund Development" translate>You help make movements more efective by developing financial resources for the ministry.</span>
-								<span ng-switch-when="LDHR" translate>You help make movments more effective by developing growing people, effective leaders and healthy teams.</span>
+								<span ng-switch-when="Fund Development" translate>You help make movements more effective by developing financial resources.</span>
+                                                                <span ng-switch-when="LDHR" translate>You help make movments more effective by developing growing people, effective leaders and healthy teams.</span>
 								<span ng-switch-when="Operations" translate>You help make movements more effective by leading effective processes.</span>
-								<span ng-switch-when="Jesus Film" translate>You help make movements more effective by serving in the Jesus Film ministry.</span>
-								<span ng-switch-when="Prayer" translate>You help cultivate a culture of prayer that ignites spiritual movements everywhere.</span>
-								<span ng-switch-when="Other" translate>You help contribute to movements of evangelism and discipleship in ways that support our primary MCC's.</span>
+								<span ng-switch-when="Jesus Film" translate>You help make movements more effective by serving with the J-Film.</span>
+								<span ng-switch-when="Prayer" translate>You help cultivate a culture of prayer that inspires movements everywhere.</span>
+								<span ng-switch-when="Other" translate>You help contribute to movements in ways that support our primary MCC's.</span>
 								<span ng-switch-default translate>Choose an option to see a description.</span>
 							</p>
 
@@ -532,13 +532,13 @@
 							</div>
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.assignments[0].position_role">
-								<span ng-switch-when="Team Member" translate>You primarily serve as a team member under the supervision of a team leader. You may be in a field ministry or on a team helping to build capacity (e.g. Operations, LDHR, Fund Development, etc).</span>
-								<span ng-switch-when="Team Leader" translate>You primarily serve as the team leader of either a field or capacity building ministry team (e.g. Operations, LDHR, Fund Development, etc.) A team leader is defined as an individual who has primary responsibility for supervising or developing staff or volunteers.</span>
+								<span ng-switch-when="Team Member" translate>You primarily serve as a team member under the supervision of a team leader. You may be on the field or on a team helping to build capacity (e.g. Operations, LDHR, Fund Development, etc).</span>
+								<span ng-switch-when="Team Leader" translate>You primarily serve as the team leader of either a field or capacity building team (e.g. Operations, LDHR, Fund Development, etc.) A team leader is defined as an individual who has primary responsibility for supervising or developing staff or volunteers.</span>
 								<span ng-switch-when="Not Applicable" translate>You neither serve as a team member on a team nor lead a team.</span>
 								<span ng-switch-default translate>Choose an option to see a description.</span>
 							</p>
 
-							<p ng-if="showHelp" class="help-block" translate>This is your role or position within Campus Crusade for Christ.</p>
+							<p ng-if="showHelp" class="help-block" translate>This is your role or position within the organization.</p>
 						</div>
 					</div>
 
@@ -561,12 +561,12 @@
 
 							<p ng-if="showHelp" class="help-block well well-sm" ng-switch="profile.assignments[0].scope">
 								<span ng-switch-when="Local" translate>You serve on a campus, in a village or a city.</span>
-								<span ng-switch-when="National Region" translate>You serve in a team that oversees two or more local teams.</span>
-								<span ng-switch-when="National" translate>You serve in the national office or on a ministry team that oversees two or more regional field ministry teams.</span>
-								<span ng-switch-when="Area Region" translate>You serve in a region that includes one or more countries but not the entire Area.</span>
-								<span ng-switch-when="Area" translate>You serve in the Area office or on a ministry team that oversees two or more national ministry teams.</span>
-								<span ng-switch-when="Global" translate>You serve in an Executive Team Leader’s office or other ministry that works with countries in multiple Areas.</span>
-								<span ng-switch-when="Executive" translate>You serve as a Vice President on the Exective Team.</span>
+								<span ng-switch-when="National Region" translate>You serve on a team that oversees two or more local teams.</span>
+								<span ng-switch-when="National" translate>You serve in the national office or on a team that oversees two or more regional field teams.</span>
+								<span ng-switch-when="Area Region" translate>You serve on a team that oversees one or more countries but not the entire Area.</span>
+								<span ng-switch-when="Area" translate>You serve on the Area Leadership Team or in the Area Office or on a team that helps to support the development of strategies (SLM, LeaderImpact, GCM, DS) or capacity building (Operations, LDHR, Fund Development, etc.) for the Area.</span>
+								<span ng-switch-when="Global" translate>You serve in an Executive Team Leader’s office or on another team that works with countries in multiple Areas.</span>
+								<span ng-switch-when="Executive" translate>You serve on the Executive Team.</span>
 								<span ng-switch-default translate>Choose an option to see a description.</span>
 							</p>
 
