@@ -1,7 +1,7 @@
 (function ( module ) {
 	'use strict';
 
-	module.controller( 'EditPersonalProfileController', function ( $log, $scope, $modal, session, ministry, profile, Profile, ministries, countries, languages, growl, gettext ) {
+	module.controller( 'EditPersonalProfileController', function ( $log, $scope, $uibModal, session, ministry, profile, Profile, ministries, countries, languages, growl, gettext ) {
 		$scope.profile = angular.copy( profile );
 		$scope.ministries = ministries;
 		$scope.countries = countries;
@@ -22,12 +22,12 @@
 				$scope.profileForm.$setPristine();
 			}, function () {
 				// Error
-				$modal.open( {
+				$uibModal.open( {
 					templateUrl: 'js/states/admin/error.modal.html',
 					size:        'sm',
-					controller:  function ( $scope, $modalInstance ) {
+					controller:  function ( $scope, $uibModalInstance ) {
 						$scope.ok = function () {
-							$modalInstance.close();
+							$uibModalInstance.close();
 						};
 					}
 				} );
