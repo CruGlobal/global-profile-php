@@ -2,7 +2,7 @@
 	'use strict';
 
 	module.factory( 'Profile', function ( $log, $resource, Settings ) {
-		var normalizeProfile = function ( profile ) {
+		var normalizeProfile        = function ( profile ) {
 				// Language
 				if ( angular.isUndefined( profile.language ) ) {
 					profile.language = [];
@@ -14,18 +14,29 @@
 				if ( angular.isUndefined( profile.assignments ) ) {
 					profile.assignments = [{}];
 				}
-
+				angular.forEach( profile, function ( value, key ) {
+					// Convert date string to Date objects
+					if ( ['birth_date', 'date_joined_staff', 'date_left_staff'].indexOf( key ) != -1 ) {
+						if ( angular.isString( value ) ) {
+							profile[key] = moment( value ).toDate();
+						}
+					}
+				} );
 				return profile;
 			},
 			normalizeProfileRequest = function ( profile, headersGetter ) {
-				angular.forEach( profile, function ( value, key ) {
+				var data = angular.copy( profile );
+				angular.forEach( data, function ( value, key ) {
 					if ( angular.isUndefined( value ) || value === null ) {
-						delete profile[key];
+						delete data[key];
+					}
+					else if ( ['birth_date', 'date_joined_staff', 'date_left_staff'].indexOf( key ) != -1 ) {
+						data[key] = moment( value ).format( 'YYYY-MM-DD' )
 					}
 				} );
-				return angular.isObject( profile ) ? angular.toJson( profile ) : profile;
+				return angular.isObject( data ) ? angular.toJson( data ) : data;
 			},
-			api = $resource( Settings.api.measurements( '/people/:person_id' ), {
+			api                     = $resource( Settings.api.measurements( '/people/:person_id' ), {
 				person_id:   '@person_id',
 				ministry_id: '@ministry_id'
 			}, {
