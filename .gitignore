@@ -15,3 +15,6 @@ onesky.json
 
 #Bower
 src/bower_components/
+
+# Gulp build
+.tmp/
