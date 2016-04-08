@@ -16,6 +16,7 @@
 
 	// Configure HTTP interceptors
 	module.config( function ( $httpProvider ) {
+		$httpProvider.defaults.withCredentials = true;
 		$httpProvider.interceptors.push( 'Session' );
 	} );
 
