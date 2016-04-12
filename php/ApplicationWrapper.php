@@ -31,6 +31,7 @@
 
 		public $casClient;
 		public $url;
+		public $path;
 
 		/**
 		 * Constructor
@@ -49,7 +50,8 @@
 			$url->setPath( dirname( $_SERVER[ 'PHP_SELF' ] ) );
 			if ( isset( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] ) )
 				$url->setScheme( $_SERVER[ 'HTTP_X_FORWARDED_PROTO' ] );
-			$this->url = $url;
+			$this->url  = $url;
+			$this->path = rtrim( $this->url->getPath(), '/' );
 
 			// Initialize phpCAS proxy client
 			$this->casClient = $this->initializeCAS();
@@ -76,11 +78,11 @@
 				$redis->connect( Config::get( 'redis.hostname' ), Config::get( 'redis.port', 6379 ), 2 );
 				$redis->setOption( \Redis::OPT_SERIALIZER, \Redis::SERIALIZER_PHP );
 				$redis->setOption( \Redis::OPT_PREFIX, Config::get( 'application.project_name' ) . ':PHPCAS_TICKET_STORAGE:' );
-				$redis->select( (int) Config::get( 'redis.hostname', 2 ) );
+				$redis->select( (int)Config::get( 'redis.hostname', 2 ) );
 				$casClient->setPGTStorage( new RedisTicketStorage( $casClient, $redis ) );
 			}
 			else {
-				$casClient->setCallbackURL( $this->url->resolve( 'callback.php' )->getURL() );
+				$casClient->setCallbackURL( $this->url->getURL() . '/callback.php' );
 				$casClient->setPGTStorageFile( session_save_path() );
 				// Handle logout requests but do not validate the server
 				$casClient->handleLogoutRequests( false );
@@ -92,8 +94,8 @@
 			return $casClient;
 		}
 
-		public function getAPIServiceTicket() {
-			return $this->casClient->retrievePT( Config::get( 'measurements.endpoint' ) . '/token', $code, $msg );
+		public function getAPIServiceTicket( $service = false ) {
+			return $this->casClient->retrievePT( $service ? $service : ( Config::get( 'cas-auth-api.endpoint' ) . '/token/new' ), $code, $msg );
 		}
 
 		public function versionUrl( $url ) {
@@ -114,36 +116,21 @@
 			$this->casClient->logout( array() );
 		}
 
-		public function appDir( $path = '' ) {
-			$url = $this->url->resolve( 'app/' . Config::get( 'application.directory', 'dist' ) . '/' . ltrim( $path, '/' ) );
-			$url->setQueryVariable( 'ver', Config::get( 'version', 'false' ) );
-			return $url->getURL();
-		}
-
 		public function appConfig() {
 			return json_encode( array(
 				'version'     => Config::get( 'version', '' ),
-				'ticket'      => $this->getAPIServiceTicket(),
-				'appUrl'      => $this->url->resolve( 'app' )->getPath(),
-				'api'         => array(
-					'measurements' => Config::get( 'measurements.endpoint' ),
-					'refresh'      => $this->url->resolve( 'refresh.php' )->getPath(),
-					'logout'       => Config::get( 'pgtservice.enabled' )
-						? $this->url->resolve( 'logout.php' )->getPath()
-						: $this->casClient->getServerLogoutURL(),
-					'login'        => $this->casClient->getServerLoginURL(),
-				),
-				'namespace'   => Config::get( 'measurements.namespace' ),
-				'tabs'        => Config::get( 'tabs', array() ),
 				'environment' => Config::get( 'application.environment', 'production' ),
+				'appUrl'      => $this->path,
+				'api'         => array(
+					'global-profile' => Config::get( 'globalprofile.endpoint' ),
+					'cas-auth-api'   => Config::get( 'cas-auth-api.endpoint' ),
+					'ticket'         => $this->url->getURL() . '/ticket.php',
+					'logout'         => Config::get( 'pgtservice.enabled' )
+						? $this->url->getURL() . '/logout.php'
+						: $this->casClient->getServerLogoutURL(),
+					'login'          => $this->casClient->getServerLoginURL(),
+				),
 			) );
-		}
-
-		private function endswith( $string, $test ) {
-			$strlen  = strlen( $string );
-			$testlen = strlen( $test );
-			if ( $testlen > $strlen ) return false;
-			return substr_compare( $string, $test, $strlen - $testlen, $testlen ) === 0;
 		}
 	}
 

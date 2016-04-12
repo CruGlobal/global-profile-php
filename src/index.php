@@ -26,6 +26,7 @@
 		<script type="application/javascript" src="bower_components/angular-touch/angular-touch.js"></script>
 		<script type="application/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 		<script type="application/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script type="application/javascript" src="bower_components/angular-cas-auth-api/dist/cas-auth-api.js"></script>
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
 		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>
 		<script type="application/javascript" src="bower_components/papaparse/papaparse.js"></script>
@@ -55,7 +56,7 @@
 
 	<!-- Application JavaScript -->
 	<!-- build:js js/app.js -->
-	<script type="application/javascript" src="js/api/measurements/measurements.module.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/globalprofile.module.js"></script>
 	<script type="application/javascript" src="js/states/app/app.module.js"></script>
 	<script type="application/javascript" src="js/states/select-ministry/select-ministry.module.js"></script>
 	<script type="application/javascript" src="js/states/profile/profile.module.js"></script>
@@ -66,11 +67,11 @@
 	<script type="application/javascript" src="js/states/admin/import/import.module.js"></script>
 	<script type="application/javascript" src="js/global-profile.module.js"></script>
 
-	<script type="application/javascript" src="js/api/measurements/countries.service.js"></script>
-	<script type="application/javascript" src="js/api/measurements/languages.service.js"></script>
-	<script type="application/javascript" src="js/api/measurements/ministries.service.js"></script>
-	<script type="application/javascript" src="js/api/measurements/profile.service.js"></script>
-	<script type="application/javascript" src="js/api/measurements/session.service.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/countries.service.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/languages.service.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/ministries.service.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/profile.service.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/user.service.js"></script>
 	<script type="application/javascript" src="js/common/file-reader.directive.js"></script>
 	<script type="application/javascript" src="js/common/offset.filter.js"></script>
 	<script type="application/javascript" src="js/components/profile-form/profile-form.directive.js"></script>

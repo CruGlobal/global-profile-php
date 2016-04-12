@@ -6,7 +6,7 @@
 			'ui.router',
 			'ui.bootstrap.modal',
 			'globalProfile.states.profile',
-			'globalProfile.api.measurements',
+			'globalProfile.api.globalprofile',
 			'globalProfile.components.profileFormDirective'
 		] )
 		.config( function ( $stateProvider ) {
@@ -15,24 +15,23 @@
 					parent:  'profile',
 					url:     '',
 					resolve: {
-						'profile': function ( $log, $q, session, ministry, Profile ) {
+						'profile': function ( $log, $q, user, ministry, Profile ) {
 							var deferred = $q.defer();
 							Profile
 								.get( {
-									person_id:   session.user.person_id,
+									person_id:   user.person_id,
 									ministry_id: ministry.ministry_id
 								}, function ( profile ) {
 									deferred.resolve( profile );
 								}, function ( response ) {
 									// Profile not found for current user
 									if ( response.status === 404 ) {
-										// Build new profile based on session.user attributes
-										var user = session.user,
-											props = ['key_username', 'key_guid', 'first_name', 'last_name', 'person_id'],
+										// Build new profile based on user attributes
+										var props = ['email', 'key_guid', 'first_name', 'last_name', 'person_id'],
 											profile = Profile.defaultProfile();
 										angular.forEach( props, function ( property ) {
 											// Change key_username to email
-											this[property === 'key_username' ? 'email' : property] = user.hasOwnProperty( property ) ? user[property] : '';
+											this[property] = user.hasOwnProperty( property ) ? user[property] : '';
 										}, profile );
 										deferred.resolve( profile );
 									}

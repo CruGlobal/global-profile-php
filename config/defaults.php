@@ -80,6 +80,14 @@
 		),
 
 		/**
+		 * Rails CAS Auth API
+		 */
+		'cas-auth-api'  => array(
+			/** @var string API endpoint, no training slash */
+			'endpoint' => ENV( 'CAS_AUTH_API', '' ),
+		),
+
+		/**
 		 * Measurements API
 		 */
 		'measurements' => array(

@@ -3,9 +3,10 @@
 
 	angular.module( 'globalProfile', [
 		// Dependencies
+		'cas-auth-api',
 		'ui.router',
 		'globalProfile.common.settingsService',
-		'globalProfile.api.measurements',
+		'globalProfile.api.globalprofile',
 		'angular-growl',
 		'gettext',
 

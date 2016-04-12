@@ -22,7 +22,8 @@
     "angular-ui-router": "~0.2",
     "papaparse": "4.1.1",
     "angular-growl-v2": "~0.7.5",
-    "angular-gettext": "~2.1.0"
+    "angular-gettext": "~2.1.0",
+    "angular-cas-auth-api": "~0.1"
   },
   "ignore": [
     "**/.*",

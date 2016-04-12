@@ -36,7 +36,7 @@
 				} );
 				return angular.isObject( data ) ? angular.toJson( data ) : data;
 			},
-			api                     = $resource( Settings.api.measurements( '/people/:person_id' ), {
+			api                     = $resource( Settings.api.globalProfile( '/people/:person_id' ), {
 				person_id:   '@person_id',
 				ministry_id: '@ministry_id'
 			}, {
@@ -64,4 +64,4 @@
 		};
 		return api;
 	} );
-})( angular.module( 'globalProfile.api.measurements' ) );
+})( angular.module( 'globalProfile.api.globalprofile' ) );
