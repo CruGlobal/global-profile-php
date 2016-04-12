@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t cruglobal/$PROJECT_NAME:$GIT_COMMIT-$BUILD_NUMBER .
+docker build -t docker-registry.cru.org/$PROJECT_NAME:$GIT_COMMIT-$BUILD_NUMBER .
