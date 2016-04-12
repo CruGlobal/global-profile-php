@@ -82,6 +82,7 @@
 	<script type="application/javascript" src="js/states/profile/edit/edit.controller.js"></script>
 	<script type="application/javascript" src="js/states/select-ministry/select-ministry.controller.js"></script>
 	<script type="application/javascript" src="js/global-profile.config.js"></script>
+	<script type="application/javascript" src="js/global-profile.language.js"></script>
 
 	<!-- inject:partials -->
 	<!-- angular templates will be automatically converted in js and inserted here -->
