@@ -107,5 +107,6 @@
 		}] );
 
 })( angular.module( 'globalProfile.components.profileFormDirective', [
+	'ngSanitize',
 	'globalProfile.api.globalprofile'
 ] ) );

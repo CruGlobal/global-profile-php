@@ -1,9 +1,9 @@
 <div class="row">
 	<script type="text/ng-template" id="ministryTemplate.html">
 		<a>
-			<span bind-html-unsafe="(match.model.area_code || 'GLBL') | typeaheadHighlight:query"></span>
+			<span ng-bind-html="(match.model.area_code || 'GLBL') | uibTypeaheadHighlight:query"></span>
 			&mdash;
-			<span bind-html-unsafe="match.model.name | typeaheadHighlight:query"></span>
+			<span ng-bind-html="match.model.name | uibTypeaheadHighlight:query"></span>
 		</a>
 	</script>
 	<div class="col-md-6">
@@ -181,7 +181,7 @@
 									   id="country_of_residence"
 									   name="country_of_residence"
 									   ng-model="profile.country_of_residence"
-									   typeahead="country.iso3 as country.name for country in countries | filter:$viewValue | orderBy:'name'"
+									   uib-typeahead="country.iso3 as country.name for country in countries | filter:$viewValue | orderBy:'name'"
 									   typeahead-min-length="2"
 									   typeahead-editable="false"
 									   typeahead-input-formatter="formatCountryLabel($model)"
@@ -406,7 +406,7 @@
 										   id="ministry_of_employment"
 										   name="ministry_of_employment"
 										   ng-model="profile.ministry_of_employment"
-										   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name'"
+										   uib-typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name'"
 										   typeahead-template-url="ministryTemplate.html"
 										   typeahead-min-length="2"
 										   typeahead-editable="false"
@@ -449,7 +449,7 @@
 									   id="assignment_ministry"
 									   name="assignment_ministry"
 									   ng-model="profile.assignments[0].ministry_id"
-									   typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name'"
+									   uib-typeahead="ministry.ministry_id as ministry.name for ministry in ministries | filter:$viewValue | orderBy:'name'"
 									   typeahead-template-url="ministryTemplate.html"
 									   typeahead-min-length="2"
 									   typeahead-editable="false"

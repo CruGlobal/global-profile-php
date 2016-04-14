@@ -9,7 +9,7 @@
 			<input type="text"
 				   class="form-control input-lg"
 				   ng-model="ministry"
-				   typeahead="ministry as ministry.name for ministry in ministries | filter:$viewValue | limitTo:4"
+				   uib-typeahead="ministry as ministry.name for ministry in ministries | filter:$viewValue | limitTo:4"
 				   typeahead-min-length="2"
 				   typeahead-editable="false">
 		</p>

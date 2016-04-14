@@ -24,6 +24,7 @@
 		<script type="application/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
 		<script type="application/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
 		<script type="application/javascript" src="bower_components/angular-touch/angular-touch.js"></script>
+		<script type="application/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 		<script type="application/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 		<script type="application/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 		<script type="application/javascript" src="bower_components/angular-cas-auth-api/dist/cas-auth-api.js"></script>

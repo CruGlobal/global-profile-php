@@ -7,9 +7,6 @@
 		$scope.countries = countries;
 		$scope.languages = languages;
 
-		console.log(ministry);
-		console.log(user);
-
 		$scope.resetForm = function () {
 			$scope.profile = angular.copy( profile );
 			$scope.profileForm.$setPristine();
