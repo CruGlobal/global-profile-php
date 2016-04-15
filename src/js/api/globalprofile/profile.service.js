@@ -54,7 +54,11 @@
 						}
 					}
 				},
-				create: {method: 'POST', transformRequest: normalizeProfileRequest},
+				create: {
+					// Drop people_id from url on POST
+					url:    Settings.api.globalProfile( '/people' ),
+					method: 'POST', transformRequest: normalizeProfileRequest
+				},
 				update: {method: 'PUT', transformRequest: normalizeProfileRequest}
 			} );
 		api.defaultProfile = function () {
