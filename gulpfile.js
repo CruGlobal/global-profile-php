@@ -1,37 +1,17 @@
 'use strict';
 
-var gulp        = require( 'gulp' ),
-	bower       = require( 'gulp-bower' ),
-	del         = require( 'del' ),
-	cdnizer     = require( 'gulp-cdnizer' ),
-	htmlreplace = require( 'gulp-html-replace' ),
-	minifyHTML  = require( 'gulp-minify-html' ),
-	concat      = require( 'gulp-concat' ),
-	ngAnnotate  = require( 'gulp-ng-annotate' ),
-	uglify      = require( 'gulp-uglify' ),
-	minifyCSS   = require( 'gulp-minify-css' ),
-	ngHtml2Js   = require( 'gulp-ng-html2js' ),
-	sourcemaps  = require( 'gulp-sourcemaps' ),
-	path        = require( 'path' ),
-	crypto      = require( 'crypto' ),
-	gettext     = require( 'gulp-angular-gettext' ),
-	url         = require( 'url' ),
-	request     = require( 'request' ),
-	revisions   = {};
+var gulp    = require( 'gulp' ),
+	path    = require( 'path' ),
+	del     = require( 'del' ),
+	crypto  = require( 'crypto' ),
+	url     = require( 'url' ),
+	request = require( 'request' ),
+	fs      = require( 'fs' );
 
-function revisionMap() {
 
-	function md5( str ) {
-		return crypto.createHash( 'md5' ).update( str ).digest( 'hex' ).slice( 0, 8 );
-	}
-
-	function saveRevision( file, callback ) {
-		revisions[file.relative] = file.relative + '?rev=' + md5( file.contents );
-		callback( null, file );
-	}
-
-	return require( 'event-stream' ).map( saveRevision );
-}
+var $ = require( 'gulp-load-plugins' )( {
+	pattern: ['gulp-*']
+} );
 
 function uploadToOneSky() {
 	var onesky = require( './onesky.json' ),
@@ -70,115 +50,116 @@ function uploadToOneSky() {
 	return require( 'event-stream' ).map( uploadPOTFile );
 }
 
+function downloadFromOneSky( callback ) {
+	var onesky = require( './onesky.json' ),
+		async  = require( 'async' ),
+		ts     = Math.floor( new Date() / 1000 );
+
+	// Fetch list of project languages
+	request.get( {
+			url: url.format( {
+				protocol: 'https',
+				host:     'platform.api.onesky.io',
+				pathname: '/1/projects/' + onesky.project_id + '/languages',
+				query:    {
+					api_key:   onesky.api_key,
+					timestamp: ts,
+					dev_hash:  crypto.createHash( 'md5' ).update( ts + onesky.api_secret ).digest( 'hex' )
+				}
+			} )
+		},
+		function ( error, response, body ) {
+			var languages = JSON.parse( body );
+
+			// Do not download "is_base_language" true
+			// Do not download "translation_progress" 0.0%
+			// Download each language that "is_ready_to_publish"
+			async.each( languages.data, function ( language, cb ) {
+				if ( language.is_base_language === true || language.translation_progress === '0.0%' || language.is_ready_to_publish === false ) {
+					cb();
+				} else {
+					var ts      = Math.floor( new Date() / 1000 ),
+						options = {
+							url: url.format( {
+								protocol: 'https',
+								host:     'platform.api.onesky.io',
+								pathname: '/1/projects/' + onesky.project_id + '/translations',
+								query:    {
+									api_key:          onesky.api_key,
+									timestamp:        ts,
+									dev_hash:         crypto.createHash( 'md5' ).update( ts + onesky.api_secret ).digest( 'hex' ),
+									locale:           language.code,
+									source_file_name: 'global-profile-app.pot',
+									export_file_name: language.code + '.po'
+								}
+							} )
+						};
+					request
+						.get( options )
+						.pipe( fs.createWriteStream( 'src/languages/' + language.code + '.po' ).on( 'finish', cb ) )
+				}
+			}, callback );
+		} )
+}
+
 gulp.task( 'clean', function ( callback ) {
-	del( ['dist'], callback );
+	del( ['dist', '.tmp'], callback );
 } );
 
-gulp.task( 'html', ['clean', 'bower', 'application', 'scripts', 'partials', 'styles', 'htaccess'], function () {
-	return gulp.src( 'src/*.php' )
-		.pipe( cdnizer( {
-			allowMin: true,
-			files:    [
-				// JavaScript
-				'google:jquery',
-				'google:angular-loader',
-				'google:angular-resource',
-				'google:angular',
-				{
-					file:    'bower_components/angular-bootstrap/*.js',
-					package: 'angular-bootstrap',
-					cdn:     'cdnjs:angular-ui-bootstrap:${ filenameMin }'
-				},
-				{
-					file:    'bower_components/angular-ui-router/**/*.js',
-					package: 'angular-ui-router',
-					cdn:     'cdnjs:angular-ui-router:${ filenameMin }'
-				},
-				{
-					file:    'bower_components/moment/*.js',
-					package: 'moment',
-					cdn:     'cdnjs:moment.js:${ filenameMin }'
-				},
-				{
-					file:    'bower_components/underscore/underscore.js',
-					package: 'underscore',
-					cdn:     'cdnjs:underscore.js:underscore-min.js'
-				},
-				{
-					file:    'bower_components/papaparse/papaparse.js',
-					package: 'papaparse',
-					cdn:     '//cdnjs.cloudflare.com/ajax/libs/PapaParse/4.1.1/papaparse.min.js'
-				},
+gulp.task( 'html', ['clean', 'bower', 'fonts', 'partials', 'languages', 'htaccess'], function () {
+	var partialsInjectFile = gulp.src( '.tmp/partials/templateCacheHtml.js', {read: false} );
+	var partialsInjectOptions = {
+		starttag:     '<!-- inject:partials -->',
+		addPrefix:    '..',
+		addRootSlash: false
+	};
 
-				// CSS
-				{
-					file:    'bower_components/bootstrap/**/*.css',
-					package: 'bootstrap',
-					cdn:     'cdnjs:twitter-bootstrap:css/${ filenameMin }'
-				}
-			]
+	var htmlFilter = $.filter( '*.html', {restore: true} );
+	var jsFilter = $.filter( '**/*.js', {restore: true} );
+	var cssFilter = $.filter( '**/*.css', {restore: true} );
+	var notIndexFilter = $.filter( ['*', '!*.php'], {restore: true} );
+
+	return gulp.src( 'src/*.php' )
+		.pipe( $.inject( partialsInjectFile, partialsInjectOptions ) )
+		.pipe( $.useref() )
+		.pipe( jsFilter )
+		.pipe( $.sourcemaps.init() )
+		.pipe( $.ngAnnotate() )
+		.pipe( $.uglify( {preserveComments: $.uglifySaveLicense} ) )
+		.pipe( $.sourcemaps.write( '.' ) )
+		.pipe( jsFilter.restore )
+		.pipe( cssFilter )
+		.pipe( $.replace( '../../bower_components/bootstrap/fonts/', '../fonts/' ) )
+		.pipe( $.csso() )
+		.pipe( cssFilter.restore )
+		.pipe( notIndexFilter )
+		.pipe( $.rev() )
+		.pipe( notIndexFilter.restore )
+		.pipe( $.revReplace() )
+		.pipe( htmlFilter )
+		.pipe( $.htmlmin( {
+			removeEmptyAttributes: true
 		} ) )
-		.pipe( htmlreplace( {
-			application: [
-				'js/' + revisions['app.min.js'],
-				'js/' + revisions['templates.min.js']
-			],
-			styles:      'css/' + revisions['styles.min.css'],
-			scripts:     'js/' + revisions['scripts.min.js']
-		} ) )
+		.pipe( htmlFilter.restore )
 		.pipe( gulp.dest( 'dist' ) );
 } );
 
-gulp.task( 'application', ['clean'], function () {
-	return gulp.src( ['src/js/**/*.module.js', 'src/js/**/*.js'] )
-		.pipe( sourcemaps.init() )
-		.pipe( concat( 'app.min.js' ) )
-		.pipe( ngAnnotate() )
-		.pipe( uglify() )
-		.pipe( revisionMap() )
-		.pipe( sourcemaps.write( '.' ) )
-		.pipe( gulp.dest( 'dist/js' ) );
-} );
-
-gulp.task( 'scripts', ['clean'], function () {
-	return gulp.src( [
-		'src/bower_components/angular-gettext/dist/angular-gettext.js',
-		'src/bower_components/angular-growl-v2/build/angular-growl.js'
-	] )
-		.pipe( sourcemaps.init() )
-		.pipe( concat( 'scripts.min.js' ) )
-		.pipe( ngAnnotate() )
-		.pipe( uglify() )
-		.pipe( revisionMap() )
-		.pipe( sourcemaps.write( '.' ) )
-		.pipe( gulp.dest( 'dist/js' ) );
-} );
-
-gulp.task( 'partials', ['clean'], function () {
-	return gulp.src( ['src/js/**/*.html'] )
-		.pipe( sourcemaps.init() )
-		.pipe( minifyHTML() )
-		.pipe( ngHtml2Js( {
-			moduleName:    'globalProfile',
-			prefix:        'js/',
-			declareModule: false
+gulp.task( 'partials', function () {
+	return gulp.src( ['src/**/*.html'] )
+		.pipe( $.htmlmin( {
+			removeEmptyAttributes: true
 		} ) )
-		.pipe( concat( 'templates.min.js' ) )
-		.pipe( uglify() )
-		.pipe( revisionMap() )
-		.pipe( sourcemaps.write( '.' ) )
-		.pipe( gulp.dest( 'dist/js' ) );
+		.pipe( $.angularTemplatecache( 'templateCacheHtml.js', {
+			module: 'globalProfile'
+		} ) )
+		.pipe( gulp.dest( '.tmp/partials/' ) );
 } );
 
-gulp.task( 'styles', ['clean'], function () {
-	return gulp.src( [
-		'src/bower_components/angular-growl-v2/build/angular-growl.css',
-		'src/css/**/*.css'
-	] )
-		.pipe( concat( 'styles.min.css' ) )
-		.pipe( minifyCSS() )
-		.pipe( revisionMap() )
-		.pipe( gulp.dest( 'dist/css' ) );
+gulp.task( 'fonts', ['clean', 'bower'], function () {
+	return gulp.src( ['src/bower_components/bootstrap/fonts/*'] )
+		.pipe( $.filter( '**/*.{eot,svg,ttf,woff,woff2}' ) )
+		.pipe( $.flatten() )
+		.pipe( gulp.dest( 'dist/fonts/' ) );
 } );
 
 gulp.task( 'images', ['clean'], function () {
@@ -186,26 +167,43 @@ gulp.task( 'images', ['clean'], function () {
 		.pipe( gulp.dest( 'dist/img' ) );
 } );
 
-gulp.task( 'htaccess', ['clean'], function () {
-	return gulp.src( 'src/.htaccess' )
-		.pipe( gulp.dest( 'dist' ) );
+gulp.task( 'languages', ['clean'], function () {
+	return gulp.src( ['src/languages/**/*.json'] )
+		.pipe( gulp.dest( 'dist/languages' ) );
 } );
 
 gulp.task( 'bower', function () {
-	return bower();
+	return $.bower();
 } );
 
 gulp.task( 'build', ['images', 'html'] );
 
 gulp.task( 'default', ['build'] );
 
+gulp.task( 'htaccess', ['clean'], function () {
+	return gulp.src( 'src/.htaccess' )
+		.pipe( gulp.dest( 'dist' ) );
+} );
+
 gulp.task( 'pot', function () {
-	return gulp.src( ['src/js/**/*.html', 'src/js/**/*.js'] )
-		.pipe( gettext.extract( 'global-profile-app.pot', {} ) )
+	return gulp.src( ['src/**/*.html', 'src/**/*.js'] )
+		.pipe( $.angularGettext.extract( 'global-profile-app.pot', {} ) )
 		.pipe( gulp.dest( 'src/languages/' ) );
 } );
 
 gulp.task( 'onesky', ['pot'], function () {
 	return gulp.src( 'src/languages/global-profile-app.pot' )
 		.pipe( uploadToOneSky() );
+} );
+
+gulp.task( 'download_from_onesky', function ( callback ) {
+	downloadFromOneSky( callback );
+} );
+
+gulp.task( 'po', ['download_from_onesky'], function () {
+	return gulp.src( 'src/languages/**/*.po' )
+		.pipe( $.angularGettext.compile( {
+			format: 'json'
+		} ) )
+		.pipe( gulp.dest( 'src/languages/' ) );
 } );

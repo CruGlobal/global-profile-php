@@ -8,6 +8,7 @@ vendor/
 # Project
 config/config.php
 dist/
+src/languages/*.po
 
 #Node (npm) / gulp
 node_modules/
@@ -15,3 +16,6 @@ onesky.json
 
 #Bower
 src/bower_components/
+
+# Gulp build
+.tmp/

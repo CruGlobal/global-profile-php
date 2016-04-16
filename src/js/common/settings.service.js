@@ -8,8 +8,20 @@
 			config = c;
 		};
 
-		this.isDebug = function () {
+		this.isDevelopment = function () {
 			return config.environment === 'development';
+		};
+
+		this.globalProfileApiBaseUrl = function () {
+			return config.api['global-profile'];
+		};
+
+		this.casAuthApiBaseUrl = function () {
+			return config.api['cas-auth-api'];
+		};
+
+		this.ticketUrl = function() {
+			return config.api.ticket;
 		};
 
 		function apiUrl( base, path ) {
@@ -22,8 +34,11 @@
 		this.$get = function () {
 			return {
 				api:    {
-					measurements: function ( path ) {
-						return apiUrl( config.api.measurements, path );
+					globalProfile: function ( path ) {
+						return apiUrl( config.api['global-profile'], path );
+					},
+					casAuthApi:   function ( path ) {
+						return apiUrl( config.api['cas-auth-api'], path );
 					}
 				},
 				ticket: config.ticket

@@ -2,7 +2,7 @@
 	'use strict';
 
 	module
-		.controller( 'AddProfileController', function ( $log, $scope, $modal, $state, profile, ministry, Profile, ministries, countries, languages, growl, gettext ) {
+		.controller( 'AddProfileController', function ( $log, $scope, $uibModal, $state, profile, ministry, Profile, ministries, countries, languages, growl, gettext ) {
 			$scope.$state = $state;
 			$scope.requiredFields = [
 				'email',
@@ -39,12 +39,12 @@
 
 					$state.go( 'admin.edit', {person_ID: result.person_id}, {reload: true} );
 				}, function () {
-					$modal.open( {
+					$uibModal.open( {
 						templateUrl: 'js/states/admin/error.modal.html',
 						size:        'sm',
-						controller:  function ( $scope, $modalInstance ) {
+						controller:  function ( $scope, $uibModalInstance ) {
 							$scope.ok = function () {
-								$modalInstance.close();
+								$uibModalInstance.close();
 							};
 						}
 					} );
@@ -54,15 +54,15 @@
 			$scope.$on( '$stateChangeStart', function ( event, toState, toParams, fromState, fromParams ) {
 				if ( $scope.profileForm.$dirty ) {
 					event.preventDefault();
-					$modal.open( {
+					$uibModal.open( {
 						templateUrl: 'js/states/admin/unsaved.modal.html',
-						controller:  function ( $scope, $modalInstance ) {
+						controller:  function ( $scope, $uibModalInstance ) {
 							$scope.save = function () {
-								$modalInstance.close();
+								$uibModalInstance.close();
 							};
 
 							$scope.cancel = function () {
-								$modalInstance.dismiss( 'discard' );
+								$uibModalInstance.dismiss( 'discard' );
 							};
 						}
 					} ).result.then( function () {

@@ -5,7 +5,7 @@
 		.module( 'globalProfile.states.app', [
 			// Dependencies
 			'ui.router',
-			'globalProfile.api.measurements'
+			'globalProfile.api.globalprofile'
 		] )
 		.config( function ( $stateProvider, $urlRouterProvider ) {
 
@@ -16,19 +16,19 @@
 				url:         '/',
 				templateUrl: 'js/states/app/app.html',
 				resolve:     {
-					'session':    function ( $log, Session ) {
-						return Session.getSession();
+					'user':       function ( $log, User ) {
+						return User.current();
 					},
-					'systems':    function ( $log, session, Ministries ) {
+					'systems':    function ( $log, Ministries ) {
 						return Ministries.systems().$promise;
 					},
-					'ministries': function ( $log, session, Ministries ) {
-						return Ministries.whq().$promise;
+					'ministries': function ( $log, Ministries ) {
+						return Ministries.ministries().$promise;
 					},
-					'languages':  function ( $log, session, Languages ) {
+					'languages':  function ( $log, Languages ) {
 						return Languages.languages();
 					},
-					'countries':  function ( $log, session, Countries ) {
+					'countries':  function ( $log, Countries ) {
 						return Countries.countries();
 					}
 				}

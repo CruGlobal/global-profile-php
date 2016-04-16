@@ -1,4 +1,4 @@
-FROM cruglobal/base-image-php:latest
+FROM 056154071827.dkr.ecr.us-east-1.amazonaws.com/base-image-php:latest
 MAINTAINER cru.org <wmd@cru.org>
 
 # Nginx is pointed at /var/www/app as document root

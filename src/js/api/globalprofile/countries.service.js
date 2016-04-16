@@ -4,7 +4,7 @@
 	module.factory( 'Countries', function ( $log, $http, Settings ) {
 		return {
 			countries: function () {
-				return $http.get( Settings.api.measurements( '/iso_countries' ), {
+				return $http.get( Settings.api.globalProfile( '/countries' ), {
 					cache: true
 				} ).then( function ( response ) {
 					if ( angular.isArray( response.data ) ) {
@@ -22,4 +22,4 @@
 			}
 		};
 	} );
-})( angular.module( 'globalProfile.api.measurements' ) );
+})( angular.module( 'globalProfile.api.globalprofile' ) );

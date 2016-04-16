@@ -5,7 +5,7 @@
 		.module( 'globalProfile.states.profile', [
 			'ui.router',
 			'globalProfile.states.app',
-			'globalProfile.api.measurements'
+			'globalProfile.api.globalprofile'
 		] )
 		.config( function ( $stateProvider ) {
 			$stateProvider
@@ -14,7 +14,7 @@
 					abstract: true,
 					url:      '{min_code}',
 					resolve:  {
-						'ministry': function ( $log, $q, $state, $stateParams, session, systems ) {
+						'ministry': function ( $log, $q, $state, $stateParams, systems ) {
 							var deferred = $q.defer();
 							// Unknown min_code
 							if ( angular.isUndefined( $stateParams.min_code ) || $stateParams.min_code === '' ) {
@@ -35,23 +35,8 @@
 							}
 							return deferred.promise;
 						},
-						'isLeader': function ( $log, session, ministry ) {
-							var flatten = function ( a, prop ) {
-								var items = [];
-								angular.forEach( a, function ( item ) {
-									items.push( item );
-									if ( item.hasOwnProperty( prop ) && angular.isArray( item[prop] ) ) {
-										items = items.concat( flatten( item[prop], prop ) );
-									}
-								} );
-								return items;
-							};
-							var assignments = _.where( flatten( session.assignments, 'sub_ministries' ), {ministry_id: ministry.ministry_id} ),
-								roles       = _.pluck( assignments, 'team_role' );
-							return _.contains( roles, 'leader' )
-								|| _.contains( roles, 'inherited_leader' )
-								|| _.contains( roles, 'admin' )
-								|| _.contains( roles, 'inherited_admin' );
+						'isLeader': function ( $log, user, ministry ) {
+							return _.contains( user.admin, ministry.ministry_id );
 						}
 					},
 					views:    {

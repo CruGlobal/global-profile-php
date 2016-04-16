@@ -17,28 +17,30 @@
 		</script>
 
 		<!-- 3rd Party JavaScript and CSS -->
+		<!-- build:js js/vendor.js -->
 		<script type="application/javascript" src="bower_components/jquery/dist/jquery.js"></script>
 		<script type="application/javascript" src="bower_components/angular-loader/angular-loader.js"></script>
 		<script type="application/javascript" src="bower_components/angular/angular.js"></script>
 		<script type="application/javascript" src="bower_components/angular-resource/angular-resource.js"></script>
+		<script type="application/javascript" src="bower_components/angular-animate/angular-animate.js"></script>
+		<script type="application/javascript" src="bower_components/angular-touch/angular-touch.js"></script>
+		<script type="application/javascript" src="bower_components/angular-sanitize/angular-sanitize.js"></script>
 		<script type="application/javascript" src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 		<script type="application/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+		<script type="application/javascript" src="bower_components/angular-cas-auth-api/dist/cas-auth-api.js"></script>
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
 		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>
 		<script type="application/javascript" src="bower_components/papaparse/papaparse.js"></script>
-		<!--<script type="application/javascript" src="bower_components/better-dom/dist/better-dom.min.js"></script>-->
-		<!--<script type="application/javascript" src="bower_components/better-i18n-plugin/dist/better-i18n-plugin.js"></script>-->
-		<!--<script type="application/javascript" src="bower_components/better-dateinput-polyfill/dist/better-dateinput-polyfill.js"></script>-->
-		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-
-		<!-- Additional Javascript / JS not available on CDN -->
-		<!-- build:scripts -->
 		<script type="application/javascript" src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
 		<script type="application/javascript" src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
 		<!-- endbuild -->
 
+		<!-- build:css styles/vendor.css-->
+		<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+		<!-- endbuild -->
+
 		<!-- Application CSS -->
-		<!-- build:styles -->
+		<!-- build:css styles/app.css -->
 		<link rel="stylesheet" href="bower_components/angular-growl-v2/build/angular-growl.css" />
 		<link rel="stylesheet" href="css/global-profile.css" />
 		<link rel="stylesheet" href="css/select.css" />
@@ -54,8 +56,8 @@
 	</div>
 
 	<!-- Application JavaScript -->
-	<!-- build:application -->
-	<script type="application/javascript" src="js/api/measurements/measurements.module.js"></script>
+	<!-- build:js js/app.js -->
+	<script type="application/javascript" src="js/api/globalprofile/globalprofile.module.js"></script>
 	<script type="application/javascript" src="js/states/app/app.module.js"></script>
 	<script type="application/javascript" src="js/states/select-ministry/select-ministry.module.js"></script>
 	<script type="application/javascript" src="js/states/profile/profile.module.js"></script>
@@ -66,11 +68,11 @@
 	<script type="application/javascript" src="js/states/admin/import/import.module.js"></script>
 	<script type="application/javascript" src="js/global-profile.module.js"></script>
 
-	<script type="application/javascript" src="js/api/measurements/countries.service.js"></script>
-	<script type="application/javascript" src="js/api/measurements/languages.service.js"></script>
-	<script type="application/javascript" src="js/api/measurements/ministries.service.js"></script>
-	<script type="application/javascript" src="js/api/measurements/profile.service.js"></script>
-	<script type="application/javascript" src="js/api/measurements/session.service.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/countries.service.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/languages.service.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/ministries.service.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/profile.service.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/user.service.js"></script>
 	<script type="application/javascript" src="js/common/file-reader.directive.js"></script>
 	<script type="application/javascript" src="js/common/offset.filter.js"></script>
 	<script type="application/javascript" src="js/components/profile-form/profile-form.directive.js"></script>
@@ -82,8 +84,12 @@
 	<script type="application/javascript" src="js/states/profile/edit/edit.controller.js"></script>
 	<script type="application/javascript" src="js/states/select-ministry/select-ministry.controller.js"></script>
 	<script type="application/javascript" src="js/global-profile.config.js"></script>
-	<!-- endbuild -->
+	<script type="application/javascript" src="js/global-profile.language.js"></script>
 
+	<!-- inject:partials -->
+	<!-- angular templates will be automatically converted in js and inserted here -->
+	<!-- endinject -->
+	<!-- endbuild -->
 	</body>
 	</html>
 <?php }
