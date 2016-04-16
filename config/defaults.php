@@ -13,31 +13,31 @@
 		/**
 		 * Application version
 		 */
-		'version'      => '1.0.3',
+		'version'       => '1.0.3',
 
 		/**
 		 * Application Name
 		 */
-		'name'         => ENV( 'APPLICATION_NAME', 'Global Profile' ),
+		'name'          => ENV( 'APPLICATION_NAME', 'Global Profile' ),
 
 		/**
 		 * Application Settings
 		 */
-		'application'  => array(
+		'application'   => array(
 			/**
 			 * Application directory
 			 *
 			 * Location where where index.html, javascript, styles should be loaded from.
 			 * Valid values (dist, src)
 			 */
-			'directory'    => ENV( 'APPLICATION_DIR', 'dist' ),
+			'directory'   => ENV( 'APPLICATION_DIR', 'dist' ),
 
 			/**
 			 * Application Environment
 			 *
 			 * Valid values (production, staging, development)
 			 */
-			'environment'  => ENV( 'ENVIRONMENT', 'production' ),
+			'environment' => ENV( 'ENVIRONMENT', 'production' ),
 		),
 
 		/**
@@ -45,7 +45,7 @@
 		 *
 		 * Enable this to use the php wrapper on localhost.
 		 */
-		'pgtservice'   => array(
+		'pgtservice'    => array(
 			/** @var bool Enable PGT Service */
 			'enabled'  => (bool)ENV( 'PGTSERVICE_ENABLED', false ),
 			/** @var string PGT Service proxy callback URL */
@@ -61,7 +61,7 @@
 		/**
 		 * CAS Settings
 		 */
-		'cas'          => array(
+		'cas'           => array(
 			/** @var string CAS hostname */
 			'hostname' => 'thekey.me',
 			/** @var int CAS port */
@@ -73,7 +73,7 @@
 		/**
 		 * Redis Settings
 		 */
-		'redis'        => array(
+		'redis'         => array(
 			'hostname' => ENV( 'REDIS_PORT_6379_TCP_ADDR', false ),
 			'port'     => 6379,
 			'db'       => ENV( 'REDIS_DB_INDEX', 2 ),
@@ -84,15 +84,14 @@
 		 */
 		'cas-auth-api'  => array(
 			/** @var string API endpoint, no training slash */
-			'endpoint' => ENV( 'CAS_AUTH_API', '' ),
+			'endpoint' => ENV( 'CAS_AUTH_API', 'https://auth-api.cru.org/v1' ),
 		),
 
 		/**
-		 * Measurements API
+		 * Global Profile API
 		 */
-		'measurements' => array(
-			/** @var string API endpoint, no training slash */
-			'endpoint'  => ENV( 'MEASUREMENTS_API', 'https://measurements.global-registry.org/v5' ),
+		'globalprofile' => array(
+			'endpoint' => ENV( 'GLOBAL_PROFILE_API', 'https://profile-api.cru.org/v1' ),
 		),
 	);
 }
