@@ -1,7 +1,7 @@
 (function ( module ) {
 	'use strict';
 
-	module.controller( 'EditPersonalProfileController', function ( $log, $scope, $uibModal, session, ministry, profile, Profile, ministries, countries, languages, growl, gettext ) {
+	module.controller( 'EditPersonalProfileController', function ( $log, $scope, $uibModal, user, ministry, profile, Profile, ministries, countries, languages, growl, gettext ) {
 		$scope.profile = angular.copy( profile );
 		$scope.ministries = ministries;
 		$scope.countries = countries;

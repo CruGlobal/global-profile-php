@@ -9,19 +9,19 @@ msgstr ""
 msgid "Add a Person"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:271
+#: js/components/profile-form/profile-form.html:263
 msgid "Anyone can see your profile information."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:556
+#: js/components/profile-form/profile-form.html:532
 msgid "Area"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:555
+#: js/components/profile-form/profile-form.html:531
 msgid "Area Region"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:439
+#: js/components/profile-form/profile-form.html:423
 msgid "Assignment"
 msgstr ""
 
@@ -38,15 +38,15 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:335
+#: js/components/profile-form/profile-form.html:327
 msgid "Centrally Funded Staff"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:320
-#: js/components/profile-form/profile-form.html:348
-#: js/components/profile-form/profile-form.html:510
-#: js/components/profile-form/profile-form.html:538
-#: js/components/profile-form/profile-form.html:570
+#: js/components/profile-form/profile-form.html:312
+#: js/components/profile-form/profile-form.html:340
+#: js/components/profile-form/profile-form.html:486
+#: js/components/profile-form/profile-form.html:514
+#: js/components/profile-form/profile-form.html:546
 msgid "Choose an option to see a description."
 msgstr ""
 
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Continue Editing"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:400
+#: js/components/profile-form/profile-form.html:392
 msgid "Country of Employment"
 msgstr ""
 
@@ -62,19 +62,19 @@ msgstr ""
 msgid "Country of Residence"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:359
+#: js/components/profile-form/profile-form.html:351
 msgid "Date Joined Staff"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:375
+#: js/components/profile-form/profile-form.html:367
 msgid "Date Left Staff"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:264
+#: js/components/profile-form/profile-form.html:256
 msgid "Default Privacy Profile"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:487
+#: js/components/profile-form/profile-form.html:463
 msgid "Digital Strategies"
 msgstr ""
 
@@ -106,7 +106,7 @@ msgstr ""
 msgid "Error Saving Profile"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:558
+#: js/components/profile-form/profile-form.html:534
 msgid "Executive"
 msgstr ""
 
@@ -118,19 +118,19 @@ msgstr ""
 msgid "Female"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:306
+#: js/components/profile-form/profile-form.html:298
 msgid "Full Time Staff"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:489
+#: js/components/profile-form/profile-form.html:465
 msgid "Fund Development"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:329
+#: js/components/profile-form/profile-form.html:321
 msgid "Funding Source"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:486
+#: js/components/profile-form/profile-form.html:462
 msgid "GCM"
 msgstr ""
 
@@ -138,7 +138,7 @@ msgstr ""
 msgid "Gender"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:443
+#: js/components/profile-form/profile-form.html:427
 msgid "Geographic Area of Service"
 msgstr ""
 
@@ -146,7 +146,7 @@ msgstr ""
 msgid "Given Name(s)"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:557
+#: js/components/profile-form/profile-form.html:533
 msgid "Global"
 msgstr ""
 
@@ -160,7 +160,7 @@ msgstr ""
 msgid "GUID"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:337
+#: js/components/profile-form/profile-form.html:329
 msgid "Hybrid"
 msgstr ""
 
@@ -173,31 +173,31 @@ msgstr ""
 msgid "Import a CSV"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:492
+#: js/components/profile-form/profile-form.html:468
 msgid "J-Film"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:207
+#: js/components/profile-form/profile-form.html:199
 msgid "Language 1"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:226
+#: js/components/profile-form/profile-form.html:218
 msgid "Language 2"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:245
+#: js/components/profile-form/profile-form.html:237
 msgid "Language 3"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:485
+#: js/components/profile-form/profile-form.html:461
 msgid "LeaderImpact"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:490
+#: js/components/profile-form/profile-form.html:466
 msgid "Leadership Development/Human Resources"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:552
+#: js/components/profile-form/profile-form.html:528
 msgid "Local"
 msgstr ""
 
@@ -213,27 +213,27 @@ msgstr ""
 msgid "Married"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:293
+#: js/components/profile-form/profile-form.html:285
 msgid "Ministry"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:475
+#: js/components/profile-form/profile-form.html:451
 msgid "Mission Critical Components"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:488
+#: js/components/profile-form/profile-form.html:464
 msgid "Multi-MCC Leader"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:554
+#: js/components/profile-form/profile-form.html:530
 msgid "National"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:553
+#: js/components/profile-form/profile-form.html:529
 msgid "National Region"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:347
+#: js/components/profile-form/profile-form.html:339
 msgid "None of the other categories apply to you."
 msgstr ""
 
@@ -241,8 +241,8 @@ msgstr ""
 msgid "Not a Leader or Inherited Leader of the ministry."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:338
-#: js/components/profile-form/profile-form.html:530
+#: js/components/profile-form/profile-form.html:330
+#: js/components/profile-form/profile-form.html:506
 msgid "Not Applicable"
 msgstr ""
 
@@ -250,24 +250,24 @@ msgstr ""
 msgid "OK"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:278
+#: js/components/profile-form/profile-form.html:270
 msgid "Only you and an administrator can see your profile information. Select this profile setting if you work in a country where security is a concern."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:491
+#: js/components/profile-form/profile-form.html:467
 msgid "Operations"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:297
+#: js/components/profile-form/profile-form.html:289
 msgid "Organizational Status"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:310
-#: js/components/profile-form/profile-form.html:494
+#: js/components/profile-form/profile-form.html:302
+#: js/components/profile-form/profile-form.html:470
 msgid "Other"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:308
+#: js/components/profile-form/profile-form.html:300
 msgid "Part Time Staff"
 msgstr ""
 
@@ -275,11 +275,11 @@ msgstr ""
 msgid "Personal"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:519
+#: js/components/profile-form/profile-form.html:495
 msgid "Position/Role"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:493
+#: js/components/profile-form/profile-form.html:469
 msgid "Prayer"
 msgstr ""
 
@@ -287,7 +287,7 @@ msgstr ""
 msgid "Preferred Name<br>Nickname"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:277
+#: js/components/profile-form/profile-form.html:269
 msgid "Private"
 msgstr ""
 
@@ -297,7 +297,7 @@ msgstr ""
 msgid "Profile successfully saved."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:270
+#: js/components/profile-form/profile-form.html:262
 msgid "Public"
 msgstr ""
 
@@ -314,11 +314,11 @@ msgstr ""
 msgid "Save Person"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:547
+#: js/components/profile-form/profile-form.html:523
 msgid "Scope"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:336
+#: js/components/profile-form/profile-form.html:328
 msgid "Self-funded"
 msgstr ""
 
@@ -326,7 +326,7 @@ msgstr ""
 msgid "Separated"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:307
+#: js/components/profile-form/profile-form.html:299
 msgid "Short Term Staff"
 msgstr ""
 
@@ -334,27 +334,27 @@ msgstr ""
 msgid "Single"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:484
+#: js/components/profile-form/profile-form.html:460
 msgid "Student-Led Movements"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:334
+#: js/components/profile-form/profile-form.html:326
 msgid "Supported Staff"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:529
+#: js/components/profile-form/profile-form.html:505
 msgid "Team Leader"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:528
+#: js/components/profile-form/profile-form.html:504
 msgid "Team Member"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:319
+#: js/components/profile-form/profile-form.html:311
 msgid "The above categories do not apply."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:200
+#: js/components/profile-form/profile-form.html:192
 msgid "The country where you currently physically reside"
 msgstr ""
 
@@ -366,35 +366,35 @@ msgstr ""
 msgid "There was an error while saving the profile."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:513
+#: js/components/profile-form/profile-form.html:489
 msgid "These are the components that have been determined to be critical to building movements everywhere."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:573
+#: js/components/profile-form/profile-form.html:549
 msgid "This defines how broad an area of responsibility you have or in which you serve."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:323
+#: js/components/profile-form/profile-form.html:315
 msgid "This identifies your working relationship with the organization, if any."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:220
+#: js/components/profile-form/profile-form.html:212
 msgid "This is my first language."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:239
+#: js/components/profile-form/profile-form.html:231
 msgid "This is my second language."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:258
+#: js/components/profile-form/profile-form.html:250
 msgid "This is my third language."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:469
+#: js/components/profile-form/profile-form.html:445
 msgid "This is the Area/National geographic area where you primarily serve. Short-term projects of a few weeks do not require a change."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:426
+#: js/components/profile-form/profile-form.html:410
 msgid "This is the country from which you receive your salary or other compensation."
 msgstr ""
 
@@ -402,11 +402,11 @@ msgstr ""
 msgid "This is the name by which you are commonly known or how you prefer people address you."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:351
+#: js/components/profile-form/profile-form.html:343
 msgid "This is the primary source of your compensation, if any, from the organization."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:541
+#: js/components/profile-form/profile-form.html:517
 msgid "This is your role or position within the organization."
 msgstr ""
 
@@ -414,7 +414,7 @@ msgstr ""
 msgid "To continue editing or to save changes, click Continue Editing, otherwise Discard Changes to continue."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:346
+#: js/components/profile-form/profile-form.html:338
 msgid "Two or more of the above categories apply to you."
 msgstr ""
 
@@ -427,7 +427,7 @@ msgstr ""
 msgid "Username"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:309
+#: js/components/profile-form/profile-form.html:301
 msgid "Volunteer"
 msgstr ""
 
@@ -435,115 +435,115 @@ msgstr ""
 msgid "Widowed"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:316
+#: js/components/profile-form/profile-form.html:308
 msgid "You are employed full-time by the organization but applied to the organization to participate in a project of 2 years or less (including STINTERs or Interns)."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:315
+#: js/components/profile-form/profile-form.html:307
 msgid "You are employed full-time by the organization for an indefinite period."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:344
+#: js/components/profile-form/profile-form.html:336
 msgid "You are fully paid (funded) by the organization; you do not raise funds for your salary."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:345
+#: js/components/profile-form/profile-form.html:337
 msgid "You are self funded. You do not receive a salary from the organization."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:317
+#: js/components/profile-form/profile-form.html:309
 msgid "You have applied for staff and met all standards for full-time staff, but do not devote full-time to the organization (Including Associate Staff, Affiliate Staff, Professional Staff or Associated Partners)."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:500
+#: js/components/profile-form/profile-form.html:476
 msgid "You help adult leaders develop movements."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:509
+#: js/components/profile-form/profile-form.html:485
 msgid "You help contribute to movements in ways that support our primary MCC's."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:508
+#: js/components/profile-form/profile-form.html:484
 msgid "You help cultivate a culture of prayer that inspires movements everywhere."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:502
+#: js/components/profile-form/profile-form.html:478
 msgid "You help develop movements through the internet."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:501
+#: js/components/profile-form/profile-form.html:477
 msgid "You help leaders develop movements of multiplying faith communities."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:504
+#: js/components/profile-form/profile-form.html:480
 msgid "You help make movements more effective by developing financial resources."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:506
+#: js/components/profile-form/profile-form.html:482
 msgid "You help make movements more effective by leading effective processes."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:503
+#: js/components/profile-form/profile-form.html:479
 msgid "You help make movements more effective by serving our line leadership (NTL, ATL, etc.)"
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:507
+#: js/components/profile-form/profile-form.html:483
 msgid "You help make movements more effective by serving with the J-Film."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:505
+#: js/components/profile-form/profile-form.html:481
 msgid "You help make movments more effective by developing growing people, effective leaders and healthy teams."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:499
+#: js/components/profile-form/profile-form.html:475
 msgid "You help student leaders develop movements."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:537
+#: js/components/profile-form/profile-form.html:513
 msgid "You neither serve as a team member on a team nor lead a team."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:535
+#: js/components/profile-form/profile-form.html:511
 msgid "You primarily serve as a team member under the supervision of a team leader. You may be on the field or on a team helping to build capacity (e.g. Operations, LDHR, Fund Development, etc)."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:536
+#: js/components/profile-form/profile-form.html:512
 msgid "You primarily serve as the team leader of either a field or capacity building team (e.g. Operations, LDHR, Fund Development, etc.) A team leader is defined as an individual who has primary responsibility for supervising or developing staff or volunteers."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:343
+#: js/components/profile-form/profile-form.html:335
 msgid "You receive a salary from funds you raise for the organization."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:568
+#: js/components/profile-form/profile-form.html:544
 msgid "You serve in an Executive Team Leader’s office or on another team that works with countries in multiple Areas."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:565
+#: js/components/profile-form/profile-form.html:541
 msgid "You serve in the national office or on a team that oversees two or more regional field teams."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:563
+#: js/components/profile-form/profile-form.html:539
 msgid "You serve on a campus, in a village or a city."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:566
+#: js/components/profile-form/profile-form.html:542
 msgid "You serve on a team that oversees one or more countries but not the entire Area."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:564
+#: js/components/profile-form/profile-form.html:540
 msgid "You serve on a team that oversees two or more local teams."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:567
+#: js/components/profile-form/profile-form.html:543
 msgid "You serve on the Area Leadership Team or in the Area Office or on a team that helps to support the development of strategies (SLM, LeaderImpact, GCM, DS) or capacity building (Operations, LDHR, Fund Development, etc.) for the Area."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:569
+#: js/components/profile-form/profile-form.html:545
 msgid "You serve on the Executive Team."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:318
+#: js/components/profile-form/profile-form.html:310
 msgid "You volunteer with the organization. This would include student leaders on a college campus or other volunteer leaders."
 msgstr ""
 

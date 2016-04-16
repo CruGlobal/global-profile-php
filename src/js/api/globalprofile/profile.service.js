@@ -36,7 +36,7 @@
 				} );
 				return angular.isObject( data ) ? angular.toJson( data ) : data;
 			},
-			api                     = $resource( Settings.api.measurements( '/people/:person_id' ), {
+			api                     = $resource( Settings.api.globalProfile( '/people/:person_id' ), {
 				person_id:   '@person_id',
 				ministry_id: '@ministry_id'
 			}, {
@@ -54,7 +54,11 @@
 						}
 					}
 				},
-				create: {method: 'POST', transformRequest: normalizeProfileRequest},
+				create: {
+					// Drop people_id from url on POST
+					url:    Settings.api.globalProfile( '/people' ),
+					method: 'POST', transformRequest: normalizeProfileRequest
+				},
 				update: {method: 'PUT', transformRequest: normalizeProfileRequest}
 			} );
 		api.defaultProfile = function () {
@@ -64,4 +68,4 @@
 		};
 		return api;
 	} );
-})( angular.module( 'globalProfile.api.measurements' ) );
+})( angular.module( 'globalProfile.api.globalprofile' ) );

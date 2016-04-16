@@ -10,14 +10,18 @@
 		SettingsProvider.setConfig( window.globalProfile.config );
 	} );
 
-	module.config( function ( $logProvider, SettingsProvider ) {
-		$logProvider.debugEnabled( SettingsProvider.isDebug() );
+	// Configure Cas Authenticated API service
+	module.config( function ( casAuthApiProvider, SettingsProvider ) {
+		casAuthApiProvider.configure( {
+			requireAccessToken: true,
+			cacheAccessToken:   true,
+			authenticationApiBaseUrl: SettingsProvider.casAuthApiBaseUrl(),
+			ticketUrl: SettingsProvider.ticketUrl()
+		} );
 	} );
 
-	// Configure HTTP interceptors
-	module.config( function ( $httpProvider ) {
-		$httpProvider.defaults.withCredentials = true;
-		$httpProvider.interceptors.push( 'Session' );
+	module.config( function ( $logProvider, SettingsProvider ) {
+		$logProvider.debugEnabled( SettingsProvider.isDevelopment() );
 	} );
 
 	// Configure Growl
@@ -25,6 +29,11 @@
 		growlProvider.globalPosition( 'top-right' );
 		growlProvider.globalDisableCountDown( true );
 		growlProvider.globalTimeToLive( {success: 10000, error: -1, warning: -1, info: 10000} );
+	} );
+
+	// Register managed API with casAuthApi
+	module.run( function ( casAuthApi, Settings ) {
+		casAuthApi.addManagedApi( Settings.api.globalProfile() );
 	} );
 
 })( angular.module( 'globalProfile' ) );
