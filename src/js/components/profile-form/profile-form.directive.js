@@ -46,6 +46,17 @@
 						return $scope.requiredFields.indexOf( name ) > -1;
 					};
 
+					$scope.addChild = function () {
+						if ( angular.isUndefined( $scope.profile.children ) || !angular.isArray( $scope.profile.children ) ) {
+							$scope.profile.children = [];
+						}
+						$scope.profile.children.push( {first_name: undefined, birth_date: undefined} );
+					};
+
+					$scope.removeChild = function ( index ) {
+						$scope.profile.children.splice( index, 1 );
+					};
+
 					$scope.$watch( 'profile.organizational_status', function ( organizational_status, oldVal ) {
 						if ( angular.isUndefined( organizational_status ) || organizational_status == 'Volunteer' || organizational_status == 'Other' ) {
 							$scope.showStaffDates = false;
