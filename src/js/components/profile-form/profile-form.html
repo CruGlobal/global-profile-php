@@ -258,14 +258,35 @@
 						</div>
 					</div>
 
+					<!-- Marriage Date -->
+					<div class="form-group has-feedback" ng-class="{'has-error': !marriage.marriage_date.$valid}">
+						<label class="col-sm-4 control-label" for="marriage_date" translate>Marriage Date</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': marriage.marriage_date.$valid}">
+								<input type="date"
+									   class="form-control"
+									   id="marriage_date"
+									   name="marriage_date"
+									   ng-model="profile.marriage_date"
+									   ng-required="isRequired( 'marriage_date' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': marriage.marriage_date.$valid, 'glyphicon-remove': !marriage.marriage_date.$valid}"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+
 					<!-- Spouse -->
-					<div class="form-group">
+					<div class="form-group has-feedback" ng-class="{'has-error': !marriage.spouse.$valid}">
 						<label class="col-sm-4 control-label" for="marital_status" translate>Spouse</label>
 
 						<div class="col-sm-8">
 							<button type="button"
-									class="btn btn-warning form-control">
-								Add Spouse
+									class="btn btn-success">
+								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Spouse
 							</button>
 						</div>
 					</div>
@@ -283,26 +304,44 @@
 						<div class="clearfix"></div>
 					</legend>
 
-					<div class="form-group" ng-repeat="child in profile.children track by $index">
+					<div class="form-group has_feedback"
+						 ng-repeat="child in profile.children track by $index"
+						 ng-class="{'has-error': !children[$index + '_name'].$valid && !children[$index + '_date'].$valid }">
 						<div class="col-sm-5">
+							<div class="input-group" ng-class="{'has-success': children[$index + '_name'].$valid}">
 							<input type="text"
 								   placeholder="First Name"
-								   name="childs_name"
-								   id="childs_name"
+								   name="{{$index}}_name"
+								   id="{{$index}}_name"
 								   class="form-control"
-								   ng-model="child.first_name">
+								   ng-model="child.first_name"
+								   ng-required="isRequired( 'children.first_name' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': children[$index + '_name'].$valid, 'glyphicon-remove': !children[$index + '_name'].$valid}"></span>
+								</span>
+							</div>
 						</div>
 						<div class="col-sm-5">
-							<input type="date"
-								   placeholder="Birth Date"
-								   name="childs_birth_date"
-								   id="childs_birth_date"
-								   class="form-control"
-								   ng-model="child.birth_date">
+							<div class="input-group" ng-class="{'has-success': children[$index + '_date'].$valid}">
+								<input type="date"
+									   placeholder="Birth Date"
+									   name="{{$index}}_date"
+									   id="{{$index}}_date"
+									   class="form-control"
+									   ng-model="child.birth_date"
+									   ng-required="isRequired( 'children.birth_date' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': children[$index + '_date'].$valid, 'glyphicon-remove': !children[$index + '_date'].$valid}"></span>
+								</span>
+							</div>
 						</div>
-						<div class="col-sm-2">
+						<div class="col-sm-1">
 							<button type="button" class="btn btn-danger" ng-click="removeChild($index)">
-								<span class="glyphicon glyphicon-remove"></span>
+								<span class="glyphicon glyphicon-minus"></span>
 							</button>
 						</div>
 					</div>
@@ -461,9 +500,9 @@
 						</div>
 					</div>
 
-					<!-- Country of Residence -->
+					<!-- Country -->
 					<div class="form-group has-feedback" ng-class="{'has-error': !address.country.$valid}">
-						<label class="col-sm-4 control-label" for="country" translate>Country of Residence</label>
+						<label class="col-sm-4 control-label" for="country" translate>Country</label>
 
 						<div class="col-sm-8">
 							<div ng-class="{'has-success': address.country.$valid}">
