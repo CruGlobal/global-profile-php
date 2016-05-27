@@ -20,12 +20,24 @@
 				'assignment_ministry',
 				'mcc',
 				'position_role',
-				'scope'
+				'scope',
+				'children.first_name',
+				'children.birth_date',
+				'address.line1',
+				'address.city',
+				'address.state',
+				'address.postal_code',
+				'address.country',
+				'phone_number',
+				'marriage_date',
+				'spouse'
 			];
 			$scope.profile = angular.copy( profile );
 			$scope.ministries = ministries;
 			$scope.countries = countries;
 			$scope.languages = languages;
+			$scope.ministry = ministry;
+			$scope.isSaving = false;
 
 			$scope.resetForm = function () {
 				$scope.profile = angular.copy( profile );
@@ -33,12 +45,14 @@
 			};
 
 			$scope.saveChanges = function () {
-				Profile.update( {ministry_id: ministry.ministry_id}, $scope.profile, function ( result ) {
+				$scope.isSaving = true;
+				Profile.update( {ministry_id: ministry.ministry_id}, angular.copy( $scope.profile ), function ( result ) {
 					// Success
 					growl.success( gettext( 'Profile successfully saved.' ) );
 					profile = result;
 					$scope.profile = angular.copy( profile );
 					$scope.profileForm.$setPristine();
+					$scope.isSaving = false;
 				}, function () {
 					// Error
 					$uibModal.open( {
@@ -50,6 +64,7 @@
 							};
 						}
 					} );
+					$scope.isSaving = false;
 				} );
 			};
 

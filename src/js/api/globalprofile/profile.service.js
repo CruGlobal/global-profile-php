@@ -14,9 +14,32 @@
 				if ( angular.isUndefined( profile.assignments ) ) {
 					profile.assignments = [{}];
 				}
+
+				// Address
+				if ( angular.isUndefined( profile.address ) ) {
+					profile.address = {};
+				}
+
+				// Spouse
+				if ( angular.isUndefined( profile.spouse ) || profile.spouse === null ) {
+					profile.spouse = {};
+				}
+
+				// Children
+				if ( angular.isUndefined( profile.children ) ) {
+					profile.children = [];
+				}
+				else {
+					angular.forEach( profile.children, function ( child ) {
+						if ( angular.isString( child.birth_date ) ) {
+							child.birth_date = moment( child.birth_date ).toDate();
+						}
+					} );
+				}
+
 				angular.forEach( profile, function ( value, key ) {
 					// Convert date string to Date objects
-					if ( ['birth_date', 'date_joined_staff', 'date_left_staff'].indexOf( key ) != -1 ) {
+					if ( ['birth_date', 'date_joined_staff', 'date_left_staff', 'marriage_date'].indexOf( key ) != -1 ) {
 						if ( angular.isString( value ) ) {
 							profile[key] = moment( value ).toDate();
 						}
@@ -30,8 +53,15 @@
 					if ( angular.isUndefined( value ) || value === null ) {
 						delete data[key];
 					}
-					else if ( ['birth_date', 'date_joined_staff', 'date_left_staff'].indexOf( key ) != -1 ) {
+					else if ( ['birth_date', 'date_joined_staff', 'date_left_staff', 'marriage_date'].indexOf( key ) != -1 ) {
 						data[key] = moment( value ).format( 'YYYY-MM-DD' )
+					}
+					else if ( key === 'children' ) {
+						angular.forEach( value, function ( child ) {
+							if ( angular.isDefined( child.birth_date ) ) {
+								child.birth_date = moment( child.birth_date ).format( 'YYYY-MM-DD' )
+							}
+						} );
 					}
 				} );
 				return angular.isObject( data ) ? angular.toJson( data ) : data;
@@ -48,11 +78,7 @@
 					}
 				},
 				query:  {
-					method: 'GET', isArray: true, interceptor: {
-						response: function ( response ) {
-							return angular.forEach( response.resource, normalizeProfile );
-						}
-					}
+					method: 'GET', isArray: true
 				},
 				create: {
 					// Drop people_id from url on POST

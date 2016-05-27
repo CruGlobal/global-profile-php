@@ -231,6 +231,213 @@
 				</fieldset>
 			</div>
 		</ng-form>
+
+		<ng-form name="address">
+			<div class="form-horizontal well">
+				<fieldset>
+					<legend>
+						<span translate>Address</span>
+						<span>&nbsp;</span>
+						<span ng-if="showHelp" class="small" translate>(current physical residence.)</span>
+					</legend>
+
+					<!-- Line 1 -->
+					<div class="form-group has-feedback"
+						 ng-class="{'has-error': !address.line1.$valid}">
+						<label class="col-sm-4 control-label" for="line1" translate>Line 1</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': address.line1.$valid}">
+								<input type="text"
+									   name="line1"
+									   id="line1"
+									   class="form-control"
+									   autocomplete="off"
+									   ng-model="profile.address.line1"
+									   ng-minlength="2"
+									   ng-required="isRequired( 'address.line1' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': address.line1.$valid, 'glyphicon-remove': !address.line1.$valid}"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Line 2 -->
+					<div class="form-group has-feedback"
+						 ng-class="{'has-error': !address.line2.$valid}">
+						<label class="col-sm-4 control-label" for="line2" translate>Line 2</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': address.line2.$valid}">
+								<input type="text"
+									   name="line2"
+									   id="line2"
+									   class="form-control"
+									   autocomplete="off"
+									   ng-model="profile.address.line2"
+									   ng-required="isRequired( 'address.line2' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': address.line2.$valid, 'glyphicon-remove': !address.line2.$valid}"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- City -->
+					<div class="form-group has-feedback"
+						 ng-class="{'has-error': !address.city.$valid}">
+						<label class="col-sm-4 control-label" for="city" translate>City</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': address.city.$valid}">
+								<input type="text"
+									   name="city"
+									   id="city"
+									   class="form-control"
+									   autocomplete="off"
+									   ng-model="profile.address.city"
+									   ng-minlength="2"
+									   ng-required="isRequired( 'address.city' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': address.city.$valid, 'glyphicon-remove': !address.city.$valid}"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- State -->
+					<div class="form-group has-feedback"
+						 ng-class="{'has-error': !address.state.$valid}">
+						<label class="col-sm-4 control-label" for="state" translate>State / Province</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': address.state.$valid}">
+								<input type="text"
+									   name="state"
+									   id="state"
+									   class="form-control"
+									   autocomplete="off"
+									   ng-model="profile.address.state"
+									   ng-minlength="2"
+									   ng-required="isRequired( 'address.state' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': address.state.$valid, 'glyphicon-remove': !address.state.$valid}"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Postal Code -->
+					<div class="form-group has-feedback"
+						 ng-class="{'has-error': !address.postal_code.$valid}">
+						<label class="col-sm-4 control-label" for="postal_code" translate>Postal Code</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': address.postal_code.$valid}">
+								<input type="text"
+									   name="postal_code"
+									   id="postal_code"
+									   class="form-control"
+									   autocomplete="off"
+									   ng-model="profile.address.postal_code"
+									   ng-minlength="2"
+									   ng-required="isRequired( 'address.postal_code' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': address.postal_code.$valid, 'glyphicon-remove': !address.postal_code.$valid}"></span>
+								</span>
+							</div>
+						</div>
+					</div>
+
+					<!-- Country -->
+					<div class="form-group has-feedback" ng-class="{'has-error': !address.country.$valid}">
+						<label class="col-sm-4 control-label" for="country" translate>Country</label>
+
+						<div class="col-sm-8">
+							<div ng-class="{'has-success': address.country.$valid}">
+								<input type="text"
+									   class="form-control"
+									   id="country"
+									   name="country"
+									   autocomplete="off"
+									   ng-model="profile.address.country"
+									   uib-typeahead="country.iso3 as country.name for country in countries | filter:$viewValue | orderBy:'name'"
+									   typeahead-min-length="2"
+									   typeahead-editable="false"
+									   typeahead-input-formatter="formatCountryLabel($model)"
+									   ng-required="isRequired( 'address.country' )">
+							</div>
+						</div>
+					</div>
+
+					<!-- Phone Number -->
+					<div class="form-group has-feedback"
+						 ng-class="{'has-error': !address.phone_number.$valid}">
+						<label class="col-sm-4 control-label" for="phone_number" translate>Phone Number</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': address.phone_number.$valid}">
+								<input type="tel"
+									   name="phone_number"
+									   id="phone_number"
+									   class="form-control"
+									   autocomplete="off"
+									   ng-model="profile.phone_number"
+									   ng-minlength="2"
+									   ng-required="isRequired( 'phone_number' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': address.phone_number.$valid, 'glyphicon-remove': !address.phone_number.$valid}"></span>
+								</span>
+							</div>
+
+							<p ng-if="showHelp" class="help-block" translate>Your Phone Number used by the organization to contact you.</p>
+						</div>
+					</div>
+
+					<!-- Skype ID -->
+					<div class="form-group has-feedback"
+						 ng-class="{'has-error': !address.skype_id.$valid}">
+						<label class="col-sm-4 control-label" for="skype_id" translate>Skype ID</label>
+
+						<div class="col-sm-8">
+							<div class="input-group" ng-class="{'has-success': address.skype_id.$valid}">
+								<input type="text"
+									   name="skype_id"
+									   id="skype_id"
+									   class="form-control"
+									   autocomplete="off"
+									   ng-model="profile.skype_id"
+									   ng-required="isRequired( 'skype_id' )">
+								<span class="input-group-addon">
+									<span class="glyphicon"
+										  aria-hidden="true"
+										  ng-class="{'glyphicon-ok': address.skype_id.$valid, 'glyphicon-remove': !address.skype_id.$valid}"></span>
+								</span>
+							</div>
+
+							<p ng-if="showHelp" class="help-block" translate>Your Skype ID used by the organization to contact you.</p>
+						</div>
+					</div>
+
+				</fieldset>
+			</div>
+		</ng-form>
+	</div>
+
+	<div class="col-md-6">
 		<ng-form name="marriage">
 			<div class="form-horizontal well">
 				<fieldset>
@@ -258,37 +465,31 @@
 						</div>
 					</div>
 
-					<!-- Marriage Date -->
-					<div class="form-group has-feedback" ng-class="{'has-error': !marriage.marriage_date.$valid}">
-						<label class="col-sm-4 control-label" for="marriage_date" translate>Marriage Date</label>
+					<div ng-if="showSpouse">
 
-						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': marriage.marriage_date.$valid}">
-								<input type="date"
-									   class="form-control"
-									   id="marriage_date"
-									   name="marriage_date"
-									   ng-model="profile.marriage_date"
-									   ng-required="isRequired( 'marriage_date' )">
+						<!-- Marriage Date -->
+						<div class="form-group has-feedback" ng-class="{'has-error': !marriage.marriage_date.$valid}">
+							<label class="col-sm-4 control-label" for="marriage_date" translate>Marriage Date</label>
+
+							<div class="col-sm-8">
+								<div class="input-group" ng-class="{'has-success': marriage.marriage_date.$valid}">
+									<input type="date"
+										   class="form-control"
+										   id="marriage_date"
+										   name="marriage_date"
+										   ng-model="profile.marriage_date"
+										   ng-required="isRequired( 'marriage_date' )">
 								<span class="input-group-addon">
 									<span class="glyphicon"
 										  aria-hidden="true"
 										  ng-class="{'glyphicon-ok': marriage.marriage_date.$valid, 'glyphicon-remove': !marriage.marriage_date.$valid}"></span>
 								</span>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<!-- Spouse -->
-					<div class="form-group has-feedback" ng-class="{'has-error': !marriage.spouse.$valid}">
-						<label class="col-sm-4 control-label" for="marital_status" translate>Spouse</label>
-
-						<div class="col-sm-8">
-							<button type="button"
-									class="btn btn-success">
-								<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Spouse
-							</button>
-						</div>
+						<!-- Spouse -->
+						<spouse ng-model="profile.spouse" ng-required="isRequired( 'spouse' )" show-spouse-selector="showSpouseSelector" current-ministry="currentMinistry"></spouse>
 					</div>
 				</fieldset>
 			</div>
@@ -298,24 +499,25 @@
 			<div class="form-horizontal well">
 				<fieldset>
 					<legend><span translate>Children</span>
-						<button class="btn btn-success pull-right btn-add-child" ng-click="addChild()" type="button">
+						<button class="btn btn-info pull-right btn-add-child" ng-click="addChild()" type="button">
 							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Child
 						</button>
 						<div class="clearfix"></div>
 					</legend>
 
+					<!-- Children -->
 					<div class="form-group has_feedback"
 						 ng-repeat="child in profile.children track by $index"
 						 ng-class="{'has-error': !children[$index + '_name'].$valid && !children[$index + '_date'].$valid }">
 						<div class="col-sm-5">
 							<div class="input-group" ng-class="{'has-success': children[$index + '_name'].$valid}">
-							<input type="text"
-								   placeholder="First Name"
-								   name="{{$index}}_name"
-								   id="{{$index}}_name"
-								   class="form-control"
-								   ng-model="child.first_name"
-								   ng-required="isRequired( 'children.first_name' )">
+								<input type="text"
+									   placeholder="First Name"
+									   name="{{$index}}_name"
+									   id="{{$index}}_name"
+									   class="form-control"
+									   ng-model="child.first_name"
+									   ng-required="isRequired( 'children.first_name' )">
 								<span class="input-group-addon">
 									<span class="glyphicon"
 										  aria-hidden="true"
@@ -348,232 +550,7 @@
 				</fieldset>
 			</div>
 		</ng-form>
-	</div>
 
-	<div class="col-md-6">
-		<ng-form name="address">
-			<div class="form-horizontal well">
-				<fieldset>
-					<legend translate>Address</legend>
-
-					<!-- Line 1 -->
-					<div class="form-group has-feedback"
-						 ng-class="{'has-error': !address.line1.$valid}">
-						<label class="col-sm-4 control-label" for="line1" translate>Line 1</label>
-
-						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': address.line1.$valid}">
-								<input type="text"
-									   name="line1"
-									   id="line1"
-									   class="form-control"
-									   ng-model="profile.address.line1"
-									   ng-required="isRequired( 'address.line1' )">
-								<span class="input-group-addon">
-									<span class="glyphicon"
-										  aria-hidden="true"
-										  ng-class="{'glyphicon-ok': address.line1.$valid, 'glyphicon-remove': !address.line1.$valid}"></span>
-								</span>
-							</div>
-
-							<p ng-if="showHelp" class="help-block" translate>The First Line of Your Address.</p>
-						</div>
-					</div>
-
-					<!-- Line 2 -->
-					<div class="form-group has-feedback"
-						 ng-class="{'has-error': !address.line2.$valid}">
-						<label class="col-sm-4 control-label" for="line2" translate>Line 2</label>
-
-						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': address.line2.$valid}">
-								<input type="text"
-									   name="line2"
-									   id="line2"
-									   class="form-control"
-									   ng-model="profile.address.line2"
-									   ng-required="isRequired( 'address.line2' )">
-								<span class="input-group-addon">
-									<span class="glyphicon"
-										  aria-hidden="true"
-										  ng-class="{'glyphicon-ok': address.line2.$valid, 'glyphicon-remove': !address.line2.$valid}"></span>
-								</span>
-							</div>
-
-							<p ng-if="showHelp" class="help-block" translate>The Second Line of Your Address.</p>
-						</div>
-					</div>
-
-					<!-- Line 3 -->
-					<div class="form-group has-feedback"
-						 ng-class="{'has-error': !address.line3.$valid}">
-						<label class="col-sm-4 control-label" for="line3" translate>Line 3</label>
-
-						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': address.line3.$valid}">
-								<input type="text"
-									   name="line3"
-									   id="line3"
-									   class="form-control"
-									   ng-model="profile.address.line3"
-									   ng-required="isRequired( 'address.line3' )">
-								<span class="input-group-addon">
-									<span class="glyphicon"
-										  aria-hidden="true"
-										  ng-class="{'glyphicon-ok': address.line3.$valid, 'glyphicon-remove': !address.line3.$valid}"></span>
-								</span>
-							</div>
-
-							<p ng-if="showHelp" class="help-block" translate>The Third Line of Your Address.</p>
-						</div>
-					</div>
-
-					<!-- City -->
-					<div class="form-group has-feedback"
-						 ng-class="{'has-error': !address.city.$valid}">
-						<label class="col-sm-4 control-label" for="city" translate>City</label>
-
-						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': address.city.$valid}">
-								<input type="text"
-									   name="city"
-									   id="city"
-									   class="form-control"
-									   ng-model="profile.address.city"
-									   ng-required="isRequired( 'address.city' )">
-								<span class="input-group-addon">
-									<span class="glyphicon"
-										  aria-hidden="true"
-										  ng-class="{'glyphicon-ok': address.city.$valid, 'glyphicon-remove': !address.city.$valid}"></span>
-								</span>
-							</div>
-
-							<p ng-if="showHelp" class="help-block" translate>The City Associated With Your Address.</p>
-						</div>
-					</div>
-
-					<!-- State -->
-					<div class="form-group has-feedback"
-						 ng-class="{'has-error': !address.state.$valid}">
-						<label class="col-sm-4 control-label" for="state" translate>State / Province</label>
-
-						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': address.state.$valid}">
-								<input type="text"
-									   name="state"
-									   id="state"
-									   class="form-control"
-									   ng-model="profile.address.state"
-									   ng-required="isRequired( 'address.state' )">
-								<span class="input-group-addon">
-									<span class="glyphicon"
-										  aria-hidden="true"
-										  ng-class="{'glyphicon-ok': address.state.$valid, 'glyphicon-remove': !address.state.$valid}"></span>
-								</span>
-							</div>
-
-							<p ng-if="showHelp" class="help-block" translate>The State/Province Associated With Your Address.</p>
-						</div>
-					</div>
-
-					<!-- Postal Code -->
-					<div class="form-group has-feedback"
-						 ng-class="{'has-error': !address.postal_code.$valid}">
-						<label class="col-sm-4 control-label" for="postal_code" translate>Postal Code</label>
-
-						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': address.postal_code.$valid}">
-								<input type="text"
-									   name="postal_code"
-									   id="postal_code"
-									   class="form-control"
-									   ng-model="profile.address.postal_code"
-									   ng-required="isRequired( 'address.postal_code' )">
-								<span class="input-group-addon">
-									<span class="glyphicon"
-										  aria-hidden="true"
-										  ng-class="{'glyphicon-ok': address.postal_code.$valid, 'glyphicon-remove': !address.postal_code.$valid}"></span>
-								</span>
-							</div>
-
-							<p ng-if="showHelp" class="help-block" translate>The Postal Code Associated With Your Address.</p>
-						</div>
-					</div>
-
-					<!-- Country -->
-					<div class="form-group has-feedback" ng-class="{'has-error': !address.country.$valid}">
-						<label class="col-sm-4 control-label" for="country" translate>Country</label>
-
-						<div class="col-sm-8">
-							<div ng-class="{'has-success': address.country.$valid}">
-								<input type="text"
-									   class="form-control"
-									   id="country"
-									   name="country"
-									   autocomplete="off"
-									   ng-model="address.country"
-									   uib-typeahead="country.iso3 as country.name for country in countries | filter:$viewValue | orderBy:'name'"
-									   typeahead-min-length="2"
-									   typeahead-editable="false"
-									   typeahead-input-formatter="formatCountryLabel($model)"
-									   ng-required="isRequired( 'country_of_residence' )">
-							</div>
-
-							<p ng-if="showHelp" class="help-block" translate>The country where you currently physically reside</p>
-						</div>
-					</div>
-
-					<!-- Phone Number -->
-					<div class="form-group has-feedback"
-						 ng-class="{'has-error': !address.phone_number.$valid}">
-						<label class="col-sm-4 control-label" for="phone_number" translate>Phone Number</label>
-
-						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': address.phone_number.$valid}">
-								<input type="tel"
-									   name="phone_number"
-									   id="phone_number"
-									   class="form-control"
-									   ng-model="profile.phone_number"
-									   ng-required="isRequired( 'phone_number' )">
-								<span class="input-group-addon">
-									<span class="glyphicon"
-										  aria-hidden="true"
-										  ng-class="{'glyphicon-ok': address.phone_number.$valid, 'glyphicon-remove': !address.phone_number.$valid}"></span>
-								</span>
-							</div>
-
-							<p ng-if="showHelp" class="help-block" translate>Your Phone Number used by the organization to contact you.</p>
-						</div>
-					</div>
-
-					<!-- Skype ID -->
-					<div class="form-group has-feedback"
-						 ng-class="{'has-error': !address.skype_id.$valid}">
-						<label class="col-sm-4 control-label" for="skype_id" translate>Skype ID</label>
-
-						<div class="col-sm-8">
-							<div class="input-group" ng-class="{'has-success': address.skype_id.$valid}">
-								<input type="text"
-									   name="skype_id"
-									   id="skype_id"
-									   class="form-control"
-									   ng-model="profile.skype_id"
-									   ng-required="isRequired( 'skype_id' )">
-								<span class="input-group-addon">
-									<span class="glyphicon"
-										  aria-hidden="true"
-										  ng-class="{'glyphicon-ok': address.skype_id.$valid, 'glyphicon-remove': !address.skype_id.$valid}"></span>
-								</span>
-							</div>
-
-							<p ng-if="showHelp" class="help-block" translate>Your Skype ID used by the organization to contact you.</p>
-						</div>
-					</div>
-
-				</fieldset>
-			</div>
-		</ng-form>
 		<ng-form name="ministry">
 			<div class="form-horizontal well">
 				<fieldset>

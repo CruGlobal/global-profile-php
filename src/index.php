@@ -76,6 +76,8 @@
 	<script type="application/javascript" src="js/common/file-reader.directive.js"></script>
 	<script type="application/javascript" src="js/common/offset.filter.js"></script>
 	<script type="application/javascript" src="js/components/profile-form/profile-form.directive.js"></script>
+	<script type="application/javascript" src="js/components/profile-form/spouse.directive.js"></script>
+	<script type="application/javascript" src="js/components/profile-form/add-spouse.controller.js"></script>
 	<script type="application/javascript" src="js/common/settings.service.js"></script>
 	<script type="application/javascript" src="js/states/admin/add/add.controller.js"></script>
 	<script type="application/javascript" src="js/states/admin/edit/edit.controller.js"></script>

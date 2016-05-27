@@ -19,17 +19,28 @@
 				'assignment_ministry',
 				'mcc',
 				'position_role',
-				'scope'
+				'scope',
+				'children.first_name',
+				'children.birth_date',
+				'address.line1',
+				'address.city',
+				'address.state',
+				'address.postal_code',
+				'address.country',
+				'phone_number',
+				'marriage_date',
+				'spouse'
 			];
 			return {
 				restrict:    'E',
 				require:     ['^ngModel'],
 				scope:       {
-					profile:        '=ngModel',
-					requiredFields: '=?profileRequiredFields',
-					ministries:     '=profileMinistries',
-					languages:      '=profileLanguages',
-					countries:      '=profileCountries'
+					profile:         '=ngModel',
+					requiredFields:  '=?profileRequiredFields',
+					ministries:      '=profileMinistries',
+					languages:       '=profileLanguages',
+					countries:       '=profileCountries',
+					currentMinistry: '='
 				},
 				templateUrl: 'js/components/profile-form/profile-form.html',
 				transclude:  true,
@@ -37,6 +48,7 @@
 					$scope.showHelp = angular.isUndefined( $attrs.profileShowHelp ) ? true : $scope.$eval( $attrs.profileShowHelp ) === true;
 					$scope.showPrivacy = $scope.$eval( $attrs.profileShowPrivacy ) === true;
 					$scope.showLeftStaff = $scope.$eval( $attrs.profileShowLeftStaff ) === true;
+					$scope.showSpouseSelector = $scope.$eval( $attrs.profileShowSpouseSelector ) === true;
 
 					if ( angular.isUndefined( $attrs.profileRequiredFields ) ) {
 						$scope.requiredFields = defaultRequiredFields;
@@ -98,6 +110,26 @@
 						}
 					} );
 
+					$scope.$watch( 'profile.marital_status', function ( marital_status, oldVal ) {
+						if ( angular.isUndefined( marital_status ) ||
+							marital_status == 'Single' || marital_status == 'Engaged' || marital_status == 'Divorced' ||
+							marital_status == 'Widowed' ) {
+							delete $scope.profile.spouse;
+							delete $scope.profile.marriage_date;
+							$scope.showSpouse = false;
+							$scope.requiredFields = _.without( $scope.requiredFields, 'marriage_date', 'spouse' );
+						}
+						else {
+							$scope.showSpouse = true;
+							if ( _.indexOf( $scope.requiredFields, 'marriage_date' ) === -1 ) {
+								$scope.requiredFields.push( 'marriage_date' );
+							}
+							if ( _.indexOf( $scope.requiredFields, 'spouse' ) === -1 ) {
+								$scope.requiredFields.push( 'spouse' );
+							}
+						}
+					} );
+
 					$scope.formatMinistryLabel = function ( ministry_id ) {
 						for ( var i = 0; i < $scope.ministries.length; i++ ) {
 							if ( ministry_id === $scope.ministries[i].ministry_id ) {
@@ -119,5 +151,8 @@
 
 })( angular.module( 'globalProfile.components.profileFormDirective', [
 	'ngSanitize',
+	'ui.bootstrap.modal',
+	'ui.bootstrap.collapse',
+	'ui.bootstrap.dropdown',
 	'globalProfile.api.globalprofile'
 ] ) );

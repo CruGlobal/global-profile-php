@@ -13,10 +13,12 @@
 			profile-show-help="false"
 			profile-show-left-staff="true"
 			profile-show-privacy="true"
+			profile-show-spouse-selector="true"
 			profile-required-fields="requiredFields"
 			profile-ministries="ministries"
 			profile-languages="languages"
 			profile-countries="countries"
+			current-ministry="ministry"
 			ng-model="profile">
 		</profile-form>
 	</form>
@@ -30,12 +32,15 @@
 			<button type="button"
 					class="btn btn-default"
 					ng-if="profileForm.$dirty"
-					ng-click="resetForm()" translate>Cancel
+					ng-click="resetForm()"
+					ng-disabled="isSaving"
+					translate>Cancel
 			</button>
 			<button type="button"
 					class="btn btn-primary"
-					ng-disabled="profileForm.$invalid"
-					ng-click="saveChanges()" translate>Save Changes
+					ng-disabled="profileForm.$invalid || isSaving"
+					ng-click="saveChanges()"
+					translate>Save Changes
 			</button>
 		</div>
 	</script>

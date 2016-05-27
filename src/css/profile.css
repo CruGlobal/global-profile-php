@@ -11,17 +11,26 @@
 	margin-bottom: 5px;
 }
 
+.add-spouse-modal .form-horizontal {
+	margin: 0 12px;
+}
+
 input[type="date"].form-control {
 	padding: 6px 0 6px 4px;
 }
 
-input[type="date"]::-webkit-calendar-picker-indicator{
-	display:inline-block;
-	margin-top:2%;
-	float:right;
+input[type="date"]::-webkit-calendar-picker-indicator {
+	display: inline-block;
+	margin-top: 2%;
+	float: right;
 }
+
 input[type="date"]::-webkit-inner-spin-button {
 	/* display: none; <- Crashes Chrome on hover */
 	-webkit-appearance: none;
 	margin: 0;
+}
+
+legend span {
+	display: inline;
 }

@@ -8,7 +8,8 @@
 			ng-model="profile"
 			profile-ministries="ministries"
 			profile-languages="languages"
-			profile-countries="countries">
+			profile-countries="countries"
+			current-ministry="ministry">
 		</profile-form>
 	</form>
 	<div class="row">
@@ -20,13 +21,15 @@
 		<div class="form-actions">
 			<button type="button"
 					class="btn btn-default"
-					ng-disabled="profileForm.$pristine"
-					ng-click="resetForm()" translate>Cancel
+					ng-disabled="profileForm.$pristine || isSaving"
+					ng-click="resetForm()"
+					translate>Cancel
 			</button>
 			<button type="button"
 					class="btn btn-primary"
-					ng-disabled="profileForm.$invalid"
-					ng-click="saveChanges()" translate>Save Changes
+					ng-disabled="profileForm.$invalid || isSaving"
+					ng-click="saveChanges()"
+					translate>Save Changes
 			</button>
 		</div>
 	</script>

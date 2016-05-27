@@ -1,0 +1,83 @@
+<ng-form name="spouseForm">
+
+	<div class="form-group has-feedback" ng-class="{'has-error': !ngModel.$valid}">
+		<label class="col-sm-4 control-label" translate>Spouse</label>
+
+		<div ng-switch="viewState">
+			<div ng-switch-when="username">
+				<div class="col-sm-8">
+					<div class="input-group" ng-class="{'has-success': spouseForm.key_username.$valid}">
+						<input type="email"
+							   class="form-control"
+							   id="key_username"
+							   name="key_username"
+							   ng-model="spouse.key_username"
+							   readonly
+							   required>
+						<div class="input-group-btn" uib-dropdown>
+							<button type="button"
+									class="btn btn-success"
+									uib-dropdown-toggle>
+								<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu" uib-dropdown-menu role="menu">
+								<li role="menuitem">
+									<a href ng-click="removeSpouse()">
+										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div ng-switch-when="personal">
+				<div class="col-sm-8">
+					<div class="input-group" ng-class="{'has-success': ngModel.$valid}">
+						<input type="text"
+							   class="form-control"
+							   id="name"
+							   name="name"
+							   value="{{spouse.last_name}}, {{spouse.first_name}}"
+							   readonly>
+						<div class="input-group-btn" uib-dropdown>
+							<button type="button"
+									class="btn btn-success"
+									uib-dropdown-toggle>
+								<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>&nbsp;
+								<span class="caret"></span>
+							</button>
+							<ul class="dropdown-menu dropdown-menu-right" uib-dropdown-menu role="menu">
+								<li role="menuitem">
+									<a href ng-click="removeSpouse()">
+										<span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Remove
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div ng-switch-default>
+				<div class="col-sm-5" ng-if="showSpouseSelector">
+					<select class="form-control"
+							ng-model="spouse.spouse_id"
+							ng-options="person.person_id as spouseFormatter(person) for person in people">
+						<option value=""></option>
+					</select>
+				</div>
+				<div class="col-sm-3" ng-class="{'col-sm-offset-5': !showSpouseSelector}">
+					<button type="button"
+							class="btn form-control"
+							ng-class="{'btn-success': ngModel.$valid, 'btn-danger': !ngModel.$valid}"
+							ng-click="addSpouse()">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Spouse
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</ng-form>

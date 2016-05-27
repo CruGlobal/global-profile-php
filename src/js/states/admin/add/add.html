@@ -14,9 +14,11 @@
 			profile-show-left-staff="true"
 			profile-show-privacy="true"
 			profile-required-fields="requiredFields"
+			profile-show-spouse-selector="true"
 			profile-ministries="ministries"
 			profile-languages="languages"
 			profile-countries="countries"
+			current-ministry="ministry"
 			ng-model="profile">
 			<div class="form-horizontal well">
 				<fieldset>
@@ -48,12 +50,15 @@
 		<div class="form-actions">
 			<button type="button"
 					class="btn btn-default"
-					ng-click="resetForm()" translate>Reset
+					ng-click="resetForm()"
+					ng-disabled="isSaving"
+					translate>Reset
 			</button>
 			<button type="button"
 					class="btn btn-primary"
-					ng-disabled="profileForm.$invalid"
-					ng-click="saveProfile()" translate>Save Person
+					ng-disabled="profileForm.$invalid || isSaving"
+					ng-click="saveProfile()"
+					translate>Save Person
 			</button>
 		</div>
 	</script>

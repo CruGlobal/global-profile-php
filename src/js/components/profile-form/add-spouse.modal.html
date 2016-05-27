@@ -1,0 +1,130 @@
+<div class="add-spouse-modal">
+	<div class="modal-header">
+		<h3 class="modal-title" translate>Add your Spouse</h3>
+	</div>
+	<div class="modal-body">
+		<form name="addSpouseForm">
+			<div class="row">
+				<ng-form name="login">
+					<div class="form-horizontal well" uib-collapse="!toggle.login">
+						<fieldset>
+							<legend><span translate>TheKey Username</span>
+								<button class="btn btn-link pull-right" ng-click="toggle.login = false" type="button">
+									<span translate>I don't know this!</span>
+								</button>
+								<div class="clearfix"></div>
+							</legend>
+
+							<!-- TheKey Username -->
+							<div class="form-group has-feedback"
+								 ng-class="{'has-error': !login.key_username.$valid}">
+								<label class="col-sm-4 control-label" for="key_username" translate>Username</label>
+
+								<div class="col-sm-8">
+									<div class="input-group" ng-class="{'has-success': login.key_username.$valid}">
+										<input type="email"
+											   name="key_username"
+											   id="key_username"
+											   class="form-control"
+											   ng-model="spouse.key_username"
+											   autocomplete="off"
+											   required>
+										<span class="input-group-addon">
+											<span class="glyphicon"
+												  aria-hidden="true"
+												  ng-class="{'glyphicon-ok': login.key_username.$valid, 'glyphicon-remove': !login.key_username.$valid}"></span>
+										</span>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</div>
+				</ng-form>
+			</div>
+
+			<div class="row">
+				<ng-form name="personal">
+					<div class="form-horizontal well" uib-collapse="toggle.login">
+						<fieldset>
+							<legend translate>Personal</legend>
+
+							<!-- Family/Surname -->
+							<div class="form-group has-feedback" ng-class="{'has-error': !personal.last_name.$valid}">
+								<label class="col-sm-4 control-label" for="last_name" translate>Family/Surname</label>
+
+								<div class="col-sm-8">
+									<div class="input-group" ng-class="{'has-success': personal.last_name.$valid}">
+										<input type="text"
+											   class="form-control"
+											   id="last_name"
+											   name="last_name"
+											   ng-model="spouse.last_name"
+											   autocomplete="off"
+											   required
+											   ng-minlength="2">
+										<span class="input-group-addon">
+											<span class="glyphicon"
+												  aria-hidden="true"
+												  ng-class="{'glyphicon-ok': personal.last_name.$valid, 'glyphicon-remove': !personal.last_name.$valid}"></span>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<!-- Given Name -->
+							<div class="form-group has-feedback" ng-class="{'has-error': !personal.first_name.$valid}">
+								<label class="col-sm-4 control-label" for="first_name" translate>Given Name(s)</label>
+
+								<div class="col-sm-8">
+									<div class="input-group" ng-class="{'has-success': personal.first_name.$valid}">
+										<input type="text"
+											   class="form-control"
+											   id="first_name"
+											   name="first_name"
+											   ng-model="spouse.first_name"
+											   autocomplete="off"
+											   required
+											   ng-minlength="2">
+										<span class="input-group-addon">
+											<span class="glyphicon"
+												  aria-hidden="true"
+												  ng-class="{'glyphicon-ok': personal.first_name.$valid, 'glyphicon-remove': !personal.first_name.$valid}"></span>
+										</span>
+									</div>
+								</div>
+							</div>
+
+							<!-- E-mail Address -->
+							<div class="form-group has-feedback"
+								 ng-class="{'has-error': !personal.email.$valid}">
+								<label class="col-sm-4 control-label" for="email" translate>E-mail Address</label>
+
+								<div class="col-sm-8">
+									<div class="input-group" ng-class="{'has-success': personal.email.$valid}">
+										<input type="email"
+											   name="email"
+											   id="email"
+											   class="form-control"
+											   autocomplete="off"
+											   ng-model="spouse.email"
+											   required>
+										<span class="input-group-addon">
+											<span class="glyphicon"
+												  aria-hidden="true"
+												  ng-class="{'glyphicon-ok': personal.email.$valid, 'glyphicon-remove': !personal.email.$valid}"></span>
+										</span>
+									</div>
+								</div>
+							</div>
+
+						</fieldset>
+					</div>
+				</ng-form>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-warning" ng-click="cancel()" translate>Cancel</button>
+		<button class="btn btn-primary" ng-click="save()" ng-disabled="login.$invalid && personal.$invalid" translate>This is my Spouse</button>
+	</div>
+</div>
