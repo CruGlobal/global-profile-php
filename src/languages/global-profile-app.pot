@@ -5,7 +5,7 @@ msgstr ""
 "Project-Id-Version: \n"
 
 #: js/components/profile-form/profile-form.html:241
-msgid "(current physical residence.)"
+msgid "(current physical residence)"
 msgstr ""
 
 #: js/states/admin/add/add.html:8
