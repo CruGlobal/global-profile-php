@@ -113,7 +113,7 @@
 					$scope.$watch( 'profile.marital_status', function ( marital_status, oldVal ) {
 						if ( angular.isUndefined( marital_status ) ||
 							marital_status == 'Single' || marital_status == 'Engaged' || marital_status == 'Divorced' ||
-							marital_status == 'Widowed' ) {
+							marital_status == 'Widowed' || marital_status == 'Married to non-staff' ) {
 							delete $scope.profile.spouse;
 							delete $scope.profile.marriage_date;
 							$scope.showSpouse = false;
