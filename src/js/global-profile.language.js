@@ -37,6 +37,9 @@
 					case 'GUE':
 						$rootScope.locale = 'en-US';
 						break;
+					case 'RWA':
+						$rootScope.locale = 'fr';
+						break;
 				}
 			}
 		} );
