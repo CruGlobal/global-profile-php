@@ -59,6 +59,10 @@ msgstr ""
 msgid "Centrally Funded Staff"
 msgstr ""
 
+#: js/components/profile-form/profile-form.html:504
+msgid "Child"
+msgstr ""
+
 #: js/components/profile-form/profile-form.html:502
 msgid "Children"
 msgstr ""
