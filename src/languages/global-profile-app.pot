@@ -21,6 +21,10 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
+#: js/states/profile/edit/admin_button.html:1
+msgid "Administrator"
+msgstr ""
+
 #: js/components/profile-form/profile-form.html:218
 msgid "Anyone can see your profile information."
 msgstr ""
@@ -53,6 +57,10 @@ msgstr ""
 
 #: js/components/profile-form/profile-form.html:600
 msgid "Centrally Funded Staff"
+msgstr ""
+
+#: js/components/profile-form/profile-form.html:504
+msgid "Child"
 msgstr ""
 
 #: js/components/profile-form/profile-form.html:502
