@@ -42,6 +42,7 @@ msgid "Assignment"
 msgstr ""
 
 #: js/components/profile-form/profile-form.html:132
+#: js/components/profile-form/profile-form.html:532
 msgid "Birth Date"
 msgstr ""
 
@@ -147,6 +148,10 @@ msgstr ""
 
 #: js/components/profile-form/profile-form.html:124
 msgid "Female"
+msgstr ""
+
+#: js/components/profile-form/profile-form.html:516
+msgid "First Name"
 msgstr ""
 
 #: js/components/profile-form/profile-form.html:571
@@ -407,6 +412,7 @@ msgid "Skype ID"
 msgstr ""
 
 #: js/components/profile-form/spouse.html:4
+#: js/components/profile-form/spouse.html:77
 msgid "Spouse"
 msgstr ""
 
