@@ -40,6 +40,9 @@
 					case 'RWA':
 						$rootScope.locale = 'fr';
 						break;
+					case 'ETH':
+						$rootScope.locale = 'am';
+						break;
 				}
 			}
 		} );
