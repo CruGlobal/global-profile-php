@@ -46,6 +46,12 @@
 					case 'IDE':
 						$rootScope.locale = 'id';
 						break;
+					case 'VZC':
+						$rootScope.locale = 'lo';
+						break;
+					case 'VZF':
+						$rootScope.locale = 'vi';
+						break;
 				}
 			}
 		} );
