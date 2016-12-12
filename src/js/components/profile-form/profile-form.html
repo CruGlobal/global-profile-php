@@ -501,7 +501,7 @@
 				<fieldset>
 					<legend><span translate>Children</span>
 						<button class="btn btn-info pull-right btn-add-child" ng-click="addChild()" type="button">
-							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Child
+							<span class="glyphicon glyphicon-plus" aria-hidden="true"></span> <span translate>Child</span>
 						</button>
 						<div class="clearfix"></div>
 					</legend>
@@ -513,7 +513,7 @@
 						<div class="col-sm-5">
 							<div class="input-group" ng-class="{'has-success': children[$index + '_name'].$valid}">
 								<input type="text"
-									   placeholder="First Name"
+									   placeholder="{{ 'First Name' | translate }}"
 									   name="{{$index}}_name"
 									   id="{{$index}}_name"
 									   class="form-control"
@@ -529,7 +529,7 @@
 						<div class="col-sm-5">
 							<div class="input-group" ng-class="{'has-success': children[$index + '_date'].$valid}">
 								<input type="date"
-									   placeholder="Birth Date"
+									   placeholder="{{ 'Birth Date' | translate }}"
 									   name="{{$index}}_date"
 									   id="{{$index}}_date"
 									   class="form-control"

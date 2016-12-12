@@ -7,7 +7,7 @@
 	</div>
 	<div class="section">
 		<div ng-class="{'input-group':filterText}">
-			<input type="text" class="form-control" ng-model="filterText" placeholder="Search" />
+			<input type="text" class="form-control" ng-model="filterText" placeholder="{{ 'Search' | translate }}" />
 			<span class="input-group-btn" ng-if="filterText">
 				<button type="button" class="btn btn-default" ng-click="clearFilter()">
 					<span class="glyphicon glyphicon-remove"></span>
