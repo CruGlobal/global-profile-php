@@ -68,6 +68,30 @@
 				} );
 			};
 
+			$scope.deleteProfile = function () {
+				if(confirm("Are you sure you want to delete this profile?")){
+					$scope.isSaving = true;
+					Profile.destroy( {ministry_id: ministry.ministry_id}, angular.copy( $scope.profile ), function ( result ) {
+						// Success
+						growl.success( gettext( 'Profile has been successfully removed.' ) );
+						$state.go('admin')
+						$scope.isSaving = false;
+					}, function () {
+						// Error
+						$uibModal.open( {
+							templateUrl: 'js/states/admin/error.modal.html',
+							size:        'sm',
+							controller:  function ( $scope, $uibModalInstance ) {
+								$scope.ok = function () {
+									$uibModalInstance.close();
+								};
+							}
+						} );
+						$scope.isSaving = false;
+					} );
+				}
+			};
+
 			$scope.$on( '$stateChangeStart', function ( event, toState, toParams, fromState, fromParams ) {
 				if ( $scope.profileForm.$dirty ) {
 					event.preventDefault();

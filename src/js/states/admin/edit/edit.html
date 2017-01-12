@@ -37,6 +37,12 @@
 					translate>Cancel
 			</button>
 			<button type="button"
+					class="btn btn-danger"
+					ng-disabled="profileForm.$invalid || isSaving"
+					ng-click="deleteProfile()"
+					translate>Delete
+			</button>
+			<button type="button"
 					class="btn btn-primary"
 					ng-disabled="profileForm.$invalid || isSaving"
 					ng-click="saveChanges()"
