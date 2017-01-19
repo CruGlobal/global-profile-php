@@ -21,6 +21,10 @@ msgstr ""
 msgid "Address"
 msgstr ""
 
+#: js/states/profile/edit/admin_button.html:1
+msgid "Administrator"
+msgstr ""
+
 #: js/components/profile-form/profile-form.html:218
 msgid "Anyone can see your profile information."
 msgstr ""
@@ -38,6 +42,7 @@ msgid "Assignment"
 msgstr ""
 
 #: js/components/profile-form/profile-form.html:132
+#: js/components/profile-form/profile-form.html:532
 msgid "Birth Date"
 msgstr ""
 
@@ -53,6 +58,10 @@ msgstr ""
 
 #: js/components/profile-form/profile-form.html:600
 msgid "Centrally Funded Staff"
+msgstr ""
+
+#: js/components/profile-form/profile-form.html:504
+msgid "Child"
 msgstr ""
 
 #: js/components/profile-form/profile-form.html:502
@@ -141,6 +150,10 @@ msgstr ""
 msgid "Female"
 msgstr ""
 
+#: js/components/profile-form/profile-form.html:516
+msgid "First Name"
+msgstr ""
+
 #: js/components/profile-form/profile-form.html:571
 msgid "Full Time Staff"
 msgstr ""
@@ -155,6 +168,11 @@ msgstr ""
 
 #: js/components/profile-form/profile-form.html:758
 msgid "GCM"
+msgstr ""
+
+#: js/states/admin/add/add.html:34
+#: js/states/admin/import/import.html:24
+msgid "GUID"
 msgstr ""
 
 #: js/components/profile-form/profile-form.html:113
@@ -177,11 +195,6 @@ msgstr ""
 #: js/states/app/app.html:10
 #: js/states/select-ministry/select-ministry.html:3
 msgid "Global Profile"
-msgstr ""
-
-#: js/states/admin/add/add.html:34
-#: js/states/admin/import/import.html:24
-msgid "GUID"
 msgstr ""
 
 #: js/components/profile-form/profile-form.html:602
@@ -284,13 +297,13 @@ msgstr ""
 msgid "None of the other categories apply to you."
 msgstr ""
 
-#: js/states/admin/admin.module.js:18
-msgid "Not a Leader or Inherited Leader of the ministry."
-msgstr ""
-
 #: js/components/profile-form/profile-form.html:603
 #: js/components/profile-form/profile-form.html:802
 msgid "Not Applicable"
+msgstr ""
+
+#: js/states/admin/admin.module.js:18
+msgid "Not a Leader or Inherited Leader of the ministry."
 msgstr ""
 
 #: js/states/admin/error.modal.html:9
@@ -374,6 +387,10 @@ msgstr ""
 msgid "Scope"
 msgstr ""
 
+#: js/states/admin/sidebar.html:10
+msgid "Search"
+msgstr ""
+
 #: js/components/profile-form/profile-form.html:601
 msgid "Self-funded"
 msgstr ""
@@ -395,6 +412,7 @@ msgid "Skype ID"
 msgstr ""
 
 #: js/components/profile-form/spouse.html:4
+#: js/components/profile-form/spouse.html:77
 msgid "Spouse"
 msgstr ""
 
@@ -450,16 +468,20 @@ msgstr ""
 msgid "This identifies your working relationship with the organization, if any."
 msgstr ""
 
+#: js/components/profile-form/profile-form.html:708
+msgid "This is Your Staff Account."
+msgstr ""
+
+#: js/components/profile-form/add-spouse.modal.html:128
+msgid "This is my Spouse"
+msgstr ""
+
 #: js/components/profile-form/profile-form.html:167
 msgid "This is my first language."
 msgstr ""
 
 #: js/components/profile-form/profile-form.html:186
 msgid "This is my second language."
-msgstr ""
-
-#: js/components/profile-form/add-spouse.modal.html:128
-msgid "This is my Spouse"
 msgstr ""
 
 #: js/components/profile-form/profile-form.html:205
@@ -484,10 +506,6 @@ msgstr ""
 
 #: js/components/profile-form/profile-form.html:813
 msgid "This is your role or position within the organization."
-msgstr ""
-
-#: js/components/profile-form/profile-form.html:708
-msgid "This is Your Staff Account."
 msgstr ""
 
 #: js/states/admin/unsaved.modal.html:8
@@ -632,18 +650,18 @@ msgstr ""
 msgid "Your E-mail Address used by the organization to contact you."
 msgstr ""
 
-#: js/components/profile-form/profile-form.html:60
-msgid "Your official family name."
-msgstr ""
-
-#: js/components/profile-form/profile-form.html:84
-msgid "Your official given name(s)."
-msgstr ""
-
 #: js/components/profile-form/profile-form.html:406
 msgid "Your Phone Number used by the organization to contact you."
 msgstr ""
 
 #: js/components/profile-form/profile-form.html:431
 msgid "Your Skype ID used by the organization to contact you."
+msgstr ""
+
+#: js/components/profile-form/profile-form.html:60
+msgid "Your official family name."
+msgstr ""
+
+#: js/components/profile-form/profile-form.html:84
+msgid "Your official given name(s)."
 msgstr ""

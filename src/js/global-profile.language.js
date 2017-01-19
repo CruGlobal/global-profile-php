@@ -37,6 +37,26 @@
 					case 'GUE':
 						$rootScope.locale = 'en-US';
 						break;
+					case 'BEN':
+					case 'BUN': 
+					case 'BUR':
+					case 'CAM':
+					case 'CEN':
+					case 'CHA':
+					case 'DRC':
+					case 'GAB':
+					case 'GUN':
+					case 'COT':
+					case 'MAI':
+					case 'RWA':
+					case 'NIG':
+					case 'SEN':
+					case 'TOG':
+						$rootScope.locale = 'fr';
+						break;
+					case 'ETH':
+						$rootScope.locale = 'am';
+						break;
 				}
 			}
 		} );

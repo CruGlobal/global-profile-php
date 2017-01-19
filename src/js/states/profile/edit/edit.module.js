@@ -51,7 +51,7 @@
 							controller: function( $scope, isLeader ) {
 								$scope.isLeader = isLeader;
 							},
-							template: '<button type="button" class="btn btn-sm btn-danger" ng-if="isLeader" ui-sref="admin">Administrator</button>'
+							templateUrl: 'js/states/profile/edit/admin_button.html',
 						}
 					}
 				} )
