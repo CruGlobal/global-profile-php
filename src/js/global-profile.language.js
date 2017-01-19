@@ -37,48 +37,20 @@
 					case 'GUE':
 						$rootScope.locale = 'en-US';
 						break;
-					case 'RWA':
-						$rootScope.locale = 'fr';
-						break;
 					case 'BEN':
-						$rootScope.locale = 'fr';
-						break;
-					case 'BUN':
-						$rootScope.locale = 'fr';
-						break;
+					case 'BUN': 
 					case 'BUR':
-						$rootScope.locale = 'fr';
-						break;
 					case 'CAM':
-						$rootScope.locale = 'fr';
-						break;
 					case 'CEN':
-						$rootScope.locale = 'fr';
-						break;
 					case 'CHA':
-						$rootScope.locale = 'fr';
-						break;
 					case 'DRC':
-						$rootScope.locale = 'fr';
-						break;
 					case 'GAB':
-						$rootScope.locale = 'fr';
-						break;
 					case 'GUN':
-						$rootScope.locale = 'fr';
-						break;
 					case 'COT':
-						$rootScope.locale = 'fr';
-						break;
 					case 'MAI':
-						$rootScope.locale = 'fr';
-						break;
+					case 'RWA':
 					case 'NIG':
-						$rootScope.locale = 'fr';
-						break;
 					case 'SEN':
-						$rootScope.locale = 'fr';
-						break;
 					case 'TOG':
 						$rootScope.locale = 'fr';
 						break;
