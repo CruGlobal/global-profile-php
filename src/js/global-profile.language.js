@@ -43,43 +43,43 @@
 					case 'BEN':
 						$rootScope.locale = 'fr';
 						break;
-					case 'BFA':
+					case 'BUN':
 						$rootScope.locale = 'fr';
 						break;
-					case 'BDI':
+					case 'BUR':
 						$rootScope.locale = 'fr';
 						break;
-					case 'CMR':
+					case 'CAM':
 						$rootScope.locale = 'fr';
 						break;
-					case 'CAF':
+					case 'CEN':
 						$rootScope.locale = 'fr';
 						break;
-					case 'TCD':
+					case 'CHA':
 						$rootScope.locale = 'fr';
 						break;
-					case 'COG':
+					case 'DRC':
 						$rootScope.locale = 'fr';
 						break;
 					case 'GAB':
 						$rootScope.locale = 'fr';
 						break;
-					case 'GIN':
+					case 'GUN':
 						$rootScope.locale = 'fr';
 						break;
-					case 'CIV':
+					case 'COT':
 						$rootScope.locale = 'fr';
 						break;
-					case 'MLI':
+					case 'MAI':
 						$rootScope.locale = 'fr';
 						break;
-					case 'NER':
+					case 'NIG':
 						$rootScope.locale = 'fr';
 						break;
 					case 'SEN':
 						$rootScope.locale = 'fr';
 						break;
-					case 'TGO':
+					case 'TOG':
 						$rootScope.locale = 'fr';
 						break;
 					case 'ETH':
