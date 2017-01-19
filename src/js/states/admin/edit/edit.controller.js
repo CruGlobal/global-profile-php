@@ -87,9 +87,9 @@
 
 								Profile.destroy( {ministry_id: ministry.ministry_id}, angular.copy( $scope.profile ), function ( result ) {
 									// Success
-									growl.success( gettext( 'Profile has been successfully removed.' ) );
-									$state.go('admin')
 									$scope.isSaving = false;
+									$state.go('admin', {}, {reload: true})
+									growl.success( gettext( 'Profile has been successfully removed.' ) );
 								}, function () {
 									// Error
 									$uibModal.open( {
