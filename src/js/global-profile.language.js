@@ -37,7 +37,23 @@
 					case 'GUE':
 						$rootScope.locale = 'en-US';
 						break;
+					case 'BEN':
+					case 'BUN':
+					case 'BUR':
+					case 'CAM':
+					case 'CEN':
+					case 'CHA':
+					case 'COM':
+					case 'CON':
+					case 'COT':
+					case 'DRC':
+					case 'GAB':
+					case 'GUN':
+					case 'MAI':
+					case 'NIG':
 					case 'RWA':
+					case 'SEN':
+					case 'TOG':
 						$rootScope.locale = 'fr';
 						break;
 					case 'ETH':
