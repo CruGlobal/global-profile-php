@@ -40,6 +40,48 @@
 					case 'RWA':
 						$rootScope.locale = 'fr';
 						break;
+					case 'BEN':
+						$rootScope.locale = 'fr';
+						break;
+					case 'BFA':
+						$rootScope.locale = 'fr';
+						break;
+					case 'BDI':
+						$rootScope.locale = 'fr';
+						break;
+					case 'CMR':
+						$rootScope.locale = 'fr';
+						break;
+					case 'CAF':
+						$rootScope.locale = 'fr';
+						break;
+					case 'TCD':
+						$rootScope.locale = 'fr';
+						break;
+					case 'COG':
+						$rootScope.locale = 'fr';
+						break;
+					case 'GAB':
+						$rootScope.locale = 'fr';
+						break;
+					case 'GIN':
+						$rootScope.locale = 'fr';
+						break;
+					case 'CIV':
+						$rootScope.locale = 'fr';
+						break;
+					case 'MLI':
+						$rootScope.locale = 'fr';
+						break;
+					case 'NER':
+						$rootScope.locale = 'fr';
+						break;
+					case 'SEN':
+						$rootScope.locale = 'fr';
+						break;
+					case 'TGO':
+						$rootScope.locale = 'fr';
+						break;
 					case 'ETH':
 						$rootScope.locale = 'am';
 						break;
