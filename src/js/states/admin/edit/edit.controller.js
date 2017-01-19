@@ -69,27 +69,42 @@
 			};
 
 			$scope.deleteProfile = function () {
-				if(confirm("Are you sure you want to delete this profile?")){
-					$scope.isSaving = true;
-					Profile.destroy( {ministry_id: ministry.ministry_id}, angular.copy( $scope.profile ), function ( result ) {
-						// Success
-						growl.success( gettext( 'Profile has been successfully removed.' ) );
-						$state.go('admin')
-						$scope.isSaving = false;
-					}, function () {
-						// Error
-						$uibModal.open( {
-							templateUrl: 'js/states/admin/error.modal.html',
-							size:        'sm',
-							controller:  function ( $scope, $uibModalInstance ) {
-								$scope.ok = function () {
-									$uibModalInstance.close();
-								};
-							}
-						} );
-						$scope.isSaving = false;
-					} );
-				}
+				$uibModal.open( {
+						templateUrl: 'js/states/admin/confirm-delete.modal.html',
+						size:        'md',
+						controller:  function ( $scope, $uibModalInstance ) {
+							$scope.cancel = function () {
+								$uibModalInstance.close(false);
+							};
+
+							$scope.yesDeleteProfile = function () {
+								$uibModalInstance.close(true);
+							};
+						}
+					} ).result.then(function(result){
+						if(result){
+								$scope.isSaving = true;
+
+								Profile.destroy( {ministry_id: ministry.ministry_id}, angular.copy( $scope.profile ), function ( result ) {
+									// Success
+									growl.success( gettext( 'Profile has been successfully removed.' ) );
+									$state.go('admin')
+									$scope.isSaving = false;
+								}, function () {
+									// Error
+									$uibModal.open( {
+										templateUrl: 'js/states/admin/error.modal.html',
+										size:        'sm',
+										controller:  function ( $scope, $uibModalInstance ) {
+											$scope.ok = function () {
+												$uibModalInstance.close();
+											};
+										}
+									} );
+									$scope.isSaving = false;
+								} );
+						}
+					});
 			};
 
 			$scope.$on( '$stateChangeStart', function ( event, toState, toParams, fromState, fromParams ) {
