@@ -85,7 +85,8 @@
 					url:    Settings.api.globalProfile( '/people' ),
 					method: 'POST', transformRequest: normalizeProfileRequest
 				},
-				update: {method: 'PUT', transformRequest: normalizeProfileRequest}
+				update: {method: 'PUT', transformRequest: normalizeProfileRequest},
+				destroy: {method: 'DELETE', transformRequest: normalizeProfileRequest}
 			} );
 		api.defaultProfile = function () {
 			return normalizeProfile( {

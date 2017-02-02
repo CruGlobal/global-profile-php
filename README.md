@@ -20,6 +20,7 @@ cp config.php config/
 Install bower, bower components and npm packages
 ```bash
 npm install -g bower
+npm install -g gulp
 npm install
 bower install
 gulp build

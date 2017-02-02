@@ -67,6 +67,8 @@
 						break;
 					case 'VZF':
 						$rootScope.locale = 'vi';
+					case 'RUS':
+						$rootScope.locale = 'ru-RU';
 						break;
 				}
 			}
