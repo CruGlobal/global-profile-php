@@ -60,9 +60,7 @@
 						$rootScope.locale = 'am';
 						break;
 					case 'RUS':
-					case 'BEA':
-					case 'MOL':
-						$rootScope.locale = 'ru';
+						$rootScope.locale = 'ru-RU';
 						break;
 				}
 			}
