@@ -16,7 +16,7 @@ fi
 
 # Symlink application to nginx
 if [ "$ENVIRONMENT" = "production" ]; then
-	ln -nsf /home/app/dist /var/www/app
+	ln -nsf /home/app/webapp/dist /var/www/app
 else
-	ln -nsf /home/app/src /var/www/app
+	ln -nsf /home/app/webapp/src /var/www/app
 fi
