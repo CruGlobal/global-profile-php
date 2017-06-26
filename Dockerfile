@@ -2,7 +2,10 @@ FROM 056154071827.dkr.ecr.us-east-1.amazonaws.com/base-image-php:latest
 MAINTAINER cru.org <wmd@cru.org>
 
 # Nginx is pointed at /var/www/app as document root
-# App is installed at /home/app
+# App is installed at /home/app/webapp
+
+# Copy source
+COPY . /home/app/webapp
 
 # Install PHP dependencies
 RUN composer install --no-dev
