@@ -67,7 +67,7 @@
 						break;
 					case 'VZF':
 						$rootScope.locale = 'vi';
-            break;
+						break;
 					case 'RUS':
 						$rootScope.locale = 'ru-RU';
 						break;
