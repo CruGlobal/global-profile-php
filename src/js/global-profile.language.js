@@ -71,6 +71,9 @@
 					case 'RUS':
 						$rootScope.locale = 'ru-RU';
 						break;
+					case 'ANG':
+						$rootScope.locale = 'pt-PT';
+						break;
 				}
 			}
 		} );
