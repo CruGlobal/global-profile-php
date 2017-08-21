@@ -59,6 +59,9 @@
 					case 'ETH':
 						$rootScope.locale = 'am';
 						break;
+					case 'RUS':
+						$rootScope.locale = 'ru-RU';
+						break;
 				}
 			}
 		} );
