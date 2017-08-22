@@ -59,6 +59,13 @@
 					case 'ETH':
 						$rootScope.locale = 'am';
 						break;
+					case 'IDB':
+					case 'IDJ':
+					case 'IDE':
+					case 'IDW':
+					case 'IDC':
+						$rootScope.locale = 'id';
+						break;
 				}
 			}
 		} );
