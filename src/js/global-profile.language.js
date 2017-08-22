@@ -74,6 +74,9 @@
 					case 'ANG':
 						$rootScope.locale = 'pt-PT';
 						break;
+					case 'HZA':
+						$rootScope.locale = 'tr';
+						break;
 				}
 			}
 		} );
