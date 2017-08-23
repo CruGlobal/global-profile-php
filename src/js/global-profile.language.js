@@ -59,9 +59,6 @@
 					case 'ETH':
 						$rootScope.locale = 'am';
 						break;
-					case 'IDE':
-						$rootScope.locale = 'id';
-						break;
 					case 'VZC':
 						$rootScope.locale = 'lo';
 						break;
@@ -76,6 +73,13 @@
 						break;
 					case 'HZA':
 						$rootScope.locale = 'tr';
+						break;
+					case 'IDB':
+					case 'IDJ':
+					case 'IDE':
+					case 'IDW':
+					case 'IDC':
+						$rootScope.locale = 'id';
 						break;
 				}
 			}
