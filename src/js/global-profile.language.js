@@ -66,6 +66,9 @@
 					case 'IDC':
 						$rootScope.locale = 'id';
 						break;
+					case 'VZF':
+						$rootScope.locale = 'vi';
+						break;
 				}
 			}
 		} );
