@@ -36,7 +36,7 @@
 							return deferred.promise;
 						},
 						'isLeader': function ( $log, user, ministry ) {
-							return _.contains( user.admin, ministry.ministry_id );
+							return user.superadmin || _.contains( user.admin, ministry.ministry_id );
 						}
 					},
 					views:    {
