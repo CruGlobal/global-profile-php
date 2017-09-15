@@ -37,6 +37,9 @@
 						},
 						'isLeader': function ( $log, user, ministry ) {
 							return user.superadmin || _.includes( user.admin, ministry.ministry_id );
+						},
+						'isSuperAdmin': function ( $log, user ) {
+							return user.superadmin;
 						}
 					},
 					views:    {

@@ -15,6 +15,7 @@
 		'globalProfile.states.profile.edit',
 		'globalProfile.states.admin.add',
 		'globalProfile.states.admin.edit',
-		'globalProfile.states.admin.import'
+		'globalProfile.states.admin.import',
+		'globalProfile.states.manageAdmins'
 	] );
 })();

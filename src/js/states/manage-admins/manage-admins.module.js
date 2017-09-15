@@ -2,33 +2,27 @@
 	'use strict';
 
 	angular
-		.module( 'globalProfile.states.admin', [
+		.module( 'globalProfile.states.manageAdmins', [
 			'ui.router',
 			'globalProfile.states.profile',
 			'globalProfile.api.globalprofile'
 		] )
 		.config( function ( $stateProvider ) {
 			$stateProvider
-				.state( 'admin', {
+				.state( 'manageAdmins', {
 					parent:  'profile',
-					url:     '/admin',
+					url:     '/manage_admins',
 					resolve: {
-						'requiresLeader': function ( $q, isLeader, gettext ) {
-							var deferred = $q.defer();
-							if ( isLeader ) deferred.resolve(); else deferred.reject( gettext( 'Not a Leader or Inherited Leader of the ministry.' ) );
-							return deferred.promise;
+						'requiresSuperAdmin': function ( $q, isSuperAdmin ) {
+							return isSuperAdmin ? $q.resolve() : $q.reject;
 						},
-						'people':         function ( $log, ministry, Profile ) {
-							return Profile.query( {ministry_id: ministry.ministry_id} ).$promise;
+						'userRoles': function ( $log, ministry, UserRoles ) {
+							return UserRoles.query( {ministry: ministry.min_code} ).$promise;
 						}
 					},
 					views:   {
 						'@app':          {
-							templateUrl: 'js/states/admin/admin.html'
-						},
-						'sidebar@admin': {
-							templateUrl: 'js/states/admin/sidebar.html',
-							controller:  'SidebarController'
+							template: '<manage-admins ministry="$resolve.ministry" user-roles="$resolve.userRoles"></manage-admins>'
 						},
                         'navigation@app' : {
                             controller: function( $scope, isLeader, isSuperAdmin ) {
