@@ -14,9 +14,7 @@
 					url:     '/admin',
 					resolve: {
 						'requiresLeader': function ( $q, isLeader, gettext ) {
-							var deferred = $q.defer();
-							if ( isLeader ) deferred.resolve(); else deferred.reject( gettext( 'Not a Leader or Inherited Leader of the ministry.' ) );
-							return deferred.promise;
+							return isLeader ? $q.resolve() : $q.reject( gettext( 'Not a Leader or Inherited Leader of the ministry.' ) );
 						},
 						'people':         function ( $log, ministry, Profile ) {
 							return Profile.query( {ministry_id: ministry.ministry_id} ).$promise;
@@ -29,14 +27,7 @@
 						'sidebar@admin': {
 							templateUrl: 'js/states/admin/sidebar.html',
 							controller:  'SidebarController'
-						},
-                        'navigation@app' : {
-                            controller: function( $scope, isLeader, isSuperAdmin ) {
-                                $scope.isLeader = isLeader;
-                                $scope.isSuperAdmin = isSuperAdmin;
-                            },
-                            templateUrl: 'js/states/profile/edit/admin_buttons.html'
-                        }
+						}
 					}
 				} )
 		} );

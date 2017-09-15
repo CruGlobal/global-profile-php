@@ -12,6 +12,7 @@
 
 		// States
 		'globalProfile.states.selectMinistry',
+        'globalProfile.states.activate',
 		'globalProfile.states.profile.edit',
 		'globalProfile.states.admin.add',
 		'globalProfile.states.admin.edit',

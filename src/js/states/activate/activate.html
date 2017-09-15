@@ -1,0 +1,27 @@
+<div class="container">
+    <h2 translate>Activate New Ministry</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <form ng-submit="$ctrl.activateMinistry()" class="form-inline">
+                <p translate>Enter 3 letter ministry code to activate a new ministry</p>
+                <div class="form-group">
+                    <label translate>
+                        Ministry Code
+                        <input type="text" class="form-control" ng-model="$ctrl.newMinistryCode" required>
+                    </label>
+                </div>
+                <input type="submit" class="btn btn-success add-button" value="{{'Activate' | translate}}">
+            </form>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item"
+                ng-repeat="ministry in $ctrl.newMinistries track by $index">
+                <span translate>Added</span> <b>{{ministry}}</b>
+                <div class="pull-right">
+                    <a class="btn btn-primary btn-xs" ui-sref="admin({ min_code: ministry })" translate>Manage People</a>
+                    <a class="btn btn-danger btn-xs" ui-sref="manageAdmins({ min_code: ministry })" translate>Manage Administrators</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

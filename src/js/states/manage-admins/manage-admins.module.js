@@ -14,7 +14,7 @@
 					url:     '/manage_admins',
 					resolve: {
 						'requiresSuperAdmin': function ( $q, isSuperAdmin ) {
-							return isSuperAdmin ? $q.resolve() : $q.reject;
+							return isSuperAdmin ? $q.resolve() : $q.reject();
 						},
 						'userRoles': function ( $log, ministry, UserRoles ) {
 							return UserRoles.query( {ministry: ministry.min_code} ).$promise;
@@ -23,16 +23,9 @@
 					views:   {
 						'@app':          {
 							template: '<manage-admins ministry="$resolve.ministry" user-roles="$resolve.userRoles"></manage-admins>'
-						},
-                        'navigation@app' : {
-                            controller: function( $scope, isLeader, isSuperAdmin ) {
-                                $scope.isLeader = isLeader;
-                                $scope.isSuperAdmin = isSuperAdmin;
-                            },
-                            templateUrl: 'js/states/profile/edit/admin_buttons.html'
-                        }
+						}
 					}
-				} )
+				} );
 		} );
 
 })();

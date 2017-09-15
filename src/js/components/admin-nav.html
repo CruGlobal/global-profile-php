@@ -1,0 +1,5 @@
+<ul class="nav navbar-nav">
+    <li ng-if="$ctrl.isLeader"><a ui-sref="admin" translate>Manage People</a></li>
+    <li ng-if="$ctrl.isLeader && $ctrl.isSuperAdmin"><a ui-sref="manageAdmins" translate>Manage Admins</a></li>
+    <li ng-if="$ctrl.isSuperAdmin"><a ui-sref="activate" translate>Activate New Ministry</a></li>
+</ul>
