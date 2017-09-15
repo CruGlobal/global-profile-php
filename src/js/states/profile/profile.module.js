@@ -5,7 +5,8 @@
 		.module( 'globalProfile.states.profile', [
 			'ui.router',
 			'globalProfile.states.app',
-			'globalProfile.api.globalprofile'
+			'globalProfile.api.globalprofile',
+            'globalProfile.components.adminNav'
 		] )
 		.config( function ( $stateProvider ) {
 			$stateProvider
@@ -35,20 +36,20 @@
 							}
 							return deferred.promise;
 						},
-						'isLeader': function ( $log, user, ministry ) {
-							return user.superadmin || _.includes( user.admin, ministry.ministry_id );
-						},
-						'isSuperAdmin': function ( $log, user ) {
-							return user.superadmin;
-						}
+                        'isLeader': function ( user, ministry ) {
+                            return user.superadmin || _.includes( user.admin, ministry.ministry_id );
+                        }
 					},
-					views:    {
+					views: {
 						'title@app': {
 							controller: function ( $scope, ministry ) {
 								$scope.ministry = ministry;
 							},
 							template:   '{{ministry.name}}'
-						}
+						},
+                        'navigation@app': {
+                            template: '<admin-nav is-leader="$resolve.isLeader" is-super-admin="$resolve.isSuperAdmin"></admin-nav>'
+                        }
 					}
 				} );
 		} );

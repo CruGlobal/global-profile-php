@@ -1,16 +1,30 @@
 (function ( module ) {
-	'use strict';
+    'use strict';
 
-	module.factory( 'Ministries', function ( $log, $resource, Settings ) {
-		return $resource( Settings.api.globalProfile( '/ministries/:ministry_id' ), {}, {
-			'systems':    {
-				method:  'GET',
-				isArray: true,
-				params:  {global_profile_only: 'true', show_inactive: 'true'},
-				cache:   true
-			},
-			'ministries': {method: 'GET', isArray: true, params: {show_inactive: 'true'}, cache: true}
-		} );
-	} );
+    module.factory( 'Ministries', function ( $log, $resource, Settings ) {
+        return $resource(
+            Settings.api.globalProfile( '/ministries/:ministry_id' ),
+            {
+                ministry_id: '@ministry_id'
+            },
+            {
+                systems:    {
+                    method:  'GET',
+                    isArray: true,
+                    params:  {global_profile_only: 'true', show_inactive: 'true'},
+                    cache:   true
+                },
+                ministries: {
+                    method: 'GET',
+                    isArray: true,
+                    params: {show_inactive: 'true'},
+                    cache: true
+                },
+                activate: {
+                    method: 'PUT'
+                }
+            }
+        );
+    } );
 
 })( angular.module( 'globalProfile.api.globalprofile' ) );

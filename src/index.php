@@ -68,6 +68,7 @@
 	<script type="application/javascript" src="js/states/admin/edit/edit.module.js"></script>
 	<script type="application/javascript" src="js/states/admin/import/import.module.js"></script>
 	<script type="application/javascript" src="js/states/manage-admins/manage-admins.module.js"></script>
+	<script type="application/javascript" src="js/states/activate/activate.module.js"></script>
 	<script type="application/javascript" src="js/global-profile.module.js"></script>
 
 	<script type="application/javascript" src="js/api/globalprofile/countries.service.js"></script>
@@ -81,6 +82,7 @@
 	<script type="application/javascript" src="js/components/profile-form/profile-form.directive.js"></script>
 	<script type="application/javascript" src="js/components/profile-form/spouse.directive.js"></script>
 	<script type="application/javascript" src="js/components/profile-form/add-spouse.controller.js"></script>
+	<script type="application/javascript" src="js/components/admin-nav.component.js"></script>
 	<script type="application/javascript" src="js/common/settings.service.js"></script>
 	<script type="application/javascript" src="js/states/admin/add/add.controller.js"></script>
 	<script type="application/javascript" src="js/states/admin/edit/edit.controller.js"></script>
@@ -89,6 +91,7 @@
 	<script type="application/javascript" src="js/states/profile/edit/edit.controller.js"></script>
 	<script type="application/javascript" src="js/states/select-ministry/select-ministry.controller.js"></script>
 	<script type="application/javascript" src="js/states/manage-admins/manage-admins.component.js"></script>
+	<script type="application/javascript" src="js/states/activate/activate.component.js"></script>
 	<script type="application/javascript" src="js/global-profile.config.js"></script>
 	<script type="application/javascript" src="js/global-profile.language.js"></script>
 

@@ -5,7 +5,8 @@
 		.module( 'globalProfile.states.app', [
 			// Dependencies
 			'ui.router',
-			'globalProfile.api.globalprofile'
+			'globalProfile.api.globalprofile',
+            'globalProfile.components.adminNav'
 		] )
 		.config( function ( $stateProvider, $urlRouterProvider ) {
 
@@ -30,7 +31,10 @@
 					},
 					'countries':  function ( $log, Countries ) {
 						return Countries.countries();
-					}
+					},
+                    'isSuperAdmin': function ( $log, user ) {
+                        return user.superadmin;
+                    }
 				}
 			} );
 		} );

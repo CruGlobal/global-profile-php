@@ -46,13 +46,6 @@
 						'@app': {
 							templateUrl: 'js/states/profile/edit/edit.html',
 							controller:  'EditPersonalProfileController'
-						},
-						'navigation@app' : {
-							controller: function( $scope, isLeader, isSuperAdmin ) {
-								$scope.isLeader = isLeader;
-								$scope.isSuperAdmin = isSuperAdmin;
-							},
-							templateUrl: 'js/states/profile/edit/admin_buttons.html'
 						}
 					}
 				} )

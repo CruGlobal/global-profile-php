@@ -13,7 +13,9 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav"></ul>
-			<div class="navbar-form navbar-right" ui-view="navigation"></div>
+			<div class="navbar-right" ui-view="navigation">
+				<admin-nav is-super-admin="$resolve.isSuperAdmin"></admin-nav>
+			</div>
 		</div>
 	</div>
 </nav>
