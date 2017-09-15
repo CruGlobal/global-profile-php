@@ -36,7 +36,7 @@
 
 					$scope.$watch( 'spouse.spouse_id', function ( spouse_id, old_spouse_id ) {
 						if ( spouse_id === old_spouse_id ) return;
-						var spouse = _.findWhere( $scope.people, {person_id: spouse_id} );
+						var spouse = _.find( $scope.people, {person_id: spouse_id} );
 						if ( angular.isDefined( spouse ) ) {
 							ngModel.$setViewValue( {
 								spouse_id:  spouse.person_id,

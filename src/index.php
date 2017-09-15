@@ -29,7 +29,7 @@
 		<script type="application/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 		<script type="application/javascript" src="bower_components/angular-cas-auth-api/dist/cas-auth-api.js"></script>
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
-		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>
+		<script type="application/javascript" src="bower_components/lodash/lodash.js"></script>
 		<script type="application/javascript" src="bower_components/papaparse/papaparse.js"></script>
 		<script type="application/javascript" src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
 		<script type="application/javascript" src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
