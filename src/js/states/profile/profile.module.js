@@ -22,7 +22,7 @@
 								deferred.reject();
 							}
 							else {
-								var ministry = _.findWhere( systems, {min_code: $stateParams.min_code} );
+								var ministry = _.find( systems, {min_code: $stateParams.min_code} );
 
 								// Ministry is not a valid Global Profile system
 								if ( angular.isUndefined( ministry ) ) {
@@ -36,7 +36,10 @@
 							return deferred.promise;
 						},
 						'isLeader': function ( $log, user, ministry ) {
-							return user.superadmin || _.contains( user.admin, ministry.ministry_id );
+							return user.superadmin || _.includes( user.admin, ministry.ministry_id );
+						},
+						'isSuperAdmin': function ( $log, user ) {
+							return user.superadmin;
 						}
 					},
 					views:    {

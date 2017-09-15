@@ -20,7 +20,7 @@
 								deferred.reject( 'Missing or Invalid person_id' );
 							}
 							else {
-								var profile = _.findWhere( people, {person_id: $stateParams.person_ID} );
+								var profile = _.find( people, {person_id: $stateParams.person_ID} );
 								if ( angular.isUndefined( profile ) ) {
 									$state.go( 'admin.new' );
 									deferred.reject();

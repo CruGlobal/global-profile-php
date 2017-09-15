@@ -29,7 +29,7 @@
 		<script type="application/javascript" src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 		<script type="application/javascript" src="bower_components/angular-cas-auth-api/dist/cas-auth-api.js"></script>
 		<script type="application/javascript" src="bower_components/moment/moment.js"></script>
-		<script type="application/javascript" src="bower_components/underscore/underscore.js"></script>
+		<script type="application/javascript" src="bower_components/lodash/lodash.js"></script>
 		<script type="application/javascript" src="bower_components/papaparse/papaparse.js"></script>
 		<script type="application/javascript" src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
 		<script type="application/javascript" src="bower_components/angular-growl-v2/build/angular-growl.js"></script>
@@ -46,6 +46,7 @@
 		<link rel="stylesheet" href="css/select.css" />
 		<link rel="stylesheet" href="css/profile.css" />
 		<link rel="stylesheet" href="css/admin.css" />
+		<link rel="stylesheet" href="css/manage-admins.css" />
 		<!-- endbuild -->
 	</head>
 	<body>
@@ -66,6 +67,7 @@
 	<script type="application/javascript" src="js/states/admin/add/add.module.js"></script>
 	<script type="application/javascript" src="js/states/admin/edit/edit.module.js"></script>
 	<script type="application/javascript" src="js/states/admin/import/import.module.js"></script>
+	<script type="application/javascript" src="js/states/manage-admins/manage-admins.module.js"></script>
 	<script type="application/javascript" src="js/global-profile.module.js"></script>
 
 	<script type="application/javascript" src="js/api/globalprofile/countries.service.js"></script>
@@ -73,6 +75,7 @@
 	<script type="application/javascript" src="js/api/globalprofile/ministries.service.js"></script>
 	<script type="application/javascript" src="js/api/globalprofile/profile.service.js"></script>
 	<script type="application/javascript" src="js/api/globalprofile/user.service.js"></script>
+	<script type="application/javascript" src="js/api/globalprofile/user-roles.service.js"></script>
 	<script type="application/javascript" src="js/common/file-reader.directive.js"></script>
 	<script type="application/javascript" src="js/common/offset.filter.js"></script>
 	<script type="application/javascript" src="js/components/profile-form/profile-form.directive.js"></script>
@@ -85,6 +88,7 @@
 	<script type="application/javascript" src="js/states/admin/sidebar.controller.js"></script>
 	<script type="application/javascript" src="js/states/profile/edit/edit.controller.js"></script>
 	<script type="application/javascript" src="js/states/select-ministry/select-ministry.controller.js"></script>
+	<script type="application/javascript" src="js/states/manage-admins/manage-admins.component.js"></script>
 	<script type="application/javascript" src="js/global-profile.config.js"></script>
 	<script type="application/javascript" src="js/global-profile.language.js"></script>
 

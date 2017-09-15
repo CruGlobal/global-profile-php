@@ -1,0 +1,42 @@
+<div class="container">
+    <h2 translate>Manage Administrators - {{$ctrl.ministry.name}}</h2>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 translate>Add new administrator</h4>
+        </div>
+        <div class="panel-body">
+            <form ng-submit="$ctrl.addAdministrator()" class="form-inline">
+                <p translate>Enter email or Key GUID of the person to add them as an admin</p>
+                <div class="form-group">
+                    <label translate>
+                        Email
+                        <input type="email" class="form-control" ng-model="$ctrl.newAdminEmail">
+                    </label>
+                </div>
+                <small class="or" translate> - or - </small>
+                <div class="form-group">
+                    <label translate>
+                        Key GUID
+                        <input type="text" class="form-control" ng-model="$ctrl.newAdminGuid">
+                    </label>
+                </div>
+                <input type="submit" class="btn btn-success add-button" value="{{'Add' | translate}}">
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h4 translate>Current Admins</h4>
+        </div>
+        <ul class="list-group">
+            <li class="list-group-item"
+                ng-repeat="person in $ctrl.userRoles | orderBy:['last_name','first_name']">
+                <span ng-if="person.last_name">{{person.last_name}}, </span>{{person.first_name}}
+                <small ng-if="person.last_name || person.first_name"> - </small>
+                <small>{{person.key_guid}}</small>
+                <button class="btn btn-xs btn-danger pull-right" ng-click="$ctrl.removeAdmin(person)" translate>Remove</button>
+            </li>
+        </ul>
+    </div>
+</div>

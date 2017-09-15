@@ -6,7 +6,7 @@
 		$scope.ministries = systems;
 
 		$scope.isLeader = function ( ministry_id ) {
-			return user.superadmin || _.contains( user.admin, ministry_id );
+			return user.superadmin || _.includes( user.admin, ministry_id );
 		};
 	} );
 
