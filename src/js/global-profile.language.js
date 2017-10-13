@@ -81,6 +81,9 @@
 					case 'IDC':
 						$rootScope.locale = 'id';
 						break;
+					case 'POL':
+						$rootScope.locale = 'pl';
+						break;
 				}
 			}
 		} );
