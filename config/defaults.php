@@ -74,7 +74,7 @@
 		 * Redis Settings
 		 */
 		'redis'         => array(
-			'hostname' => ENV( 'REDIS_PORT_6379_TCP_ADDR', false ),
+			'hostname' => ENV( 'REDIS_PORT_6379_TCP_ADDR_SESSION', false ),
 			'port'     => 6379,
 			'db'       => ENV( 'REDIS_DB_INDEX', 2 ),
 		),
