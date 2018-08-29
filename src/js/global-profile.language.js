@@ -84,6 +84,9 @@
 					case 'POL':
 						$rootScope.locale = 'pl';
 						break;
+					case 'VZF':
+						$rootScope.locale = 'vi';
+						break;
 				}
 			}
 		} );
